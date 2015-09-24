@@ -1,0 +1,113 @@
+\documentclass[a4paper]{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{palatino}
+\usepackage{color}
+
+%% a point to check
+\definecolor{checkcolor}{rgb}{0.75, 0.75, 0.75}
+\newsavebox{\definitionbox}
+\newenvironment{checkit}{%
+\begin{lrbox}{\definitionbox}
+\begin{minipage}[t]{0.85\textwidth}%
+}%
+{\end{minipage}\end{lrbox}%
+\begin{center}{\colorbox{checkcolor}{\usebox{\definitionbox}}}%
+\end{center}}
+
+\title{Automatic $n$-Buffering for Big Data processing}
+\author{Asbj\o rn Thegler}
+\date{October 2015}
+
+\begin{document}
+
+\maketitle
+
+\sloppy
+
+\begin{abstract}
+WRITE LAST
+
+During the research, it was discovered that using three buffers was an arbitrary constraint, and
+concluded that many use cases would benefit from a different number of buffers.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+Big Data has become a huge topic over the last few years. This new discipline entails
+processing very large amounts of data which is not a trivial task, even for computer 
+scientists. A method known as \textit{Triple Buffering} is often used by scientists,
+and the method is often implemented exclusively for every single project. This has resulted
+in countless implementations, which are created with limited reusability. To amend this problem,
+this project will supply a generic implementation for use in research and industry.
+
+
+\subsection{Motivation}
+\subsubsection{IO problems}
+Why do we want to buffer, instead of doing the naive thing?
+
+\subsubsection{Use Cases}
+Perform calculations on big files from disk
+Recieving big files, perform calculations and mutations before writing to disk
+
+
+\subsubsection{Triple- vs $n$-buffering}
+Refer to "Theoretical Speedup"
+
+
+\subsection{Background}
+\subsubsection{Big Data and Complexity}
+Complexity of algorithms doesnt matter with small data-sizes. Big Data makes complexity really important.
+
+
+\section{Theory and Analysis}
+\subsection{Optimal Buffer Size}
+Buffer size should be less than the file size. If buffer sizes are 3*300M but file is 100M, 
+then it is inherently sequential.
+
+
+\subsection{Concurrency}
+\subsubsection{State chart}
+
+\subsubsection{Flow and Deadlocks}
+
+\subsection{Theoretical Speedup with threads}
+\subsection{Theoretical Speedup with processes}
+
+\section{Design and Implementation}
+\subsection{Multithreading with POSIX}
+\subsection{Multiprocessing with OpenCL}
+
+
+\section{Experimentation and Benchmarking}
+
+
+\section{Conclusion}
+
+
+\section{Future Work}
+\subsubsection{IO throttling}
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{bib}
+
+
+
+The End;
+
+Throughout the project I will focus on gaining knowledge on the following topics:
+
+\begin{itemize}
+  \item Programming for and with Big Data
+  \item Thoroughly understand and design generic synchronization
+  \item Reason about complexity in relation to Big Data
+  \item Reason about IO problems  
+  \item Design correct benchmarking
+\end{itemize}
+
+
+\end{document}
+

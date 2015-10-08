@@ -4,6 +4,14 @@
 \usepackage{palatino}
 \usepackage{color}
 
+\usepackage{hyperref}
+
+\usepackage{chngpage}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
 %% a point to check
 \definecolor{checkcolor}{rgb}{0.75, 0.75, 0.75}
 \newsavebox{\definitionbox}
@@ -226,7 +234,8 @@ will react as expected.
 
 
 \subsubsection{Synchronization Primitives}
-
+future-promise
+mutexes
 
 
 \subsection{Data Handling}
@@ -268,13 +277,61 @@ of data, one should always consider using a GPU, since it is massively parallel.
 
 \newpage
 \section{Design and Implementation}
-This section will explain how the framework has been designed and implemented. First, I will elaborate on
-the
+This section will explain how the NBUF framework has been designed and implemented. First, I will elaborate on
+the abstract idea of how the framework handles concurrency. Then I will elaborate on how the framework is to be used,
+and finally how it has been built.
 
+
+\subsection{Abstract Overview}
+I will here give an abstract overview of how the workers in the NBUF framework will interact. Each worker has its own buffer which
+it will use for reading into, processing and writing from. This buffer is not shared with any other worker.\\\\
+
+In [Figure NBUF worker State Diagram] is a finite-state diagram which shows how each worker in the system transfers from state to state. In
+\autoref{table:transition-table} the related transition table can be seen. It is important to note that there are two critical states. These
+states are intended to mimic the importance of a critical section, as known from concurrent programming\\\\
+
+
+% NBUF Worker State Transition Table
+\begin{table}[]
+\begin{adjustwidth}{-1.5in}{-1.5in}% adjust the L and R margins by 1 inch
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Current State}         & \textbf{Input}           & \textbf{Next State} & \textbf{Result}                                                                                                      \\ \midrule
+Initialization                 & \textit{ready}           & Read Wait           & \begin{tabular}[c]{@{}l@{}}Worker is ready for reading, but has \\ to wait for the read-resource.\end{tabular}       \\
+Read Wait                      & \textit{read available}  & Read Critical       & \begin{tabular}[c]{@{}l@{}}Worker can now read, which blocks \\ other workers from this state.\end{tabular}          \\
+\multirow{2}{*}{Read Critical} & \textit{data read}       & Execute             & \begin{tabular}[c]{@{}l@{}}Worker read some data, and can now \\ process it.\end{tabular}                            \\
+                               & \textit{nothing read}    & Exit                & \begin{tabular}[c]{@{}l@{}}Worker read nothing, and the work is \\ finished.\end{tabular}                            \\
+Execute                        & \textit{done execute}    & Write Wait          & \begin{tabular}[c]{@{}l@{}}Worker has processed its data, but has \\ to wait for the write-resource.\end{tabular}    \\
+Write Wait                     & \textit{write available} & Write Critial       & \begin{tabular}[c]{@{}l@{}}Worker can now write, which blocks \\ other workers from this state.\end{tabular}         \\
+Write Critial                  & \textit{done write}      & Read Wait           & \begin{tabular}[c]{@{}l@{}}Worker is ready for reading again, but \\ has to wait for the read-resource.\end{tabular} \\
+Exit                           & \textit{}                &                     & No transition exists from the exit state.                                                                            \\ \bottomrule
+\end{tabular}
+\caption{NBUF worker State Transition Table}
+\label{table:transition-table}
+\end{adjustwidth}
+\end{table}
+
+A worker begins in the "Initialization"-state and, it will move into the "Read Wait"-state. When the single read resource is available, the worker
+will move into the critical "Read Critial"-state. This state is exclusive, since only one worker can read at a time. At this point,
+two things can happen. Either, the worker receives data from the resource, or it does not receive data. The amount of data it receives does
+not matter, the buffer may be almost empty, or it may be full. In cases where it receives data, it will move to the "Execute"-state, and another
+worker can enter the "Read Critical"-state. Now, the worker will crunch the data located in the buffer, and produce whatever output is desired.
+When the worker has finished processing, it will move into the "Write Wait"-state. In this state, the worker will wait for the single write resource to
+become available. When it becomes available, the worker will move to the "Write Critial"-state. When the worker has written the content of the
+buffer, it is moves to the "Read Wait"-state, since it has finished its cycle, and can read new data into the buffer. At some point, the read
+resource has no more data, and the worker will not receive data during the "Read Critical"-state. At this point, it will move to the "Exit"-state,
+and stay there until thread termination.
 
 \subsection{API}
 
-\subsection{Multithreading with POSIX}
+
+
+\subsection{Multithreading with \textit{std::thread}}
+
+
+
+
 \subsection{Multiprocessing with OpenCL}
 
 
@@ -295,6 +352,7 @@ not reading 1gb of data as a start, but starting low, and slowly increasing the 
 \subsubsection{Variable buffer sizes}
 When reading small files, allocating large buffers is unnecessary.
 
+\subsubsection{Slow network? How does istream handle that}
 
 
 \bibliographystyle{abbrv}

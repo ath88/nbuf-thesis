@@ -8,9 +8,15 @@
 
 \usepackage{chngpage}
 \usepackage{graphicx}
+
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage[table,xcdraw]{xcolor}
+
+
+
+% nbuf command
+\newcommand{\nbuf}{\textit{nbuf} }
+
 
 %% a point to check
 \definecolor{checkcolor}{rgb}{0.75, 0.75, 0.75}
@@ -23,7 +29,7 @@
 \begin{center}{\colorbox{checkcolor}{\usebox{\definitionbox}}}%
 \end{center}}
 
-\title{Automatic $n$-Buffering for Big Data processing}
+\title{Automatic $n$-buffering for Big Data processing}
 \author{Asbj\o rn Thegler}
 \date{October 2015}
 
@@ -45,8 +51,6 @@ concluded that many use cases would benefit from a different number of buffers.
 
 
 
-
-
 \newpage
 \section{Introduction}
 It is hardly a secret that Big Data has become a huge topic over the last few years. Huge companies worldwide
@@ -63,6 +67,7 @@ task, and given that many new measurement tools generate tera-bytes of data per 
 in place for analyzing the data in a similar rate.\\
 
 
+\subsection{Terminology}
 (Should this be past tense?)
 The first popularly known occurrences of the term 'Triple Buffering' stems from the computer graphics industry.
 This is a technique where the graphics card renders images into 3 different buffers. Previous to this technique, a double buffer
@@ -76,11 +81,10 @@ switch between two back-buffers, and always have a free buffer to write a new fr
 would simply be lost, with no greater loss to the viewer. This obviously require extra memory on the graphics card.\\
 
 
-
+\subsection{Triple Buffering Big Data}
 'Triple Buffering' within computer graphics is a different thing, though there are many similarities. We can translate some of the solution
 to the field of Big Data. The bottlenecks of a graphics card are namely the rate of the renderer and the rate of the consumer. This translates to the IO problems we encounter when working with Big Data. The graphics industry solved the problem by utilizing more space, in the shape of an extra buffer
 and in theory, this can solve, or at least mitigate, some of the IO problems related to Big Data.\\
-
 
 
 The focus of this thesis project is to produce a framework or library that enables programmers to process or transform
@@ -119,14 +123,16 @@ there are two notable resources, which are being used in turn, namely the \texti
 case, we could have two concurrent workers, each swapping what resource they use, to utilize all of the resources
 at any given time.
 
-When the IO becomes negligible, we have a very compute-heavy task. In this case, we can attempt to add more
+When the I/O becomes negligible, we have a very compute-heavy task. In this case, we can attempt to add more
 compute resources, which in turn, will shorten the execution time. This means that we could have 5, 10 or 50
-buffers, depending on how large the computation task is, in comparison to IO.
+buffers, depending on how large the computation task is, in comparison to I/O.
 
 (More?)
 
 
 \subsubsection{The Generic Problem}
+TODO: Rewrite to \textit{software bloat} Reading man pages is dreading
+
 When programmers and developers write software, they are generally encouraged to utilize established
 libraries as much as possible, instead of relying on their own ability to create elaborate and correct
 code. Often, a programmer has to solve a specific problem, which can be translated into a general problem
@@ -150,6 +156,8 @@ Linux tool can be a daunting task, while often simple problems can be solved fas
 projects tend to have organic growth. Without tight steering from some small group of committed developers, a project
 will be monolithic and many people will classify it as 'bloatware'.
 
+[cite Zawinski's law of software envelopment]
+    Every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can.
 
 
 \subsubsection{Use Cases}
@@ -160,14 +168,14 @@ Following are a few use cases where using such a library is indeed a good soluti
 Hash algorithms are designed to be compute-heavy. When hash-values are needed on very large local files, it would
 be more efficient to use a n-buffering mechanism, and add buffers until the IO again becomes the bottleneck. The
 command line tools md5sum and sha512sum both have implementations that read 512 bytes at a time, which results in
-many IO operations which could be avoided, if more memory is available for multiple buffers. Gathering statistics
+many IO operations, in case of large files, which could be avoided, if more memory is available for multiple buffers. Gathering statistics
 on sensor data is also a brilliant use case.\\
 
 
 When large amounts of sensor data are received via a network, they are usually written directly to disk, before
 they get processed. In cases where much of the data is merely noise it could be good to have an option to process
 the data the instant it arrives, instead of waiting until after is has been written to disk. This can include
-gathering statistics, calculating hash values or filtering irrelevant data.
+gathering statistics, calculating hash values or filtering irrelevant data.\\\\
 
 (More use cases?)
 
@@ -176,6 +184,7 @@ gathering statistics, calculating hash values or filtering irrelevant data.
 \subsubsection{Big Data and Complexity}
 Complexity of algorithms doesn't matter with small data-sizes. Big Data makes complexity really important.
 
+time to access disk compared to memory
 
 
 
@@ -195,6 +204,7 @@ how to handle the enormous amounts of data.
 Finally, I will reason on what results I expect to get from this project, in relation to solving some of the problems touched upon in my motivation.
 
 
+
 \subsection{Concurrency}
 Concurrency has proven to be hard for the human mind to understand, design and work with. When done wrong, software can easily
 include deadlocks or other race conditions. This section will explain some of the pitfalls of concurrency and how to avoid them.
@@ -211,7 +221,8 @@ assume thorough knowledge of how deadlocks can happen, and what measures can be 
 but I will not explain further here.
 
 
-\subsubsection{Finite-state Diagram}
+\subsubsection{Finite-state Diagrams}
+[rewrite to match how they are used in the design-section.]
 Any process can be viewed as a finite-state machine. Doing so will help understanding the process,
 its possible states, and the triggers that will change the internal state of the process. This is known as the scientific
 body of "Automata Theory" and what I will elaborate on here, is a subset of this field.
@@ -220,9 +231,8 @@ To gain a better understanding of a finite-state machines, finite-state diagrams
 interacts as expected. The finite-state diagrams are trivial to both create and understand, and can be used for reasoning about a process,
 as a development tool and as documentation about a certain system or process. It gives an abstract idea of how a concrete process works.\\\\
 
-In figure [DOOR EXAMPLE] there is an example finite state diagram. This diagram is quite simple, and shows how a door with a lock will behave.
-There are 3 states, "open", "closed" and "locked", and this finite set is often denoted as $Q$. This means that the door must be either open, closed or locked (in reality the door is both closed and locked at the same time, but I leave this out for brevity). Further, there are 4 different events
-that can happen, "open door", "close door", "lock door" and "unlock door". This set is called the "alphabet" and is denoted $\sum$.
+In figure [DOOR EXAMPLE not yet made] there is an example finite state diagram. This diagram is quite simple, and shows how a door with a lock will behave.
+There are 3 states, "open", "closed" and "locked", and this finite set is often denoted as $Q$. This means that the door must be either open, closed or locked (in reality the door is both closed and locked at the same time, but I leave this out for brevity). Further, there are 4 different events that can happen, "open door", "close door", "lock door" and "unlock door". This set is called the "alphabet" and is denoted $\sum$.
 
 
 
@@ -234,10 +244,15 @@ will react as expected.
 
 
 \subsubsection{Synchronization Primitives}
-future-promise
+future 
+promise
 mutexes
+condition variables
+
+The \nbuf framework uses the promise-future construct. This is a construct which allows the 
 
 
+\newpage
 \subsection{Data Handling}
 Working efficiently with data is no small task. There are many physical limits to what results we can obtain, but getting
 to these limits often requires a lot of thought, since there are many abstraction layers between hardware and software. This section
@@ -259,14 +274,8 @@ When receiving and sending data to and from a stream, care should be taken to co
 
 
 \subsection{Theoretical Speedup with threads}
-Using multiple threads will still only use one process, and can only run on one processor at a time. This limits
-the potential speedup to only include latency hiding.
+Using multiple threads will still only use one process. This can use all computational cores on a system, but will not be able to use other devices, such as extra CPUs or GPUs.
 
-
-
-\subsection{Theoretical Speedup with processes}
-Using multiple processes, it will be possible to utilize all cores on a system. This greatly increases the potential speedup,
-in relation to only using threads.
 
 
 \subsection{Theoretical Speedup with devices}
@@ -275,73 +284,309 @@ of data, one should always consider using a GPU, since it is massively parallel.
 
 
 
+
+
+
 \newpage
 \section{Design and Implementation}
-This section will explain how the NBUF framework has been designed and implemented. First, I will elaborate on
-the abstract idea of how the framework handles concurrency. Then I will elaborate on how the framework is to be used,
-and finally how it has been built.
+This section will explain how the \nbuf framework has been designed and implemented. First I will identify and elaborate on the inherent requirements of such framework. Secondly, I will elaborate on the abstract idea of how the framework handles concurrency. Then I will elaborate on how the framework is to be used, and finally a technical description of how it has been built.
 
 
+\subsection{Technical Requirements}
+The \nbuf framework, being generic, should enable developers to create a wide array of software, which solves different problems. This can easily result in \textit{software bloat}, when software gets too much functionality. \nbuf should include features which is necessary to solve basic tasks, but a balance is important, when it comes to deciding what is necessary and what is not.
+
+Follow are a list of functional and non-functional requirements which I deem important enough, to warrant further discussion:
+
+\begin{itemize}
+\item \textbf{Efficient and Parallel I/O} - The \nbuf framework must prioritize keeping the I/O resources busy as often as possible.
+\item \textbf{Limited Space Guarantee} - When processing data, the framework must be able to keep a strict upper limit on allocated memory.
+\item \textbf{Custom Processing} - The developer must have freedom in deciding how to process or transform the data.
+\item \textbf{Input/Output Sensitivity} - The order of input and output must be identical, if the developer desires this.
+\item \textbf{Output Selecting} - It must be possible to only output statistics, or only output transformed data.
+\item \textbf{Output Filtering} - It must be possible to only output parts of the transformed data.
+\item \textbf{Guaranteed Termination} - The framework must terminate if and only if it works with a finite amount of data.
+\end{itemize}
+
+These features are all items that are important, if this framework should be generally applicable to most sorts of projects working with any kind of I/O. In the next few sections, I will explain what these requirements entail, and how they have been solved.
+
+\subsubsection{Efficient and Parallel I/O}
+The entire project attempts to maximize the use of the available I/O resources on a system, when processing incoming data. If there are solutions which allows for a larger rate of processing data, then the \nbuf framework does not perform as it should. This is a primary goal, and should at all times be respected. This non-functional requirement will only be observable when running the system.
+
+To achieve this goal, it is necessary to use some kind of concurrent programming methods. It is impossible to keep all system I/O resources busy, using only a single processing thread, since there will often be at least two resources, and there will be real processing work to be done as well. 
+
+As mentioned earlier, this has been done multiple times with a triple buffer system, where three processing threads would perform all three tasks in parallel. One thread would keep the input resource busy, would thread would keep the output resource busy, and one thread would perform the processing work.\\\\
+ 
+
+In a new framework, we can evaluate and rethink this triple-buffer-idea. In cases where there are is a high amount of processing work, a triple buffer system will be waiting for the thread performing the real work. On a single core system, this is not a solvable problem, since we can't speed up the execution speed. A good computer scientist might be able to optimize the program, but this has a limited usefulness. 
+
+On the other hand, if we have a system with multiple execution cores, it would be possible, and a very good idea too, to utilize the extra computational powers to speed up the execution time. This requires that the work can be done in parallel, which is not always the case. In cases where the work can be parallelized, the extra processing can be utilized, until the rate at which data can be processed matches the lowest rate at which data can be read or written. This will, in turn, maximise the use of the available I/O resources on the system.
+
+The framework must be able to use multiple processing cores, and support the developers in performing parallel work.
+
+
+\subsubsection{Limited Space Guarantee}
+The main memory available on a computer system is rarely a hard limit. Usually, when a process starts allocating more main memory that are available, some data is moved to a swap-partition on the systems disk drive. This results in very high delays when allocating more memory, and trying to read data which has been moved to the swap-partition. When trying to work efficiently, this is a killer, and any processes doing this, will completely stall the entire system. 
+
+For this reason, it is important to be aware of the memory usage of all processes on a system. Software which greedily allocates huge amounts of memory, or simply forgets to deallocate memory (resulting in memory leaks) is to be considered buggy, and will not be used in critical systems. It is a minimum requirement for all software to deallocate memory, and many programming languages employs different methods such as garbage-collectors or scoped variables to ensure that memory is deallocated when it is no longer used.\\\\
+
+
+Back in the 1994, Bjarne Stroustrup [The Design and Evolution of C++] introduced the term and programming idiom \textit{RAII}, short for \textit{Resource Acquisition Is Initialization}. This has become a widely used technique which gives several advantages. In RAII all memory required for an object to exist, or a process to run, will be allocated during initialization. This gives the advantage of ensuring that the process will not slowly allocate additional memory, and over time exhaust the main memory resources.
+
+The \nbuf framework will require memory and as such, it should be possible to give an upper limit on how much memory it will consume. If the process consumes more memory than it has been given, then there is a risk that the system will start using the swap-partition, which is bad. The given upper limit should be respected at all times.
+
+
+\subsubsection{Custom Processing}
+The developer using the \nbuf framework will only use it, if it gives the freedom to solve whatever task he desires. Some cases warrant only gathering statistics about the data at hand, others require a slight transformation or reorganisation of data. These cases should be solvable using the framework. 
+
+The worker performing the real processing must be programmable by the developer. When the worker has a buffer full of data, it must be up to the developer to decide how to process the buffer. There should be allocated some memory for gathering statistics, and it should be possible to alter the data in the buffer. What the developer intends to do with the data in the buffer is to no concern of the framework, but the framework should support the intentions of the developer.\\\\
+
+Here are the three identified types of data that the developer might want to extract and save when processing data:
+\begin{itemize}
+\item \textbf{Input-wide Accumulated Data} - This data is to be accumulated across the entire input data.
+\item \textbf{Buffer-wide Accumulated Data} - This data is to be accumulated across one buffer, or any smaller amount of data.
+\item \textbf{Transformed Data} - This data is an in-memory transformation of the data in the buffer.
+\end{itemize}
+
+These three types of data must be creatable and extractable, when using the framework.
+
+
+\subsubsection{Input/Output Sensitivity}
+The case where we want to find the minimum value, the maximum value and the average value in a file is a very simple example. It is of linear complexity and simply requires a single run through, in no specific order. This is a highly parallelizable algorithm and is a brilliant example case for this kind of framework. 
+
+Another case, creating an md5-sum for example, requires that the data will always be parsed in the same order, every time. For simplicity and practicality, it has been decided that the sum must be calculated chronologically, meaning that the first data in the file must be hashed first. This is an algorithm which cannot easily be parallelized to any extend, however, it does heavily rely on I/O, and would benefit from using a framework such as \nbuf.\\\\
+
+To accustom to this need, it must be possible to decide that the framework should always parse the data in-order and not parallelize the calculations. This can, of course result in not gaining a maximum utilization of the I/O resources, but this is always the choice of the developer and a requirement at hand, related to the task. 
+
+
+\subsubsection{Output Selecting}
+When calculating the md5-sum of a file from disk, there is no need to write the content of the file back to disk. In this case, it must be possible to not occupy the output resource with needless work. If the framework occupies resources it does not need, it can lead to other processes waiting for the resources which will result in a slower system. Therefore, it should be possible to decide what parts of the data that should be retrievable from the framework.
+
+
+\subsubsection{Output Filtering}
+In cases where parts of the data might not be interesting, or the transformed data is smaller than the original data, it would be ideal to filter data such that it does not occupy more memory than necessary. This is indeed relevant in the use case where the developer receives data from sensors, which in periods doesn't measure interesting data. This could be a rain gauge, which reports 0 millimetres for many months a year.
+
+
+\subsubsection{Guaranteed Termination}
+The framework must terminate when it works with a finite amount of data. The framework can never be fool-proof, but it should always terminate when it receives an indication that there are no more data, often an EOF. If the developer employs an infinite loop when processing data, this promise cannot be kept, but the framework should never result in a deadlock or a spinlock.\\\\\\
+
+
+These are the technical requirements that I have decided that the \nbuf framework will have to live up to, to be generally useful. During the remainder of this section, I will discuss what actions I have taken to ensure that these requirements are fulfilled.
+
+
+
+\newpage
 \subsection{Abstract Overview}
-I will here give an abstract overview of how the workers in the NBUF framework will interact. Each worker has its own buffer which
-it will use for reading into, processing and writing from. This buffer is not shared with any other worker.\\\\
+When performing concurrent programming, it is custom to have a master thread which prepares all the communication channels, the worker threads and allocates all the resources required to perform the concurrent work. This is part of the RAII idiom, and will be a central part of the design of the system. In this section I will give an abstract overview of how the master thread will prepare the environment to enable the worker threads to run, and how the workers synchronize with each other, to ensure correctness and to avoid race conditions.
 
-In [Figure NBUF worker State Diagram] is a finite-state diagram which shows how each worker in the system transfers from state to state. In
-\autoref{table:transition-table} the related transition table can be seen. It is important to note that there are two critical states. These
-states are intended to mimic the importance of a critical section, as known from concurrent programming\\\\
+
+\subsubsection{The \nbuf master}
+The initialization of the \nbuf framework entails a few tasks:
+
+\begin{itemize}
+\item Sanity checking settings
+\item Allocating system resources
+\item Initialize worker synchronization mechanisms
+\end{itemize} 
+
+After parsing the data, the master thread will be responsible for:
+
+\begin{itemize}
+\item Deallocating system resources
+\item Termination of worker threads
+\item Returning the required data
+\end{itemize} 
+
+While allocating system resources should be a job for the master thread, due to RAII, I will deviate slightly when it comes to allocating the worker buffers. Sharing memory between threads require careful coordination. This is part of why concurrent programming is inherently hard. If I can establish a method where less memory sharing is used, it will make the framework less complex, easier to understand and more maintainable. For this reason, some allocation will be left to the worker threads. This will include the worker buffers and the memory for the buffer-wide accumulated data, which are the largest part of the required memory.
+
+
+
+\subsubsection{The \nbuf workers}
+
+Each worker has its own buffer which it will use for reading into, processing and writing from. This buffer is not shared with any other worker.\\
+
+In \autoref{figure:state-diagram} is a finite-state diagram which shows how each worker in the system transfers from state to state, and in \autoref{table:transition} the related transition table can be seen. It is important to note that there are two \textit{critical} states. These states are intended to mimic the importance of a critical section, as known from concurrent programming\\\\
+
+% State Diagram 1
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+    \def\svgwidth{\columnwidth}
+    \input{figures/state1.pdf_tex}
+  	\caption{\nbuf worker state diagram. This finite-state diagram shows how the workers can change states, based on events. Further explanation on how the transitions happens can be found in the related transition table which can be seen in \autoref{table:transition}.}
+	\label{figure:state-diagram}
+	\end{adjustwidth}
+\end{figure}
 
 
 % NBUF Worker State Transition Table
 \begin{table}[]
-\begin{adjustwidth}{-1.5in}{-1.5in}% adjust the L and R margins by 1 inch
+\begin{adjustwidth}{-0.5in}{-0.5in}
 \centering
 \begin{tabular}{@{}llll@{}}
 \toprule
 \textbf{Current State}         & \textbf{Input}           & \textbf{Next State} & \textbf{Result}                                                                                                      \\ \midrule
-Initialization                 & \textit{ready}           & Read Wait           & \begin{tabular}[c]{@{}l@{}}Worker is ready for reading, but has \\ to wait for the read-resource.\end{tabular}       \\
-Read Wait                      & \textit{read available}  & Read Critical       & \begin{tabular}[c]{@{}l@{}}Worker can now read, which blocks \\ other workers from this state.\end{tabular}          \\
-\multirow{2}{*}{Read Critical} & \textit{data read}       & Execute             & \begin{tabular}[c]{@{}l@{}}Worker read some data, and can now \\ process it.\end{tabular}                            \\
-                               & \textit{nothing read}    & Exit                & \begin{tabular}[c]{@{}l@{}}Worker read nothing, and the work is \\ finished.\end{tabular}                            \\
-Execute                        & \textit{done execute}    & Write Wait          & \begin{tabular}[c]{@{}l@{}}Worker has processed its data, but has \\ to wait for the write-resource.\end{tabular}    \\
-Write Wait                     & \textit{write available} & Write Critial       & \begin{tabular}[c]{@{}l@{}}Worker can now write, which blocks \\ other workers from this state.\end{tabular}         \\
-Write Critial                  & \textit{done write}      & Read Wait           & \begin{tabular}[c]{@{}l@{}}Worker is ready for reading again, but \\ has to wait for the read-resource.\end{tabular} \\
+Initialization                 & \textit{ready}           & Read Wait           & \begin{tabular}[c]{@{}l@{}}Worker is ready for reading, but has \\ to wait for the read-resource.\end{tabular}       \\ \midrule
+Read Wait                      & \textit{read available}  & Read Critical       & \begin{tabular}[c]{@{}l@{}}Worker can now read, which blocks \\ other workers from this state.\end{tabular}          \\ \midrule
+\multirow{2}{*}{Read Critical} & \textit{data read}       & Execute             & \begin{tabular}[c]{@{}l@{}}Worker read some data, and can now \\ process it.\end{tabular}                            \\ \cmidrule(l){2-4} 
+                               & \textit{nothing read}    & Exit                & \begin{tabular}[c]{@{}l@{}}Worker read nothing, and the work is \\ finished.\end{tabular}                            \\ \midrule
+Execute                        & \textit{done execute}    & Write Wait          & \begin{tabular}[c]{@{}l@{}}Worker has processed its data, but has \\ to wait for the write-resource.\end{tabular}    \\ \midrule
+Write Wait                     & \textit{write available} & Write Critical       & \begin{tabular}[c]{@{}l@{}}Worker can now write, which blocks \\ other workers from this state.\end{tabular}         \\ \midrule
+Write Critical                  & \textit{done write}      & Read Wait           & \begin{tabular}[c]{@{}l@{}}Worker is ready for reading again, but \\ has to wait for the read-resource.\end{tabular} \\ \midrule
 Exit                           & \textit{}                &                     & No transition exists from the exit state.                                                                            \\ \bottomrule
 \end{tabular}
-\caption{NBUF worker State Transition Table}
-\label{table:transition-table}
+\caption{\nbuf worker state transition table. This table shows the states, acceptable input and transitions within the \nbuf worker state diagram, which can be seen in \autoref{figure:state-diagram}.}
+\label{table:transition}
 \end{adjustwidth}
 \end{table}
 
-A worker begins in the "Initialization"-state and, it will move into the "Read Wait"-state. When the single read resource is available, the worker
-will move into the critical "Read Critial"-state. This state is exclusive, since only one worker can read at a time. At this point,
-two things can happen. Either, the worker receives data from the resource, or it does not receive data. The amount of data it receives does
-not matter, the buffer may be almost empty, or it may be full. In cases where it receives data, it will move to the "Execute"-state, and another
-worker can enter the "Read Critical"-state. Now, the worker will crunch the data located in the buffer, and produce whatever output is desired.
-When the worker has finished processing, it will move into the "Write Wait"-state. In this state, the worker will wait for the single write resource to
-become available. When it becomes available, the worker will move to the "Write Critial"-state. When the worker has written the content of the
-buffer, it is moves to the "Read Wait"-state, since it has finished its cycle, and can read new data into the buffer. At some point, the read
-resource has no more data, and the worker will not receive data during the "Read Critical"-state. At this point, it will move to the "Exit"-state,
-and stay there until thread termination.
 
-\subsection{API}
+To clarify the intention behind how the workers interact, I will here explain how a worker move through the states in the diagram. Remember that there are a finite amount of workers, and that the input resource will be empty, at some point. In cases where the input will never empty, we will not expect the program to terminate.
+
+First, all workers begins in the \textit{Initialization}-state and, it will move into the "Read Wait"-state. When the single read resource is available, a worker will move into the \textit{Read Critical}-state. This state is exclusive, since only one worker can read at a time. This may be any of the workers which are in the \textit{Initialization}-state.
+
+We now follow the worker in the \textit{Read Critical}-state. At this point, two things can happen. Either, the worker receives data from the resource, or it does not receive data. If it does not receive data, it will be because there is nothing to receive from the input-resource. If it receives data, the amount of data it receives does not matter, the buffer may be almost empty, or it may be full. 
+
+With data in the buffer, the worker will move to the \textit{Execute}-state, and another worker can enter the \textit{Read Critical}-state. Note that the \textit{Execute}-state is not exclusive, and that multiple workers can perform this step in parallel. 
+
+Now, the worker will process the data located in the buffer, and produce whatever data the developer has decided. When the worker has finished processing, it will move into the \textit{Write Wait}-state. In this state, the worker will wait for the single output resource to become available. When it becomes available, the worker will move to the \textit{Write Critical}-state and occupy the output resource. When the worker has written the content of its buffer to the output-resource, it moves to the \textit{Read Wait}-state, since it has finished the cycle, and can read new data into the buffer. 
+
+At some point, the read resource has no more data, and the worker will not receive data during the \textit{Read Critical}-state. At this point, it will move to the \textit{Exit}-state, and stay there until thread termination, which will be initiated by the master thread.\\\\
+
+% State Diagram 2
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+    \def\svgwidth{\columnwidth}
+    \input{figures/state2.pdf_tex}
+  	\caption{\nbuf worker state diagram with a queue. This is an evolution from \autoref{figure:state-diagram}. The workers cannot overtake each other when they are inside the queue.}
+	\label{figure:state-diagram-queue}
+	\end{adjustwidth}
+\end{figure}
+
+It is clear that this state diagram will serve the general purpose, but \textbf{Input/Output Sensitivity}-requirement can not be supported this way. To comply with this requirement, the framework must support utilizing an altered state diagram which can be seen in \autoref{figure:state-diagram-queue}. In this diagram a FIFO-type queue has been added. This means that the worker thread that entered the queue first will reach every new state before every other thread. Further, a \textit{Execute Wait}-state has been introduced along with introducing an \textit{Execute Critical}-state, which replaces the original state.\\\\
+
+
+
+\autoref{figure:state-diagram} and \autoref{figure:state-diagram-queue} are two extremes. One entails full parallelization, the other is inherent sequential. There are two middle-way solutions. 
+
+% State Diagram 3
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+    \def\svgwidth{\columnwidth}
+    \input{figures/state3.pdf_tex}
+  	\caption{\nbuf worker state diagram with a smaller queue. This is an evolution from \autoref{figure:state-diagram-queue}. The workers cannot overtake each other when they are inside the queue, but the execution step can be performed and finished in parallel. This means that workers entering the queue at the \textit{Read Critical}-state has to go to the \textit{Write Critical}-state in the same order.}
+	\label{figure:state-diagram-semi-queue}
+	\end{adjustwidth}
+\end{figure}
+
+If we want the output to be sequential, but the execute step to be performed in parallel we will have to introduce a different kind of queue. This queue will merely ensure that the order of threads entering the \textit{Write Critical}-state matches the order they arrived at the \textit{Read Critical}-state. This will still allow parallel processing, but threads will not be able to overtake each other in the cycle, outside of the \textit{Read Wait}-state. The third alternative can be seen in \autoref{figure:state-diagram-semi-queue}.
+
+% State Diagram 4
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+    \def\svgwidth{\columnwidth}
+    \input{figures/state4.pdf_tex}
+  	\caption{\nbuf worker state diagram with a smaller queue. This is an evolution from \autoref{figure:state-diagram-queue}. The workers cannot overtake each other when they are inside the queue, but the write step can be performed and finished in parallel.}
+	\label{figure:state-diagram-shared-accumulator}
+	\end{adjustwidth}
+\end{figure}
+
+The other middle-way solution can be seen in \autoref{figure:state-diagram-shared-accumulator}. This entails having a sequential execute-step, but the order of the output does not matter. In this setup, the threads will have to arrive in the \textit{Execute Critical}-state in the same order they were in the \textit{Read Critical}-state.\\\\
+
+Considering these four configurations, we can reason about how they relate. In \autoref{table:state-relation}, it is clear that they must all exist, due to combinations of different requirements.\\\\
+
+\begin{table}[]
+\begin{adjustwidth}{-0.5in}{-0.5in}
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Finite-State Diagram}                     & \textbf{Sequential Execution} & \textbf{Input/Output Sensitivity} \\ \midrule
+\autoref{figure:state-diagram}                    & No                            & No                                \\ \midrule
+\autoref{figure:state-diagram-queue}              & Yes                           & Yes                               \\ \midrule
+\autoref{figure:state-diagram-semi-queue}         & No                            & Yes                               \\ \midrule
+\autoref{figure:state-diagram-shared-accumulator} & Yes                           & No                                \\ \bottomrule
+\end{tabular}
+\caption{Configurations of the requirements, related to the finite-state diagrams. The figures have all been explained in-depth previously.}
+\label{table:state-relation}
+\end{adjustwidth}
+\end{table}
+
+
+But, there are even more possible configurations. There are cases where we want to ignore the \textit{Write Wait}-state and the \textit{Write Critical}-state, since the \textbf{Output Selecting}-requirement requires that we can turn off outputting the content of the buffers. This voids some of the configurations, but for simplicity, we will still consider these four configurations, and merely perceive that the work to be done in these two steps is non-existent.\\\\
+
+This concludes the requirements to the the \nbuf framework. A framework which supports all of these items, should be generic enough to be useful, while still being practical.
+
+\newpage
+\subsection{Framework Interface}
+When building a framework for other people to use, it is important to keep a clean, intuitive and usable interface. While man-pages are very useful, they can be dreading to read, for the non-guru. There are several ways to design a clean interface. Some developers tend to require a ton of configuration to do the simplest of things \footnote{The linux-command \textit{find} is a good example of non-intuitive CLI. You would expect the first argument to be the filename you want to find, but you need to specify the filename with -name.}, while others merely have sane defaults, and requires configuration to use the more advanced features\footnote{The linux-command \textit{locate} does what you would expect, it locates files with the name you supply as the first argument.}.\\
+
+First, I need to identify what input is required to configure the \nbuf framework. Here is a list of input, along with example defaults:
+\begin{itemize}
+\item \textbf{Input Stream} - The framework can default to read from \textit{stdin} \footnote{Standard input is a standard stream used on most *NIX systems, along with standard error and standard out. They are known as \textit{stdin}, \textit{stderr} and \textit{stdout}.}.
+\item \textbf{Processing Method} - The framework can default to doing nothing with the input data.
+\item \textbf{Sequential Execution} - This is a bool, and the framework can default to performing parallel execution.
+\item \textbf{Output Stream Enabler} - This is a bool, and can default to true.
+\item \textbf{Output Stream} - In cases where output from the worker buffers is desired, this must can be supplied. It can also default to \textit{stdout}.
+\item \textbf{Output Filter Enabler} - This is a bool, and can default to false.
+\item \textbf{Output Filter Method} - In cases where the output should be filtered, a filtering method must be supplied. It can default to terminate the program, since not filtering would signify a user error.
+\item \textbf{Number of Threads} - The framework can default to an arbitrary number, e.g. 3 threads.
+\item \textbf{Memory Limit} - The framework can default to an arbitrary number, e.g. 100 megabyte, which most systems should have readily available.
+\item \textbf{Data Chunk Size} - The amount of data that should be processed at once, by the processing method. This can default to the amount of data given per thread.
+\item \textbf{Input/Output Sensitivity} - This is a bool, and can default to false.
+\end{itemize}
+
+This is the configuration that the framework must accept. They are, however, different types, and as such, they should be handled differently. Two of the input parameters are code references. There are several ways to insert code to be executed into programs. Many languages support method-overwriting, when working with objects. This could entail subclassing an object, when a developer requires to use the system. 
 
 
 
 \subsection{Multithreading with \textit{std::thread}}
+The \nbuf framework has been built using C++11. A new feature in C++11 is the support for native multithreading, and not depend on external libraries to execute parallel threads. Before C++11, it was necessary to call the POSIX thread library\footnote{The POSIX thread library is also known as pthreads.} directly, which did not offer many abstraction layers. 
 
+The new thread library included in C++11 is referred to as std::thread. This library uses POSIX threads, but implements a much nicer abstraction layer, which allows the developer to ignore certain aspects. This allows for higher productivity and less complex code. This, in turn, makes the code easier to maintain.\\
 
+When the \nbuf framework is started, the master thread will create \textit{futures} matching the number of worker threads. The master thread will expect each future to contain a pointer to the accumulated data from a single worker thread. Each worker thread will be initialized with a promise, which they are expected to fulfil. When they have reached the \textit{Exit}-state, they return the accumulated data to the promise, and the master thread will gather all results. The results will be combined, and this will be the result returned from the framework. A combined, accumulated set of data.\\
+
+The framework has been designed to require as little synchronization as possible. While this has decreased the complexity of the framework, it has not completely eliminated the need for synchronization. The default case, without \textit{Input/Output Sensitivity} and without \textit{Sequential Execution} requires only two mutexes, which will never be locked at the same time. These two mutexes will manage each of the critical sections, related to the I/O resources. \\
+
+When a critical section is required near the execution-step, it will also require a mutex. In this case, more synchronization is necessary, since the workers will also have to keep stay in the same order, at some point (all but the first configuration in \autoref{table:state-relation}. A worker-queue must be implemented, to ensure that threads are kept in order. There is no native synchronization mechanism for this kind of problem, but one can be built using \textit{condition variables}.\\
+
+[ details on how to build a thread-queue ]\\
+
+These are the technical details, related to how the \nbuf framework handles concurrency with the \textit{std::thread}-library.
 
 
 \subsection{Multiprocessing with OpenCL}
+[ details on how to work with OpenCL, even though this has not been built into the framework, it can still be utilized in the workers, since they can call OpenCL individually. ]\\
+
 
 
 \newpage
 \section{Experimentation and Benchmarking}
 
 
+\subsection{Experimental Setup}
+
+\subsubsection{From disk}
+
+\subsubsection{From RAM}
+
+
+
+\subsection{Experimental Results}
+
+\subsubsection{From disk}
+
+\subsubsection{From RAM}
+
+
+
+
+
 \newpage
 \section{Conclusion}
-Bringing knowledge together to create something useful
+There is nothing new and groundbreaking in this, but using knowledge to create something useful for other computer scientists (and physicists!)
 
 
 

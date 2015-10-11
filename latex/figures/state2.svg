@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="39cm"
+   height="15cm"
+   viewBox="327 -131 776 291"
+   id="svg3285"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="state2.svg">
+  <metadata
+     id="metadata3481">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3479" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     id="namedview3477"
+     showgrid="false"
+     inkscape:zoom="1.6904387"
+     inkscape:cx="635.73543"
+     inkscape:cy="241.17763"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g3323" />
+  <g
+     id="g3287"
+     transform="matrix(1,0,0,1.145916,0,-12.038071)">
+    <rect
+       style="fill:#c4c4c4"
+       x="329"
+       y="-23.5"
+       width="773"
+       height="105"
+       id="rect3289" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="329"
+       y="-23.5"
+       width="773"
+       height="105"
+       id="rect3291" />
+  </g>
+  <g
+     id="g3293"
+     transform="matrix(1.3558495,0,0,1,-157.64134,0)">
+    <rect
+       style="fill:#ffffff"
+       x="443"
+       y="-129"
+       width="98"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3295" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="443"
+       y="-129"
+       width="98"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3297" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="492"
+       y="-107.1"
+       id="text3299">
+      <tspan
+         x="492"
+         y="-107.1"
+         id="tspan3301">Initialization</tspan>
+    </text>
+  </g>
+  <g
+     id="g3303"
+     transform="matrix(1.4118647,0,0,1,-296.74935,0)">
+    <rect
+       style="fill:#ffffff"
+       x="679.79999"
+       y="-83.900002"
+       width="84.550003"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3305" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="679.79999"
+       y="-83.900002"
+       width="84.550003"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3307" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="722.07501"
+       y="-62"
+       id="text3309">
+      <tspan
+         x="722.07501"
+         y="-62"
+         id="tspan3311">Read Wait</tspan>
+    </text>
+  </g>
+  <g
+     id="g3313"
+     transform="matrix(1.4071502,0,0,1,-149.03295,0)">
+    <rect
+       style="fill:#ffffff"
+       x="341.79999"
+       y="30.1"
+       width="101.05"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3315" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="341.79999"
+       y="30.1"
+       width="101.05"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3317" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="392.32501"
+       y="52"
+       id="text3319">
+      <tspan
+         x="392.32501"
+         y="52"
+         id="tspan3321">Read Critical</tspan>
+    </text>
+  </g>
+  <g
+     id="g3323"
+     transform="matrix(1.3652342,0,0,1,-265.35522,0)">
+    <rect
+       style="fill:#ffffff"
+       x="688.79999"
+       y="32.099998"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3325" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="688.79999"
+       y="32.099998"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3327" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="728.79999"
+       y="54"
+       id="text3329">
+      <tspan
+         x="728.79999"
+         y="54"
+         id="tspan3331">Execute C</tspan>
+    </text>
+  </g>
+  <g
+     id="g3333"
+     transform="matrix(1.500584,0,0,1,-520.96186,0)">
+    <rect
+       style="fill:#ffffff"
+       x="975.59998"
+       y="34.200001"
+       width="102.6"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3335" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="975.59998"
+       y="34.200001"
+       width="102.6"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3337" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="1026.9"
+       y="56.099998"
+       id="text3339">
+      <tspan
+         x="1026.9"
+         y="56.099998"
+         id="tspan3341">Write Critical</tspan>
+    </text>
+  </g>
+  <g
+     id="g3343"
+     transform="matrix(1.3892302,0,0,1,-328.22592,0)">
+    <rect
+       style="fill:#ffffff"
+       x="818.79999"
+       y="33.099998"
+       width="86.099998"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3345" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="818.79999"
+       y="33.099998"
+       width="86.099998"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3347" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="861.84998"
+       y="55"
+       id="text3349">
+      <tspan
+         x="861.84998"
+         y="55"
+         id="tspan3351">Write Wait</tspan>
+    </text>
+  </g>
+  <g
+     id="g3353">
+    <rect
+       style="fill: #ffffff"
+       x="351.8"
+       y="123.1"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3355" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="351.8"
+       y="123.1"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3357" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="391.8"
+       y="145"
+       id="text3359">
+      <tspan
+         x="391.8"
+         y="145"
+         id="tspan3361">Exit</tspan>
+    </text>
+  </g>
+  <g
+     id="g3363"
+     transform="matrix(0.79999576,0,0,1,144.20583,0)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2"
+       d="M 712.948,-87.2838 A 423.331,423.331 0 0 0 541,-111"
+       id="path3365"
+       inkscape:connector-curvature="0" />
+    <polygon
+       style="fill:#000000"
+       points="712.986,-87.3892 712.444,-92.953 719.987,-84.7014 708.86,-83.6173 "
+       id="polygon3367" />
+    <polygon
+       style="fill:none;stroke:#000000;stroke-width:2"
+       points="712.986,-87.3892 712.444,-92.953 719.987,-84.7014 708.86,-83.6173 "
+       id="polygon3369" />
+  </g>
+  <g
+     id="g3371">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 398.165,116.04 A 37.9352,37.9352 0 0 0 392.325,66.1"
+       id="path3373" />
+    <polygon
+       style="fill: #000000"
+       points="393.494,121.64 397.802,111.323 399.174,116.742 404.332,118.897 "
+       id="polygon3375" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="393.494,121.64 397.802,111.323 399.174,116.742 404.332,118.897 "
+       id="polygon3377" />
+  </g>
+  <g
+     id="g3379"
+     transform="matrix(0.94469538,0,0,1,21.706177,0)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2"
+       d="M 679.8,-65.9 A 234.246,234.246 0 0 0 397.54,21.8861"
+       id="path3381"
+       inkscape:connector-curvature="0" />
+    <polygon
+       style="fill:#000000"
+       points="394.392,17.0444 397.372,21.7742 402.944,22.2281 393.484,28.1878 "
+       id="polygon3383" />
+    <polygon
+       style="fill:none;stroke:#000000;stroke-width:2"
+       points="394.392,17.0444 397.372,21.7742 402.944,22.2281 393.484,28.1878 "
+       id="polygon3385" />
+  </g>
+  <g
+     id="g3387"
+     transform="matrix(1,0,0,0.78615885,0,6.6504596)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2"
+       d="M 500.506,24.4028 A 45.1508,45.1508 0 0 0 442.85,30.1"
+       id="path3389"
+       inkscape:connector-curvature="0" />
+    <polygon
+       style="fill:#000000"
+       points="495.744,25.1795 501.09,23.5452 502.99,18.2879 506.259,28.9797 "
+       id="polygon3391" />
+    <polygon
+       style="fill:none;stroke:#000000;stroke-width:2"
+       points="495.744,25.1795 501.09,23.5452 502.99,18.2879 506.259,28.9797 "
+       id="polygon3393" />
+  </g>
+  <g
+     id="g3395">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 812.502,26.1457 A 30.3079,30.3079 0 0 0 768.8,32.1"
+       id="path3397" />
+    <polygon
+       style="fill: #000000"
+       points="817.574,31.2303 807.908,25.611 813.46,24.959 816.27,20.1262 "
+       id="polygon3399" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="817.574,31.2303 807.908,25.611 813.46,24.959 816.27,20.1262 "
+       id="polygon3401" />
+  </g>
+  <g
+     id="g3403">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 967.85,28.4982 A 54.4111,54.4111 0 0 0 904.9,33.1"
+       id="path3405" />
+    <polygon
+       style="fill: #000000"
+       points="973.923,32.7208 963.116,29.8554 968.299,27.7595 969.731,22.356 "
+       id="polygon3407" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="973.923,32.7208 963.116,29.8554 968.299,27.7595 969.731,22.356 "
+       id="polygon3409" />
+  </g>
+  <g
+     id="g3411"
+     transform="matrix(0.92913242,0,0,1,72.844786,0)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2"
+       d="M 1026.9,34.2 A 200.765,200.765 0 0 0 773.359,-69.5679"
+       id="path3413"
+       inkscape:connector-curvature="0" />
+    <polygon
+       style="fill:#000000"
+       points="773.571,-75.3708 773.276,-69.7885 777.565,-66.203 766.4,-66.7931 "
+       id="polygon3415" />
+    <polygon
+       style="fill:none;stroke:#000000;stroke-width:2"
+       points="773.571,-75.3708 773.276,-69.7885 777.565,-66.203 766.4,-66.7931 "
+       id="polygon3417" />
+  </g>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="545"
+     y="-25"
+     id="text3419">
+    <tspan
+       x="545"
+       y="-25"
+       id="tspan3421" />
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;font-family:sans-serif"
+     x="647.44745"
+     y="-112.6815"
+     id="text3423">
+    <tspan
+       x="630.00684"
+       y="-112.6815"
+       id="tspan3425"
+       style="text-align:center;text-anchor:middle">ready</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="578.05463"
+     y="-55"
+     id="text3427">
+    <tspan
+       x="533.62653"
+       y="-55"
+       id="tspan3429"
+       style="text-align:center;text-anchor:middle">read available</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-align:start;text-anchor:start;fill:#000000;font-family:sans-serif"
+     x="411.97476"
+     y="106.70492"
+     id="text3431">
+    <tspan
+       x="372.22476"
+       y="106.70492"
+       id="tspan3433"
+       style="text-align:start;text-anchor:start"><tspan
+   style="text-align:start;text-anchor:start"
+   id="tspan3483">nothing</tspan>
+
+ read</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="477.94772"
+     y="14.249623"
+     id="text3435">
+    <tspan
+       x="447.9946"
+       y="14.249623"
+       id="tspan3437"
+       style="text-align:center;text-anchor:middle">data read</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="801.90393"
+     y="14.407911"
+     id="text3439">
+    <tspan
+       x="759.19769"
+       y="14.407911"
+       id="tspan3441"
+       style="text-align:center;text-anchor:middle">done execute</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="951.18921"
+     y="14.411335"
+     id="text3443">
+    <tspan
+       x="904.77356"
+       y="14.411335"
+       id="tspan3445"
+       style="text-align:center;text-anchor:middle">write available</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="863.7962"
+     y="-56.630699"
+     id="text3447">
+    <tspan
+       x="830.37744"
+       y="-56.630699"
+       id="tspan3449"
+       style="text-align:center;text-anchor:middle">done write</tspan>
+  </text>
+  <g
+     id="g3451"
+     transform="matrix(1.3401281,0,0,1,-188.51117,0)">
+    <rect
+       style="fill:#ffffff"
+       x="507.79999"
+       y="30.6"
+       width="103.55"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3453" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="507.79999"
+       y="30.6"
+       width="103.55"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3455" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="559.57501"
+       y="52.5"
+       id="text3457">
+      <tspan
+         x="559.57501"
+         y="52.5"
+         id="tspan3459">Execute Wait</tspan>
+    </text>
+  </g>
+  <g
+     id="g3461">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 680.535,27.0915 A 69.0549,69.0549 0 0 0 611.35,30.6"
+       id="path3463" />
+    <polygon
+       style="fill: #000000"
+       points="686.973,30.8102 675.921,29.1264 680.847,26.4841 681.689,20.9577 "
+       id="polygon3465" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="686.973,30.8102 675.921,29.1264 680.847,26.4841 681.689,20.9577 "
+       id="polygon3467" />
+  </g>
+  <text
+     font-size="12.7998"
+     style="font-size:12.79979992px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="730.59338"
+     y="-17.860945"
+     id="text3469">
+    <tspan
+       x="685.5097"
+       y="-17.860945"
+       id="tspan3471"
+       style="text-align:center;text-anchor:middle">Worker Queue</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="font-size:12.80000019000000044px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;font-family:sans-serif"
+     x="640.81873"
+     y="14.373476"
+     id="text3473">
+    <tspan
+       x="585.19995"
+       y="14.373476"
+       id="tspan3475"
+       style="text-align:center;text-anchor:middle">execute available</tspan>
+  </text>
+</svg>

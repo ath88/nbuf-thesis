@@ -272,6 +272,10 @@ When receiving and sending data to and from a stream, care should be taken to co
 (Google Proto-buffers)
 
 
+\subsubsection{System Data Steams}
+Why is output to disk fast, while input from disk is slow? Systems buffers.
+
+
 
 \subsection{Theoretical Speedup with threads}
 Using multiple threads will still only use one process. This can use all computational cores on a system, but will not be able to use other devices, such as extra CPUs or GPUs.
@@ -564,11 +568,16 @@ These are the technical details, related to how the \nbuf framework handles conc
 
 \newpage
 \section{Experimentation and Benchmarking}
+The \nbuf framework has two primary goals. It has to be efficient, and it has to be usable. The first goal can be measured quantitatively, the second cannot. This section will focus on deciding how efficiently this framework can work with system I/O. 
 
 
 \subsection{Experimental Setup}
+The framework solves a practical problem, namely the speed of disks, bandwidth of networks, etc., and therefore it must be benchmarked in a practical environment to prove its effectiveness. This, however, will add a lot of factors, which are not controllable, to the results of the benchmarking. This section will elaborate on how different factors can affect the benchmarking, and how to eliminate these factors. What I would like to measure is \textit{throughput}.
+
 
 \subsubsection{From disk}
+In many cases, the framework will have to work with a stream of data from a disk drive of some sort. In this case, the transfer-rate is 
+
 
 \subsubsection{From RAM}
 

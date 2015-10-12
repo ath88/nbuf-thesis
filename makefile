@@ -11,6 +11,7 @@ all:
 tests:
 	$(CC) $(OPTS) $(LIBS) src/seq_minmaxavg.cpp -o bin/seq_minmaxavg
 	$(CC) $(OPTS) $(LIBS) src/disk_test.cpp -o bin/disk_test
+	$(CC) $(OPTS) $(LIBS) src/out_disk_test.cpp -o bin/out_disk_test
 	$(CC) $(OPTS) $(LIBS) src/memory_test.cpp -o bin/memory_test
 
 test_data:

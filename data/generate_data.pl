@@ -4,37 +4,44 @@ use Modern::Perl;
 use File::Slurp;
 
 
-{
-    next;
-    my $filename = 'data/50G.dat';
+my %sizes = (
+    b  => 1,
+    KB => 1024,
+    MB => 1024 * 1024,
+    GB => 1024 * 1024 * 1024,
+);
+
+my $dir = 'data';
+my $ext = 'dat';
+
+if (defined $ARGV[0]) {
+    my $input = $ARGV[0];
+
+    $input =~ m/(\d+)(\w+)/;
+
+    unless (defined $1 && defined $2) {
+        say 'Wrong input. Expecting regex: (\d+)(\w+)';
+        exit(0);
+    }
+
+    if ($1 < 1 || $1 > 1024) {
+        say 'Specify number strictly between 0 and 1024';
+        exit(0);
+    }
+
+    unless (defined $sizes{$2}) {
+        say 'Specify unit as [b|KB|MB|GB]';
+        exit(0);
+    }
+
+    say "Writing $input of data to $dir/$input.$ext";
+
+    my $filename = "$dir/$input.$ext";
     unlink $filename;
-    say 'Writing 50G of data to "50G.dat"';
-    for (1..50) {
-        write_file('data/50G.dat', {binmode => ':raw', append => 1}, '1' x (1024 * 1024 * 1024));
+
+    for (1..$1) {
+        write_file($filename, {binmode => ':raw', append => 1}, '1' x $sizes{$2});
     }
 }
 
-{
-    next;
-    my $filename = 'data/50G.dat';
-    unlink $filename;
-    say 'Writing 50G of data to "50G.dat"';
-    for (1..50) {
-        write_file('data/50G.dat', {binmode => ':raw', append => 1}, '1' x (1024 * 1024 * 1024));
-    }
-}
-
-say 'Writing 1G of data to "1G.dat"';
-write_file('data/1G.dat', {binmode => ':raw'}, '1' x (1024 * 1024 * 1024));
-
-say 'Writing 100M of data to "10m.dat"';
-write_file('data/100M.dat', {binmode => ':raw'}, '1' x (1024 * 1024 * 100));
-
-say 'Writing 10M of data to "10m.dat"';
-write_file('data/10M.dat', {binmode => ':raw'}, '1' x (1024 * 1024 * 10));
-
-say 'Writing 10kb of data to "10kb.dat"';
-write_file('data/10kb.dat', {binmode => ':raw'}, '1234' x (1024 * 10 / 4));
-
-say 'Writing 1b of data to "1b.dat"';
-write_file('data/1b.dat', {binmode => ':raw'}, '1' x (1));
+exit();

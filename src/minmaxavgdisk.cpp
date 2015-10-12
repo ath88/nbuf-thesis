@@ -57,15 +57,19 @@ class NbufConfig : public VirtualNbufConfig {
         }
 };
 
+bool stringToBool(char *c) {
+    char ch = c[0];
+    return ch == 't';
+}
+
 int main(int argc, char* argv[]) {
     if(argc < 3) {
-        std::cout << "Please supply number of threads, and input file." << std::endl;
+        std::cout << "Please supply number of threads, memory limit and sequential execution bool" << std::endl;
         return 0;
     }
 
-    string in = argv[2];
-    string out = "out.dat";
-    if (argc > 3) out = argv[3];
+    string in =  "data/1GB.dat";
+    string out = "1GB_out.dat";
 
     ifstream is(in,  ios::in  | ios::binary);
     ofstream os(out, ios::out | ios::binary | ios::trunc);
@@ -79,37 +83,24 @@ int main(int argc, char* argv[]) {
         exit(1);
     }
 
-    int64_t filesize = 1024*1024*1024;
-    filesize = filesize * 1;
-
-    std::cout << "Reading data into buffer" << std::endl;
-    vector<char> chars(filesize);                 // init vector array
-    is.read(&chars[0], filesize);                 // read data into vector array
-    std::string str(&chars[0], filesize);         // create string from vector array
-    std::istringstream iss(str);                  // create istringstream from string
-    std::ostringstream oss;                       // create empty ostringstream
 
     NbufConfig config;
     config.threads = stoi(argv[1]);
-    config.available_megabytes = 500;
-    config.use_sequential_execution = false;
+    config.available_megabytes = stoi(argv[2]);
+    config.use_sequential_execution = stringToBool(argv[3]);
 
     std::cout << "Starting nbuf" << std::endl;
     std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
     // RUNNING nbuf
     Nbuf nbuf;
-    Accumulator *acc = (Accumulator*) nbuf.run(iss, oss, &config);
+    Accumulator *acc = (Accumulator*) nbuf.run(is, os, &config);
 
     std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
     std::cout << "Stopping nbuf" << std::endl;
     auto duration =  std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
     std::cout << "Time taken: " << duration << " us" << std::endl;
 
-
-//    skip writing output
-//    os << oss.str();
     cout << *acc << endl;
-
     return 0;
 }

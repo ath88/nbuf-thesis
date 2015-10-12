@@ -70,6 +70,11 @@ VirtualAccumulator* Nbuf::worker(std::istream *is, std::ostream *os, VirtualAccu
     int64_t bytes_per_worker = available_bytes / config->threads;
     int64_t usable_bytes = (bytes_per_worker / config->datasize) * config->datasize;
 
+    if (usable_bytes == 0) {
+        std::cout << "The memory allocated to each thread is too small to load data into. Give more memory for nbuf" << std::endl;
+        exit(1);
+    }
+
     char* data = new char[usable_bytes];
 
     if (config->use_sequential_execution) {

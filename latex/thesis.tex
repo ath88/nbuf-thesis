@@ -565,6 +565,9 @@ These are the technical details, related to how the \nbuf framework handles conc
 [ details on how to work with OpenCL, even though this has not been built into the framework, it can still be utilized in the workers, since they can call OpenCL individually. ]\\
 
 
+\subsection{Current Limitations}
+[No queue, but supports sequential execution. This can, however, risk not being in order.]
+[Either filter or full output, not both]
 
 \newpage
 \section{Experimentation and Benchmarking}
@@ -572,20 +575,60 @@ The \nbuf framework has two primary goals. It has to be efficient, and it has to
 
 
 \subsection{Experimental Setup}
-The framework solves a practical problem, namely the speed of disks, bandwidth of networks, etc., and therefore it must be benchmarked in a practical environment to prove its effectiveness. This, however, will add a lot of factors, which are not controllable, to the results of the benchmarking. This section will elaborate on how different factors can affect the benchmarking, and how to eliminate these factors. What I would like to measure is \textit{throughput}.
+The framework solves a practical problem, namely the speed of disks, bandwidth of networks, etc., and therefore it must be benchmarked in a practical environment to prove its effectiveness. This, however, will add a lot of factors, which are not controllable, to the results of the benchmarking. This section will elaborate on how different factors can affect the benchmarking, and how to eliminate these factors.\\
+
+
+What I would like to measure is \textit{throughput}. The throughput can be measured as bytes processed per second. This clearly depends on how much execution work is required, and how much computational resources are available. If enough computing power is available though, the throughput depends less on the computation task.\\
+
+I have decided that the benchmarking calculation is as simple as a search for minimum and maximum and calculating an average value. The naive implementation is simply a sequential loop which sums the values, while looking for minimum and maximum values and counting the amount of values. This implementation can be used as a baseline to test how much faster the \nbuf framework can perform these calculations. If the framework is slower than this naive implementation, then the framework is useless.
 
 
 \subsubsection{From disk}
-In many cases, the framework will have to work with a stream of data from a disk drive of some sort. In this case, the transfer-rate is 
+In many cases, the framework will have to work with a stream of data from a disk drive of some sort. In this case, the maximum throughput is limited by the rate at which we can read data from the disk, and write back to disk. Here we have to keep two things in mind, when experimenting.\\
+
+First, most operating systems keep a cached version of files in memory, as long as the memory isn't used for anything else. This has been a mystery to many new Linux-users, and has sprouted many helping words\footnote{http://linuxatemyram.com explains very nicely how Linux caches files when there is available main memory.}. This easily results in wrong experimental results, when benchmarking throughput from disk.
+
+Imagine performing an experiment twice, which includes timing how fast a file is read from disk. The first run will fetch the file from disk, and the experiment will return expected results. When starting the second run, there is a good chance the file is still in memory, and the operating system will therefore not fetch the file from disk, but merely return the cached version. This will result in a much faster benchmark for the second run, for the wrong reasons.
+
+Second, the operating systems doesn't write your file to disk, just because you tell it to. It has to schedule all disk I/O and therefore it keep an internal buffer of data to be written to disk. This means that when some code writes to a file-stream, it will return before the data is actually written to the disk. The data is copied to another part of the system memory, and kept there until the OS decides to write it. The size of this buffer can vary, depending on how much memory the OS keeps to itself. When the buffer is full, the OS is forced to wait to disk, and let the program wait, until the OS has enough memory to copy the data from the program. To show how large the wait on disk input and disk output is, a simple experiment has been conducted.\\
+
+The I/O experiment is meant to show the different between return times when performing disk input and disk output, when an operating systems manages the I/O. First, a file with 1GB of data is located on a file, on a consumer-grade hard disk drive. The OS file cache is emptied, a timer is started, and the program starts reading the entire file into main memory. When returning from the read, the timer is stopped and the resulting time duration is printed. Then a timer starts, and the program starts writing the 1GB data to a new file on the disk drive. When the OS returns to the user-code, the timer is stopped and the duration is printed. The experiment is repeated 5 times, after letting the operating system flush the buffer to disk, to ensure consistent results. The results can be seen in \autoref{table:io-test}.\\
+
+\begin{table}[]
+\begin{adjustwidth}{-0.5in}{-0.5in}
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Action}                & \textbf{Average time taken}               & \textbf{Standard Deviation / Average} \\ \midrule
+Reading 1GB of data from disk  & 16550732 $\mu s$                          & 0.0425                                \\ \midrule
+Writing 1GB of data to disk    & 396883   $\mu s$                          & 0.0333                                \\ \midrule
+Copying 1GB in memory          & 184583   $\mu s$                          & 0.0046                                \\ \bottomrule
+\end{tabular}
+\caption{The results from the disk I/O experiment. Note that when writing data to disk, the operating system performs \textit{latency hiding}, which is why we observe much faster \textit{writing} that \textit{reading}. This is the timings we should expect to see when reading or writing 1GB of data to disk.}
+\label{table:io-test}
+\end{adjustwidth}
+\end{table}
+
+
+When this has been concluded, we know that the throughput of the \nbuf framework, is limited by the rate at which it can read data from the disk. The throughput should be as close to this as possible, to exhibit efficient I/O. If the throughput becomes higher than the disk loading times, it is a clear warning that something doesn't work as expected.
 
 
 \subsubsection{From RAM}
+In comparison, main memory on a system suffers from much less latency, than disk. This means that the potential throughput is much larger, when processing data that are already in memory. The experiment conducted here, merely copies 1GB of ram from one allocation to another. It is not necessary to test reads and writes, since they are essentially the same, in memory.\\
 
+The results in \autoref{table:io-test} clearly shows that working with data that is already in-memory is much faster than when it has to be fetched from disk, to no surprise. Also, the timings are much more consistent, since we aren't working with a spinning metal disk that has to seek and find.\\
+
+We can use these results to gain a higher confidence, when benchmarking the \nbuf framework. When testing the framework with a disk file-stream, the results are subject to these long load times. If we pre-load data to memory, it means that we can actually benchmark the framework to its limit, be it due to software or hardware, instead of merely testing the loading times from disk.
 
 
 \subsection{Experimental Results}
 
+
+Every experiment has been run 5 times, averaging the results and calculating the standard deviation. In the experiments where data is read from disk, the file cache has been cleared just prior to starting the experiment.
+
 \subsubsection{From disk}
+Here is the results from running the experiment with parallel execution.
+
 
 \subsubsection{From RAM}
 

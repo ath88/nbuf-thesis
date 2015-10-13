@@ -5,7 +5,7 @@ use File::Slurp;
 
 
 my %sizes = (
-    b  => 1,
+    B  => 1,
     KB => 1024,
     MB => 1024 * 1024,
     GB => 1024 * 1024 * 1024,
@@ -30,7 +30,7 @@ if (defined $ARGV[0]) {
     }
 
     unless (defined $sizes{$2}) {
-        say 'Specify unit as [b|KB|MB|GB]';
+        say 'Specify unit as [B|KB|MB|GB]';
         exit(0);
     }
 

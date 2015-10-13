@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     int64_t count = 0;
     int64_t sum = 0;
     double min = std::numeric_limits<double>::max();
-    double max = 0;
+    double max = std::numeric_limits<double>::min();
 
     for(int i = 0; i < filesize; i++) {
         double l = (double) chars[i];

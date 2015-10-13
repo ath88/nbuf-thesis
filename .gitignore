@@ -35,3 +35,7 @@
 *.log
 *.aux
 *.synctex.gz
+
+bin
+object 
+data

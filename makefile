@@ -1,25 +1,55 @@
 CC=g++
 
-OPTS=-Wall
+CFLAGS=-Wall
 LIBS=-pthread --std=c++11
 
-all:
-	$(CC) $(OPTS) $(LIBS) src/nbuf.cpp -c
-	$(CC) $(OPTS) $(LIBS) nbuf.o src/minmaxavgdisk.cpp -o bin/minmaxavgdisk
-	$(CC) $(OPTS) $(LIBS) nbuf.o src/minmaxavgmemory.cpp -o bin/minmaxavgmemory
+all: examples
+test: test_data test_scripts
 
-tests:
-	$(CC) $(OPTS) $(LIBS) src/seq_minmaxavg.cpp -o bin/seq_minmaxavg
-	$(CC) $(OPTS) $(LIBS) src/disk_test.cpp -o bin/disk_test
-	$(CC) $(OPTS) $(LIBS) src/memory_test.cpp -o bin/memory_test
 
-test_data:
-	data/generate_data.pl 1b
-	data/generate_data.pl 1KB
-	data/generate_data.pl 1MB
-	data/generate_data.pl 1GB
-	data/generate_data.pl 10GB
+examples: bin/minmaxavgdisk bin/minmaxavgmemory
+
+bin/minmaxavgdisk: bin object/nbuf.o
+	$(CC) $(CFLAGS) $(LIBS) object/nbuf.o src/minmaxavgdisk.cpp -o $@
+
+bin/minmaxavgmemory: bin object/nbuf.o
+	$(CC) $(CFLAGS) $(LIBS) object/nbuf.o src/minmaxavgmemory.cpp -o $@
+
+bin:
+	mkdir $@
+
+
+object/nbuf.o: object
+	$(CC) $(CFLAGS) $(LIBS) src/nbuf.cpp -c -o $@
+
+object:
+	mkdir $@
+
+
+
+test_scripts: bin/sequential_minmaxavg bin/disk_test bin/memory_test
+
+bin/sequential_minmaxavg: bin
+	$(CC) $(CFLAGS) $(LIBS) src/sequential_minmaxavg.cpp -o $@
+
+bin/disk_test: bin
+	$(CC) $(CFLAGS) $(LIBS) src/disk_test.cpp -o $@
+
+bin/memory_test: bin
+	$(CC) $(CFLAGS) $(LIBS) src/memory_test.cpp -o $@
+
+
+
+test_data: data/1GB.dat
+
+data/1GB.dat: data
+	script/generate_data.pl 1GB
+
+data:
+	mkdir $@
+
 
 clean:
-	rm data/*.dat
-	rm bin/*
+	rm -rf object
+	rm -rf data
+	rm -rf bin

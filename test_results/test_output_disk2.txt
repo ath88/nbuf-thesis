@@ -1,0 +1,2624 @@
+1 1 f
+Clearing system RAM file cache.
+Time taken: 27518978 us
+Clearing system RAM file cache.
+Time taken: 27526943 us
+Clearing system RAM file cache.
+Time taken: 27502721 us
+Clearing system RAM file cache.
+Time taken: 27371730 us
+Clearing system RAM file cache.
+Time taken: 27098082 us
+Clearing system RAM file cache.
+Time taken: 27005191 us
+Clearing system RAM file cache.
+Time taken: 27228264 us
+Clearing system RAM file cache.
+Time taken: 24975485 us
+Clearing system RAM file cache.
+Time taken: 27140096 us
+Clearing system RAM file cache.
+Time taken: 27297606 us
+Clearing system RAM file cache.
+Time taken: 27313724 us
+Clearing system RAM file cache.
+Time taken: 27363470 us
+Clearing system RAM file cache.
+Time taken: 27728598 us
+Clearing system RAM file cache.
+Time taken: 25489312 us
+Clearing system RAM file cache.
+Time taken: 27449339 us
+Clearing system RAM file cache.
+Time taken: 25439580 us
+Clearing system RAM file cache.
+Time taken: 27529291 us
+Clearing system RAM file cache.
+Time taken: 24793403 us
+Clearing system RAM file cache.
+Time taken: 24842511 us
+Clearing system RAM file cache.
+Time taken: 24929885 us
+2 1 f
+Clearing system RAM file cache.
+Time taken: 24782397 us
+Clearing system RAM file cache.
+Time taken: 27237286 us
+Clearing system RAM file cache.
+Time taken: 27503073 us
+Clearing system RAM file cache.
+Time taken: 28049369 us
+Clearing system RAM file cache.
+Time taken: 27718149 us
+Clearing system RAM file cache.
+Time taken: 25562167 us
+Clearing system RAM file cache.
+Time taken: 27915865 us
+Clearing system RAM file cache.
+Time taken: 27726189 us
+Clearing system RAM file cache.
+Time taken: 27610647 us
+Clearing system RAM file cache.
+Time taken: 27817912 us
+Clearing system RAM file cache.
+Time taken: 25613863 us
+Clearing system RAM file cache.
+Time taken: 27751620 us
+Clearing system RAM file cache.
+Time taken: 27718154 us
+Clearing system RAM file cache.
+Time taken: 28199782 us
+Clearing system RAM file cache.
+Time taken: 28083293 us
+Clearing system RAM file cache.
+Time taken: 27983421 us
+Clearing system RAM file cache.
+Time taken: 25686442 us
+Clearing system RAM file cache.
+Time taken: 28058145 us
+Clearing system RAM file cache.
+Time taken: 27170717 us
+Clearing system RAM file cache.
+Time taken: 27324286 us
+4 1 f
+Clearing system RAM file cache.
+Time taken: 25003533 us
+Clearing system RAM file cache.
+Time taken: 26689163 us
+Clearing system RAM file cache.
+Time taken: 25552577 us
+Clearing system RAM file cache.
+Time taken: 27094990 us
+Clearing system RAM file cache.
+Time taken: 25685506 us
+Clearing system RAM file cache.
+Time taken: 27268928 us
+Clearing system RAM file cache.
+Time taken: 27434396 us
+Clearing system RAM file cache.
+Time taken: 24765225 us
+Clearing system RAM file cache.
+Time taken: 27675536 us
+Clearing system RAM file cache.
+Time taken: 24533113 us
+Clearing system RAM file cache.
+Time taken: 28007647 us
+Clearing system RAM file cache.
+Time taken: 27025830 us
+Clearing system RAM file cache.
+Time taken: 27640269 us
+Clearing system RAM file cache.
+Time taken: 24499453 us
+Clearing system RAM file cache.
+Time taken: 27823303 us
+Clearing system RAM file cache.
+Time taken: 24798080 us
+Clearing system RAM file cache.
+Time taken: 28223098 us
+Clearing system RAM file cache.
+Time taken: 27783195 us
+Clearing system RAM file cache.
+Time taken: 27990857 us
+Clearing system RAM file cache.
+Time taken: 27592486 us
+8 1 f
+Clearing system RAM file cache.
+Time taken: 27293439 us
+Clearing system RAM file cache.
+Time taken: 27127620 us
+Clearing system RAM file cache.
+Time taken: 27243610 us
+Clearing system RAM file cache.
+Time taken: 27463043 us
+Clearing system RAM file cache.
+Time taken: 27285561 us
+Clearing system RAM file cache.
+Time taken: 27562697 us
+Clearing system RAM file cache.
+Time taken: 28121470 us
+Clearing system RAM file cache.
+Time taken: 27714554 us
+Clearing system RAM file cache.
+Time taken: 28025722 us
+Clearing system RAM file cache.
+Time taken: 27635428 us
+Clearing system RAM file cache.
+Time taken: 28066338 us
+Clearing system RAM file cache.
+Time taken: 27903533 us
+Clearing system RAM file cache.
+Time taken: 27845845 us
+Clearing system RAM file cache.
+Time taken: 27866009 us
+Clearing system RAM file cache.
+Time taken: 27890302 us
+Clearing system RAM file cache.
+Time taken: 27650057 us
+Clearing system RAM file cache.
+Time taken: 28031519 us
+Clearing system RAM file cache.
+Time taken: 28180625 us
+Clearing system RAM file cache.
+Time taken: 28061567 us
+Clearing system RAM file cache.
+Time taken: 27317994 us
+16 1 f
+Clearing system RAM file cache.
+Time taken: 28172224 us
+Clearing system RAM file cache.
+Time taken: 27649671 us
+Clearing system RAM file cache.
+Time taken: 28280027 us
+Clearing system RAM file cache.
+Time taken: 24904874 us
+Clearing system RAM file cache.
+Time taken: 27865582 us
+Clearing system RAM file cache.
+Time taken: 26986340 us
+Clearing system RAM file cache.
+Time taken: 28786053 us
+Clearing system RAM file cache.
+Time taken: 28263280 us
+Clearing system RAM file cache.
+Time taken: 29142403 us
+Clearing system RAM file cache.
+Time taken: 25734153 us
+Clearing system RAM file cache.
+Time taken: 28936787 us
+Clearing system RAM file cache.
+Time taken: 28381697 us
+Clearing system RAM file cache.
+Time taken: 28089158 us
+Clearing system RAM file cache.
+Time taken: 26032244 us
+Clearing system RAM file cache.
+Time taken: 26870075 us
+Clearing system RAM file cache.
+Time taken: 25916745 us
+Clearing system RAM file cache.
+Time taken: 28777639 us
+Clearing system RAM file cache.
+Time taken: 28936708 us
+Clearing system RAM file cache.
+Time taken: 26381877 us
+Clearing system RAM file cache.
+Time taken: 26571364 us
+32 1 f
+Clearing system RAM file cache.
+Time taken: 26453826 us
+Clearing system RAM file cache.
+Time taken: 29141085 us
+Clearing system RAM file cache.
+Time taken: 29664639 us
+Clearing system RAM file cache.
+Time taken: 29397829 us
+Clearing system RAM file cache.
+Time taken: 26811926 us
+Clearing system RAM file cache.
+Time taken: 26870120 us
+Clearing system RAM file cache.
+Time taken: 29081121 us
+Clearing system RAM file cache.
+Time taken: 26820832 us
+Clearing system RAM file cache.
+Time taken: 29142291 us
+Clearing system RAM file cache.
+Time taken: 27255657 us
+Clearing system RAM file cache.
+Time taken: 29173999 us
+Clearing system RAM file cache.
+Time taken: 29341794 us
+Clearing system RAM file cache.
+Time taken: 26232052 us
+Clearing system RAM file cache.
+Time taken: 29383031 us
+Clearing system RAM file cache.
+Time taken: 28902050 us
+Clearing system RAM file cache.
+Time taken: 29084502 us
+Clearing system RAM file cache.
+Time taken: 28819682 us
+Clearing system RAM file cache.
+Time taken: 26944864 us
+Clearing system RAM file cache.
+Time taken: 29104769 us
+Clearing system RAM file cache.
+Time taken: 26604772 us
+64 1 f
+Clearing system RAM file cache.
+Time taken: 26945078 us
+Clearing system RAM file cache.
+Time taken: 26488882 us
+Clearing system RAM file cache.
+Time taken: 29043124 us
+Clearing system RAM file cache.
+Time taken: 29665810 us
+Clearing system RAM file cache.
+Time taken: 29748458 us
+Clearing system RAM file cache.
+Time taken: 29300539 us
+Clearing system RAM file cache.
+Time taken: 26991969 us
+Clearing system RAM file cache.
+Time taken: 29505877 us
+Clearing system RAM file cache.
+Time taken: 27533509 us
+Clearing system RAM file cache.
+Time taken: 29640365 us
+Clearing system RAM file cache.
+Time taken: 29500593 us
+Clearing system RAM file cache.
+Time taken: 29176966 us
+Clearing system RAM file cache.
+Time taken: 29557108 us
+Clearing system RAM file cache.
+Time taken: 29284228 us
+Clearing system RAM file cache.
+Time taken: 30108579 us
+Clearing system RAM file cache.
+Time taken: 29972428 us
+Clearing system RAM file cache.
+Time taken: 27251930 us
+Clearing system RAM file cache.
+Time taken: 27302674 us
+Clearing system RAM file cache.
+Time taken: 27435108 us
+Clearing system RAM file cache.
+Time taken: 27069738 us
+128 1 f
+Clearing system RAM file cache.
+Time taken: 26903903 us
+Clearing system RAM file cache.
+Time taken: 26887990 us
+Clearing system RAM file cache.
+Time taken: 29126991 us
+Clearing system RAM file cache.
+Time taken: 26655246 us
+Clearing system RAM file cache.
+Time taken: 29260301 us
+Clearing system RAM file cache.
+Time taken: 29790124 us
+Clearing system RAM file cache.
+Time taken: 29751193 us
+Clearing system RAM file cache.
+Time taken: 29841922 us
+Clearing system RAM file cache.
+Time taken: 29019726 us
+Clearing system RAM file cache.
+Time taken: 27502258 us
+Clearing system RAM file cache.
+Time taken: 26531064 us
+Clearing system RAM file cache.
+Time taken: 30305176 us
+Clearing system RAM file cache.
+Time taken: 30221599 us
+Clearing system RAM file cache.
+Time taken: 29617030 us
+Clearing system RAM file cache.
+Time taken: 27841332 us
+Clearing system RAM file cache.
+Time taken: 29599935 us
+Clearing system RAM file cache.
+Time taken: 29690482 us
+Clearing system RAM file cache.
+Time taken: 29915807 us
+Clearing system RAM file cache.
+Time taken: 29732846 us
+Clearing system RAM file cache.
+Time taken: 29309498 us
+1 10 f
+Clearing system RAM file cache.
+Time taken: 31296939 us
+Clearing system RAM file cache.
+Time taken: 31765094 us
+Clearing system RAM file cache.
+Time taken: 31665547 us
+Clearing system RAM file cache.
+Time taken: 31922599 us
+Clearing system RAM file cache.
+Time taken: 32084972 us
+Clearing system RAM file cache.
+Time taken: 32516226 us
+Clearing system RAM file cache.
+Time taken: 33120754 us
+Clearing system RAM file cache.
+Time taken: 32959327 us
+Clearing system RAM file cache.
+Time taken: 32693719 us
+Clearing system RAM file cache.
+Time taken: 31922042 us
+Clearing system RAM file cache.
+Time taken: 32259614 us
+Clearing system RAM file cache.
+Time taken: 32345092 us
+Clearing system RAM file cache.
+Time taken: 32195159 us
+Clearing system RAM file cache.
+Time taken: 32245601 us
+Clearing system RAM file cache.
+Time taken: 32054850 us
+Clearing system RAM file cache.
+Time taken: 32950856 us
+Clearing system RAM file cache.
+Time taken: 32934035 us
+Clearing system RAM file cache.
+Time taken: 32578093 us
+Clearing system RAM file cache.
+Time taken: 32304100 us
+Clearing system RAM file cache.
+Time taken: 31093088 us
+2 10 f
+Clearing system RAM file cache.
+Time taken: 30462136 us
+Clearing system RAM file cache.
+Time taken: 30600082 us
+Clearing system RAM file cache.
+Time taken: 30561352 us
+Clearing system RAM file cache.
+Time taken: 30845883 us
+Clearing system RAM file cache.
+Time taken: 31092778 us
+Clearing system RAM file cache.
+Time taken: 31323162 us
+Clearing system RAM file cache.
+Time taken: 30495925 us
+Clearing system RAM file cache.
+Time taken: 31598556 us
+Clearing system RAM file cache.
+Time taken: 32030220 us
+Clearing system RAM file cache.
+Time taken: 31463456 us
+Clearing system RAM file cache.
+Time taken: 31563420 us
+Clearing system RAM file cache.
+Time taken: 30973623 us
+Clearing system RAM file cache.
+Time taken: 31067220 us
+Clearing system RAM file cache.
+Time taken: 31503773 us
+Clearing system RAM file cache.
+Time taken: 31475454 us
+Clearing system RAM file cache.
+Time taken: 31617944 us
+Clearing system RAM file cache.
+Time taken: 31657393 us
+Clearing system RAM file cache.
+Time taken: 31748055 us
+Clearing system RAM file cache.
+Time taken: 31312563 us
+Clearing system RAM file cache.
+Time taken: 31283979 us
+4 10 f
+Clearing system RAM file cache.
+Time taken: 31106114 us
+Clearing system RAM file cache.
+Time taken: 31098247 us
+Clearing system RAM file cache.
+Time taken: 31544408 us
+Clearing system RAM file cache.
+Time taken: 31661545 us
+Clearing system RAM file cache.
+Time taken: 31727966 us
+Clearing system RAM file cache.
+Time taken: 31000252 us
+Clearing system RAM file cache.
+Time taken: 29041477 us
+Clearing system RAM file cache.
+Time taken: 31420843 us
+Clearing system RAM file cache.
+Time taken: 31355059 us
+Clearing system RAM file cache.
+Time taken: 32344172 us
+Clearing system RAM file cache.
+Time taken: 31728116 us
+Clearing system RAM file cache.
+Time taken: 28825848 us
+Clearing system RAM file cache.
+Time taken: 28999609 us
+Clearing system RAM file cache.
+Time taken: 32632309 us
+Clearing system RAM file cache.
+Time taken: 31990887 us
+Clearing system RAM file cache.
+Time taken: 32001605 us
+Clearing system RAM file cache.
+Time taken: 28245701 us
+Clearing system RAM file cache.
+Time taken: 31537448 us
+Clearing system RAM file cache.
+Time taken: 31685566 us
+Clearing system RAM file cache.
+Time taken: 31638574 us
+8 10 f
+Clearing system RAM file cache.
+Time taken: 32117719 us
+Clearing system RAM file cache.
+Time taken: 32678418 us
+Clearing system RAM file cache.
+Time taken: 32835613 us
+Clearing system RAM file cache.
+Time taken: 30049337 us
+Clearing system RAM file cache.
+Time taken: 29866989 us
+Clearing system RAM file cache.
+Time taken: 32413189 us
+Clearing system RAM file cache.
+Time taken: 32263559 us
+Clearing system RAM file cache.
+Time taken: 32153377 us
+Clearing system RAM file cache.
+Time taken: 28979814 us
+Clearing system RAM file cache.
+Time taken: 32868882 us
+Clearing system RAM file cache.
+Time taken: 29933366 us
+Clearing system RAM file cache.
+Time taken: 32421857 us
+Clearing system RAM file cache.
+Time taken: 32537343 us
+Clearing system RAM file cache.
+Time taken: 31956709 us
+Clearing system RAM file cache.
+Time taken: 29742964 us
+Clearing system RAM file cache.
+Time taken: 29701235 us
+Clearing system RAM file cache.
+Time taken: 30206850 us
+Clearing system RAM file cache.
+Time taken: 32470961 us
+Clearing system RAM file cache.
+Time taken: 32454530 us
+Clearing system RAM file cache.
+Time taken: 32678213 us
+16 10 f
+Clearing system RAM file cache.
+Time taken: 29898013 us
+Clearing system RAM file cache.
+Time taken: 29972573 us
+Clearing system RAM file cache.
+Time taken: 30005810 us
+Clearing system RAM file cache.
+Time taken: 32533729 us
+Clearing system RAM file cache.
+Time taken: 32908349 us
+Clearing system RAM file cache.
+Time taken: 33372717 us
+Clearing system RAM file cache.
+Time taken: 30594398 us
+Clearing system RAM file cache.
+Time taken: 33812067 us
+Clearing system RAM file cache.
+Time taken: 32717631 us
+Clearing system RAM file cache.
+Time taken: 32875212 us
+Clearing system RAM file cache.
+Time taken: 30495255 us
+Clearing system RAM file cache.
+Time taken: 30271936 us
+Clearing system RAM file cache.
+Time taken: 30951044 us
+Clearing system RAM file cache.
+Time taken: 33438585 us
+Clearing system RAM file cache.
+Time taken: 33498311 us
+Clearing system RAM file cache.
+Time taken: 31092138 us
+Clearing system RAM file cache.
+Time taken: 30238418 us
+Clearing system RAM file cache.
+Time taken: 30528017 us
+Clearing system RAM file cache.
+Time taken: 33189985 us
+Clearing system RAM file cache.
+Time taken: 33281356 us
+32 10 f
+Clearing system RAM file cache.
+Time taken: 31498322 us
+Clearing system RAM file cache.
+Time taken: 33870179 us
+Clearing system RAM file cache.
+Time taken: 34094562 us
+Clearing system RAM file cache.
+Time taken: 31971005 us
+Clearing system RAM file cache.
+Time taken: 30859844 us
+Clearing system RAM file cache.
+Time taken: 30876318 us
+Clearing system RAM file cache.
+Time taken: 33488513 us
+Clearing system RAM file cache.
+Time taken: 33911463 us
+Clearing system RAM file cache.
+Time taken: 31947381 us
+Clearing system RAM file cache.
+Time taken: 31962689 us
+Clearing system RAM file cache.
+Time taken: 34334632 us
+Clearing system RAM file cache.
+Time taken: 30959652 us
+Clearing system RAM file cache.
+Time taken: 33911467 us
+Clearing system RAM file cache.
+Time taken: 31539990 us
+Clearing system RAM file cache.
+Time taken: 34010982 us
+Clearing system RAM file cache.
+Time taken: 34500181 us
+Clearing system RAM file cache.
+Time taken: 34666156 us
+Clearing system RAM file cache.
+Time taken: 31788569 us
+Clearing system RAM file cache.
+Time taken: 32203339 us
+Clearing system RAM file cache.
+Time taken: 31136866 us
+64 10 f
+Clearing system RAM file cache.
+Time taken: 34516776 us
+Clearing system RAM file cache.
+Time taken: 31655574 us
+Clearing system RAM file cache.
+Time taken: 35246909 us
+Clearing system RAM file cache.
+Time taken: 35138713 us
+Clearing system RAM file cache.
+Time taken: 32700832 us
+Clearing system RAM file cache.
+Time taken: 36780714 us
+Clearing system RAM file cache.
+Time taken: 34566235 us
+Clearing system RAM file cache.
+Time taken: 32062302 us
+Clearing system RAM file cache.
+Time taken: 28471769 us
+Clearing system RAM file cache.
+Time taken: 27658736 us
+Clearing system RAM file cache.
+Time taken: 27584086 us
+Clearing system RAM file cache.
+Time taken: 25660691 us
+Clearing system RAM file cache.
+Time taken: 25842679 us
+Clearing system RAM file cache.
+Time taken: 25411256 us
+Clearing system RAM file cache.
+Time taken: 25286976 us
+Clearing system RAM file cache.
+Time taken: 25253766 us
+Clearing system RAM file cache.
+Time taken: 27368222 us
+Clearing system RAM file cache.
+Time taken: 28239305 us
+Clearing system RAM file cache.
+Time taken: 27691736 us
+Clearing system RAM file cache.
+Time taken: 28001009 us
+128 10 f
+Clearing system RAM file cache.
+Time taken: 27752348 us
+Clearing system RAM file cache.
+Time taken: 27951980 us
+Clearing system RAM file cache.
+Time taken: 27430764 us
+Clearing system RAM file cache.
+Time taken: 27372195 us
+Clearing system RAM file cache.
+Time taken: 26912968 us
+Clearing system RAM file cache.
+Time taken: 27377121 us
+Clearing system RAM file cache.
+Time taken: 26821812 us
+Clearing system RAM file cache.
+Time taken: 23778477 us
+Clearing system RAM file cache.
+Time taken: 27418125 us
+Clearing system RAM file cache.
+Time taken: 27165310 us
+Clearing system RAM file cache.
+Time taken: 27291059 us
+Clearing system RAM file cache.
+Time taken: 27128392 us
+Clearing system RAM file cache.
+Time taken: 27663905 us
+Clearing system RAM file cache.
+Time taken: 26945881 us
+Clearing system RAM file cache.
+Time taken: 27600061 us
+Clearing system RAM file cache.
+Time taken: 24520587 us
+Clearing system RAM file cache.
+Time taken: 27717117 us
+Clearing system RAM file cache.
+Time taken: 27235922 us
+Clearing system RAM file cache.
+Time taken: 27667598 us
+Clearing system RAM file cache.
+Time taken: 26953771 us
+1 100 f
+Clearing system RAM file cache.
+Time taken: 31219216 us
+Clearing system RAM file cache.
+Time taken: 30360389 us
+Clearing system RAM file cache.
+Time taken: 31190821 us
+Clearing system RAM file cache.
+Time taken: 31097932 us
+Clearing system RAM file cache.
+Time taken: 30945612 us
+Clearing system RAM file cache.
+Time taken: 31239663 us
+Clearing system RAM file cache.
+Time taken: 31409789 us
+Clearing system RAM file cache.
+Time taken: 30913975 us
+Clearing system RAM file cache.
+Time taken: 29480937 us
+Clearing system RAM file cache.
+Time taken: 29664473 us
+Clearing system RAM file cache.
+Time taken: 29489801 us
+Clearing system RAM file cache.
+Time taken: 30137298 us
+Clearing system RAM file cache.
+Time taken: 30749908 us
+Clearing system RAM file cache.
+Time taken: 30162014 us
+Clearing system RAM file cache.
+Time taken: 31078881 us
+Clearing system RAM file cache.
+Time taken: 31762967 us
+Clearing system RAM file cache.
+Time taken: 31617232 us
+Clearing system RAM file cache.
+Time taken: 29935050 us
+Clearing system RAM file cache.
+Time taken: 30142213 us
+Clearing system RAM file cache.
+Time taken: 30584505 us
+2 100 f
+Clearing system RAM file cache.
+Time taken: 27314420 us
+Clearing system RAM file cache.
+Time taken: 27590954 us
+Clearing system RAM file cache.
+Time taken: 27592991 us
+Clearing system RAM file cache.
+Time taken: 27963976 us
+Clearing system RAM file cache.
+Time taken: 27766160 us
+Clearing system RAM file cache.
+Time taken: 27891271 us
+Clearing system RAM file cache.
+Time taken: 28113920 us
+Clearing system RAM file cache.
+Time taken: 18593773 us
+Clearing system RAM file cache.
+Time taken: 27677815 us
+Clearing system RAM file cache.
+Time taken: 27875862 us
+Clearing system RAM file cache.
+Time taken: 27954954 us
+Clearing system RAM file cache.
+Time taken: 27026714 us
+Clearing system RAM file cache.
+Time taken: 26860965 us
+Clearing system RAM file cache.
+Time taken: 26072807 us
+Clearing system RAM file cache.
+Time taken: 27084836 us
+Clearing system RAM file cache.
+Time taken: 26106921 us
+Clearing system RAM file cache.
+Time taken: 27748375 us
+Clearing system RAM file cache.
+Time taken: 27299396 us
+Clearing system RAM file cache.
+Time taken: 28409899 us
+Clearing system RAM file cache.
+Time taken: 26994099 us
+4 100 f
+Clearing system RAM file cache.
+Time taken: 27904721 us
+Clearing system RAM file cache.
+Time taken: 27391629 us
+Clearing system RAM file cache.
+Time taken: 27483162 us
+Clearing system RAM file cache.
+Time taken: 26876904 us
+Clearing system RAM file cache.
+Time taken: 27872333 us
+Clearing system RAM file cache.
+Time taken: 27476152 us
+Clearing system RAM file cache.
+Time taken: 27519008 us
+Clearing system RAM file cache.
+Time taken: 27399766 us
+Clearing system RAM file cache.
+Time taken: 28017919 us
+Clearing system RAM file cache.
+Time taken: 27686626 us
+Clearing system RAM file cache.
+Time taken: 28275005 us
+Clearing system RAM file cache.
+Time taken: 27781775 us
+Clearing system RAM file cache.
+Time taken: 27691660 us
+Clearing system RAM file cache.
+Time taken: 26840117 us
+Clearing system RAM file cache.
+Time taken: 27948304 us
+Clearing system RAM file cache.
+Time taken: 26770077 us
+Clearing system RAM file cache.
+Time taken: 27300453 us
+Clearing system RAM file cache.
+Time taken: 27931026 us
+Clearing system RAM file cache.
+Time taken: 27715126 us
+Clearing system RAM file cache.
+Time taken: 27847286 us
+8 100 f
+Clearing system RAM file cache.
+Time taken: 27738154 us
+Clearing system RAM file cache.
+Time taken: 27995320 us
+Clearing system RAM file cache.
+Time taken: 27995164 us
+Clearing system RAM file cache.
+Time taken: 27164666 us
+Clearing system RAM file cache.
+Time taken: 27961384 us
+Clearing system RAM file cache.
+Time taken: 27995243 us
+Clearing system RAM file cache.
+Time taken: 27869284 us
+Clearing system RAM file cache.
+Time taken: 28019871 us
+Clearing system RAM file cache.
+Time taken: 28202497 us
+Clearing system RAM file cache.
+Time taken: 27715909 us
+Clearing system RAM file cache.
+Time taken: 28031698 us
+Clearing system RAM file cache.
+Time taken: 27729779 us
+Clearing system RAM file cache.
+Time taken: 28185296 us
+Clearing system RAM file cache.
+Time taken: 28086284 us
+Clearing system RAM file cache.
+Time taken: 27729837 us
+Clearing system RAM file cache.
+Time taken: 27162393 us
+Clearing system RAM file cache.
+Time taken: 27647147 us
+Clearing system RAM file cache.
+Time taken: 27829316 us
+Clearing system RAM file cache.
+Time taken: 27634495 us
+Clearing system RAM file cache.
+Time taken: 27542365 us
+16 100 f
+Clearing system RAM file cache.
+Time taken: 28004807 us
+Clearing system RAM file cache.
+Time taken: 28346458 us
+Clearing system RAM file cache.
+Time taken: 28247364 us
+Clearing system RAM file cache.
+Time taken: 27436523 us
+Clearing system RAM file cache.
+Time taken: 28273736 us
+Clearing system RAM file cache.
+Time taken: 27347713 us
+Clearing system RAM file cache.
+Time taken: 28127931 us
+Clearing system RAM file cache.
+Time taken: 28114413 us
+Clearing system RAM file cache.
+Time taken: 28089424 us
+Clearing system RAM file cache.
+Time taken: 27392896 us
+Clearing system RAM file cache.
+Time taken: 28270467 us
+Clearing system RAM file cache.
+Time taken: 27484326 us
+Clearing system RAM file cache.
+Time taken: 28123010 us
+Clearing system RAM file cache.
+Time taken: 27500435 us
+Clearing system RAM file cache.
+Time taken: 28255126 us
+Clearing system RAM file cache.
+Time taken: 27652554 us
+Clearing system RAM file cache.
+Time taken: 28413072 us
+Clearing system RAM file cache.
+Time taken: 27517869 us
+Clearing system RAM file cache.
+Time taken: 27884573 us
+Clearing system RAM file cache.
+Time taken: 27260759 us
+32 100 f
+Clearing system RAM file cache.
+Time taken: 28290316 us
+Clearing system RAM file cache.
+Time taken: 28912281 us
+Clearing system RAM file cache.
+Time taken: 29326657 us
+Clearing system RAM file cache.
+Time taken: 25910042 us
+Clearing system RAM file cache.
+Time taken: 29625448 us
+Clearing system RAM file cache.
+Time taken: 26208940 us
+Clearing system RAM file cache.
+Time taken: 27013326 us
+Clearing system RAM file cache.
+Time taken: 26582027 us
+Clearing system RAM file cache.
+Time taken: 27055028 us
+Clearing system RAM file cache.
+Time taken: 26938542 us
+Clearing system RAM file cache.
+Time taken: 26847426 us
+Clearing system RAM file cache.
+Time taken: 26524487 us
+Clearing system RAM file cache.
+Time taken: 26441048 us
+Clearing system RAM file cache.
+Time taken: 26640073 us
+Clearing system RAM file cache.
+Time taken: 26507451 us
+Clearing system RAM file cache.
+Time taken: 26525225 us
+Clearing system RAM file cache.
+Time taken: 29277689 us
+Clearing system RAM file cache.
+Time taken: 27013166 us
+Clearing system RAM file cache.
+Time taken: 29036175 us
+Clearing system RAM file cache.
+Time taken: 26839070 us
+64 100 f
+Clearing system RAM file cache.
+Time taken: 29369250 us
+Clearing system RAM file cache.
+Time taken: 29128789 us
+Clearing system RAM file cache.
+Time taken: 26181514 us
+Clearing system RAM file cache.
+Time taken: 29356439 us
+Clearing system RAM file cache.
+Time taken: 26483370 us
+Clearing system RAM file cache.
+Time taken: 29500398 us
+Clearing system RAM file cache.
+Time taken: 28929932 us
+Clearing system RAM file cache.
+Time taken: 30041844 us
+Clearing system RAM file cache.
+Time taken: 26417415 us
+Clearing system RAM file cache.
+Time taken: 27089647 us
+Clearing system RAM file cache.
+Time taken: 27321156 us
+Clearing system RAM file cache.
+Time taken: 26956410 us
+Clearing system RAM file cache.
+Time taken: 26782305 us
+Clearing system RAM file cache.
+Time taken: 26524949 us
+Clearing system RAM file cache.
+Time taken: 26699234 us
+Clearing system RAM file cache.
+Time taken: 28871904 us
+Clearing system RAM file cache.
+Time taken: 26641218 us
+Clearing system RAM file cache.
+Time taken: 29352902 us
+Clearing system RAM file cache.
+Time taken: 27055744 us
+Clearing system RAM file cache.
+Time taken: 29641138 us
+128 100 f
+Clearing system RAM file cache.
+Time taken: 29386008 us
+Clearing system RAM file cache.
+Time taken: 26383397 us
+Clearing system RAM file cache.
+Time taken: 29667518 us
+Clearing system RAM file cache.
+Time taken: 26564660 us
+Clearing system RAM file cache.
+Time taken: 29717087 us
+Clearing system RAM file cache.
+Time taken: 26665581 us
+Clearing system RAM file cache.
+Time taken: 30274638 us
+Clearing system RAM file cache.
+Time taken: 27818700 us
+Clearing system RAM file cache.
+Time taken: 27371242 us
+Clearing system RAM file cache.
+Time taken: 27502851 us
+Clearing system RAM file cache.
+Time taken: 27718342 us
+Clearing system RAM file cache.
+Time taken: 27419947 us
+Clearing system RAM file cache.
+Time taken: 29791709 us
+Clearing system RAM file cache.
+Time taken: 26947973 us
+Clearing system RAM file cache.
+Time taken: 29211696 us
+Clearing system RAM file cache.
+Time taken: 28887968 us
+Clearing system RAM file cache.
+Time taken: 26179888 us
+Clearing system RAM file cache.
+Time taken: 29219599 us
+Clearing system RAM file cache.
+Time taken: 26168346 us
+Clearing system RAM file cache.
+Time taken: 30164969 us
+1 1000 f
+Clearing system RAM file cache.
+Time taken: 23451263 us
+Clearing system RAM file cache.
+Time taken: 23380197 us
+Clearing system RAM file cache.
+Time taken: 24148765 us
+Clearing system RAM file cache.
+Time taken: 24497016 us
+Clearing system RAM file cache.
+Time taken: 24215773 us
+Clearing system RAM file cache.
+Time taken: 23319231 us
+Clearing system RAM file cache.
+Time taken: 23369395 us
+Clearing system RAM file cache.
+Time taken: 24162425 us
+Clearing system RAM file cache.
+Time taken: 24646405 us
+Clearing system RAM file cache.
+Time taken: 24439912 us
+Clearing system RAM file cache.
+Time taken: 23494128 us
+Clearing system RAM file cache.
+Time taken: 23369534 us
+Clearing system RAM file cache.
+Time taken: 24174372 us
+Clearing system RAM file cache.
+Time taken: 24489684 us
+Clearing system RAM file cache.
+Time taken: 24447361 us
+Clearing system RAM file cache.
+Time taken: 23245374 us
+Clearing system RAM file cache.
+Time taken: 23238388 us
+Clearing system RAM file cache.
+Time taken: 24008329 us
+Clearing system RAM file cache.
+Time taken: 24227531 us
+Clearing system RAM file cache.
+Time taken: 24570150 us
+2 1000 f
+Clearing system RAM file cache.
+Time taken: 15078910 us
+Clearing system RAM file cache.
+Time taken: 15090155 us
+Clearing system RAM file cache.
+Time taken: 15154933 us
+Clearing system RAM file cache.
+Time taken: 16222064 us
+Clearing system RAM file cache.
+Time taken: 15175782 us
+Clearing system RAM file cache.
+Time taken: 16283630 us
+Clearing system RAM file cache.
+Time taken: 16228416 us
+Clearing system RAM file cache.
+Time taken: 15158874 us
+Clearing system RAM file cache.
+Time taken: 16213605 us
+Clearing system RAM file cache.
+Time taken: 15105003 us
+Clearing system RAM file cache.
+Time taken: 15151240 us
+Clearing system RAM file cache.
+Time taken: 15184441 us
+Clearing system RAM file cache.
+Time taken: 16210766 us
+Clearing system RAM file cache.
+Time taken: 15204570 us
+Clearing system RAM file cache.
+Time taken: 16263037 us
+Clearing system RAM file cache.
+Time taken: 16194778 us
+Clearing system RAM file cache.
+Time taken: 15184670 us
+Clearing system RAM file cache.
+Time taken: 16515707 us
+Clearing system RAM file cache.
+Time taken: 15100816 us
+Clearing system RAM file cache.
+Time taken: 15119641 us
+4 1000 f
+Clearing system RAM file cache.
+Time taken: 15622490 us
+Clearing system RAM file cache.
+Time taken: 16403062 us
+Clearing system RAM file cache.
+Time taken: 15440900 us
+Clearing system RAM file cache.
+Time taken: 16494916 us
+Clearing system RAM file cache.
+Time taken: 16390671 us
+Clearing system RAM file cache.
+Time taken: 16435795 us
+Clearing system RAM file cache.
+Time taken: 16570886 us
+Clearing system RAM file cache.
+Time taken: 15303592 us
+Clearing system RAM file cache.
+Time taken: 16407743 us
+Clearing system RAM file cache.
+Time taken: 15348505 us
+Clearing system RAM file cache.
+Time taken: 15368505 us
+Clearing system RAM file cache.
+Time taken: 15353844 us
+Clearing system RAM file cache.
+Time taken: 15297431 us
+Clearing system RAM file cache.
+Time taken: 15595122 us
+Clearing system RAM file cache.
+Time taken: 16243758 us
+Clearing system RAM file cache.
+Time taken: 15320561 us
+Clearing system RAM file cache.
+Time taken: 16387845 us
+Clearing system RAM file cache.
+Time taken: 16283017 us
+Clearing system RAM file cache.
+Time taken: 16305010 us
+Clearing system RAM file cache.
+Time taken: 16322683 us
+8 1000 f
+Clearing system RAM file cache.
+Time taken: 17110902 us
+Clearing system RAM file cache.
+Time taken: 18181127 us
+Clearing system RAM file cache.
+Time taken: 16994833 us
+Clearing system RAM file cache.
+Time taken: 17134090 us
+Clearing system RAM file cache.
+Time taken: 17088515 us
+Clearing system RAM file cache.
+Time taken: 18105922 us
+Clearing system RAM file cache.
+Time taken: 17037878 us
+Clearing system RAM file cache.
+Time taken: 18391517 us
+Clearing system RAM file cache.
+Time taken: 18176310 us
+Clearing system RAM file cache.
+Time taken: 18442055 us
+Clearing system RAM file cache.
+Time taken: 18362467 us
+Clearing system RAM file cache.
+Time taken: 17092798 us
+Clearing system RAM file cache.
+Time taken: 18216295 us
+Clearing system RAM file cache.
+Time taken: 16953186 us
+Clearing system RAM file cache.
+Time taken: 19498818 us
+Clearing system RAM file cache.
+Time taken: 17355982 us
+Clearing system RAM file cache.
+Time taken: 18649686 us
+Clearing system RAM file cache.
+Time taken: 18369630 us
+Clearing system RAM file cache.
+Time taken: 18730560 us
+Clearing system RAM file cache.
+Time taken: 18553597 us
+16 1000 f
+Clearing system RAM file cache.
+Time taken: 31764625 us
+Clearing system RAM file cache.
+Time taken: 32633156 us
+Clearing system RAM file cache.
+Time taken: 32518181 us
+Clearing system RAM file cache.
+Time taken: 31930818 us
+Clearing system RAM file cache.
+Time taken: 31655728 us
+Clearing system RAM file cache.
+Time taken: 32236370 us
+Clearing system RAM file cache.
+Time taken: 31980582 us
+Clearing system RAM file cache.
+Time taken: 32836689 us
+Clearing system RAM file cache.
+Time taken: 31791534 us
+Clearing system RAM file cache.
+Time taken: 31771981 us
+Clearing system RAM file cache.
+Time taken: 32400538 us
+Clearing system RAM file cache.
+Time taken: 32157405 us
+Clearing system RAM file cache.
+Time taken: 33100024 us
+Clearing system RAM file cache.
+Time taken: 32120328 us
+Clearing system RAM file cache.
+Time taken: 33356036 us
+Clearing system RAM file cache.
+Time taken: 32236617 us
+Clearing system RAM file cache.
+Time taken: 31994811 us
+Clearing system RAM file cache.
+Time taken: 33149319 us
+Clearing system RAM file cache.
+Time taken: 32348586 us
+Clearing system RAM file cache.
+Time taken: 33624999 us
+32 1000 f
+Clearing system RAM file cache.
+Time taken: 32618502 us
+Clearing system RAM file cache.
+Time taken: 32982950 us
+Clearing system RAM file cache.
+Time taken: 30286859 us
+Clearing system RAM file cache.
+Time taken: 30054279 us
+Clearing system RAM file cache.
+Time taken: 29824431 us
+Clearing system RAM file cache.
+Time taken: 32600821 us
+Clearing system RAM file cache.
+Time taken: 33128454 us
+Clearing system RAM file cache.
+Time taken: 30958894 us
+Clearing system RAM file cache.
+Time taken: 29590780 us
+Clearing system RAM file cache.
+Time taken: 30734507 us
+Clearing system RAM file cache.
+Time taken: 29782020 us
+Clearing system RAM file cache.
+Time taken: 32749594 us
+Clearing system RAM file cache.
+Time taken: 30800532 us
+Clearing system RAM file cache.
+Time taken: 30869126 us
+Clearing system RAM file cache.
+Time taken: 30811075 us
+Clearing system RAM file cache.
+Time taken: 30459560 us
+Clearing system RAM file cache.
+Time taken: 30420331 us
+Clearing system RAM file cache.
+Time taken: 31484158 us
+Clearing system RAM file cache.
+Time taken: 33064585 us
+Clearing system RAM file cache.
+Time taken: 33031433 us
+64 1000 f
+Clearing system RAM file cache.
+Time taken: 29532749 us
+Clearing system RAM file cache.
+Time taken: 30255890 us
+Clearing system RAM file cache.
+Time taken: 31332265 us
+Clearing system RAM file cache.
+Time taken: 33686985 us
+Clearing system RAM file cache.
+Time taken: 33669461 us
+Clearing system RAM file cache.
+Time taken: 31307545 us
+Clearing system RAM file cache.
+Time taken: 33455977 us
+Clearing system RAM file cache.
+Time taken: 33811472 us
+Clearing system RAM file cache.
+Time taken: 30184290 us
+Clearing system RAM file cache.
+Time taken: 31447008 us
+Clearing system RAM file cache.
+Time taken: 31278240 us
+Clearing system RAM file cache.
+Time taken: 30608266 us
+Clearing system RAM file cache.
+Time taken: 33509381 us
+Clearing system RAM file cache.
+Time taken: 31231517 us
+Clearing system RAM file cache.
+Time taken: 34061367 us
+Clearing system RAM file cache.
+Time taken: 33787506 us
+Clearing system RAM file cache.
+Time taken: 31837564 us
+Clearing system RAM file cache.
+Time taken: 31647566 us
+Clearing system RAM file cache.
+Time taken: 31829236 us
+Clearing system RAM file cache.
+Time taken: 31356108 us
+128 1000 f
+Clearing system RAM file cache.
+Time taken: 31779768 us
+Clearing system RAM file cache.
+Time taken: 31381398 us
+Clearing system RAM file cache.
+Time taken: 30593512 us
+Clearing system RAM file cache.
+Time taken: 27061778 us
+Clearing system RAM file cache.
+Time taken: 24333219 us
+Clearing system RAM file cache.
+Time taken: 27086443 us
+Clearing system RAM file cache.
+Time taken: 24379818 us
+Clearing system RAM file cache.
+Time taken: 24928173 us
+Clearing system RAM file cache.
+Time taken: 26986382 us
+Clearing system RAM file cache.
+Time taken: 25046733 us
+Clearing system RAM file cache.
+Time taken: 27111084 us
+Clearing system RAM file cache.
+Time taken: 24830926 us
+Clearing system RAM file cache.
+Time taken: 27650075 us
+Clearing system RAM file cache.
+Time taken: 25030935 us
+Clearing system RAM file cache.
+Time taken: 27567482 us
+Clearing system RAM file cache.
+Time taken: 24988893 us
+Clearing system RAM file cache.
+Time taken: 27632789 us
+Clearing system RAM file cache.
+Time taken: 24839914 us
+Clearing system RAM file cache.
+Time taken: 26655037 us
+Clearing system RAM file cache.
+Time taken: 24411622 us
+1 1 t
+Clearing system RAM file cache.
+Time taken: 26501036 us
+Clearing system RAM file cache.
+Time taken: 24494258 us
+Clearing system RAM file cache.
+Time taken: 24527402 us
+Clearing system RAM file cache.
+Time taken: 24875691 us
+Clearing system RAM file cache.
+Time taken: 25445715 us
+Clearing system RAM file cache.
+Time taken: 25517982 us
+Clearing system RAM file cache.
+Time taken: 25398046 us
+Clearing system RAM file cache.
+Time taken: 24328383 us
+Clearing system RAM file cache.
+Time taken: 27703484 us
+Clearing system RAM file cache.
+Time taken: 24153060 us
+Clearing system RAM file cache.
+Time taken: 25199105 us
+Clearing system RAM file cache.
+Time taken: 24361531 us
+Clearing system RAM file cache.
+Time taken: 27552979 us
+Clearing system RAM file cache.
+Time taken: 24602018 us
+Clearing system RAM file cache.
+Time taken: 27529504 us
+Clearing system RAM file cache.
+Time taken: 26849755 us
+Clearing system RAM file cache.
+Time taken: 27753213 us
+Clearing system RAM file cache.
+Time taken: 26998686 us
+Clearing system RAM file cache.
+Time taken: 27820140 us
+Clearing system RAM file cache.
+Time taken: 27015197 us
+2 1 t
+Clearing system RAM file cache.
+Time taken: 27702727 us
+Clearing system RAM file cache.
+Time taken: 26043672 us
+Clearing system RAM file cache.
+Time taken: 26611971 us
+Clearing system RAM file cache.
+Time taken: 26740037 us
+Clearing system RAM file cache.
+Time taken: 24625210 us
+Clearing system RAM file cache.
+Time taken: 26656753 us
+Clearing system RAM file cache.
+Time taken: 26972506 us
+Clearing system RAM file cache.
+Time taken: 27826624 us
+Clearing system RAM file cache.
+Time taken: 25460642 us
+Clearing system RAM file cache.
+Time taken: 27805388 us
+Clearing system RAM file cache.
+Time taken: 25612200 us
+Clearing system RAM file cache.
+Time taken: 27309825 us
+Clearing system RAM file cache.
+Time taken: 25346762 us
+Clearing system RAM file cache.
+Time taken: 27311742 us
+Clearing system RAM file cache.
+Time taken: 25133411 us
+Clearing system RAM file cache.
+Time taken: 27196445 us
+Clearing system RAM file cache.
+Time taken: 25396234 us
+Clearing system RAM file cache.
+Time taken: 26980463 us
+Clearing system RAM file cache.
+Time taken: 25205895 us
+Clearing system RAM file cache.
+Time taken: 25694532 us
+4 1 t
+Clearing system RAM file cache.
+Time taken: 28272771 us
+Clearing system RAM file cache.
+Time taken: 25246099 us
+Clearing system RAM file cache.
+Time taken: 25760229 us
+Clearing system RAM file cache.
+Time taken: 25411877 us
+Clearing system RAM file cache.
+Time taken: 25809923 us
+Clearing system RAM file cache.
+Time taken: 25321303 us
+Clearing system RAM file cache.
+Time taken: 25070717 us
+Clearing system RAM file cache.
+Time taken: 27154017 us
+Clearing system RAM file cache.
+Time taken: 23972744 us
+Clearing system RAM file cache.
+Time taken: 24768698 us
+Clearing system RAM file cache.
+Time taken: 23945363 us
+Clearing system RAM file cache.
+Time taken: 27991295 us
+Clearing system RAM file cache.
+Time taken: 24656677 us
+Clearing system RAM file cache.
+Time taken: 27558269 us
+Clearing system RAM file cache.
+Time taken: 24772619 us
+Clearing system RAM file cache.
+Time taken: 27468413 us
+Clearing system RAM file cache.
+Time taken: 27319191 us
+Clearing system RAM file cache.
+Time taken: 27244475 us
+Clearing system RAM file cache.
+Time taken: 24557587 us
+Clearing system RAM file cache.
+Time taken: 27626007 us
+8 1 t
+Clearing system RAM file cache.
+Time taken: 26845846 us
+Clearing system RAM file cache.
+Time taken: 27263446 us
+Clearing system RAM file cache.
+Time taken: 27475936 us
+Clearing system RAM file cache.
+Time taken: 27816312 us
+Clearing system RAM file cache.
+Time taken: 24830514 us
+Clearing system RAM file cache.
+Time taken: 25605729 us
+Clearing system RAM file cache.
+Time taken: 27832866 us
+Clearing system RAM file cache.
+Time taken: 25083715 us
+Clearing system RAM file cache.
+Time taken: 27197599 us
+Clearing system RAM file cache.
+Time taken: 24871968 us
+Clearing system RAM file cache.
+Time taken: 27285117 us
+Clearing system RAM file cache.
+Time taken: 25311912 us
+Clearing system RAM file cache.
+Time taken: 27542245 us
+Clearing system RAM file cache.
+Time taken: 25452798 us
+Clearing system RAM file cache.
+Time taken: 27642339 us
+Clearing system RAM file cache.
+Time taken: 25535195 us
+Clearing system RAM file cache.
+Time taken: 27608622 us
+Clearing system RAM file cache.
+Time taken: 25386186 us
+Clearing system RAM file cache.
+Time taken: 27492572 us
+Clearing system RAM file cache.
+Time taken: 27956749 us
+16 1 t
+Clearing system RAM file cache.
+Time taken: 27542575 us
+Clearing system RAM file cache.
+Time taken: 25334513 us
+Clearing system RAM file cache.
+Time taken: 27634212 us
+Clearing system RAM file cache.
+Time taken: 25890390 us
+Clearing system RAM file cache.
+Time taken: 27733471 us
+Clearing system RAM file cache.
+Time taken: 25737158 us
+Clearing system RAM file cache.
+Time taken: 28048400 us
+Clearing system RAM file cache.
+Time taken: 25941420 us
+Clearing system RAM file cache.
+Time taken: 27866040 us
+Clearing system RAM file cache.
+Time taken: 25162404 us
+Clearing system RAM file cache.
+Time taken: 27364719 us
+Clearing system RAM file cache.
+Time taken: 25274407 us
+Clearing system RAM file cache.
+Time taken: 27625372 us
+Clearing system RAM file cache.
+Time taken: 27712648 us
+Clearing system RAM file cache.
+Time taken: 27434823 us
+Clearing system RAM file cache.
+Time taken: 25873065 us
+Clearing system RAM file cache.
+Time taken: 25880977 us
+Clearing system RAM file cache.
+Time taken: 28316478 us
+Clearing system RAM file cache.
+Time taken: 27501594 us
+Clearing system RAM file cache.
+Time taken: 25883778 us
+32 1 t
+Clearing system RAM file cache.
+Time taken: 27916950 us
+Clearing system RAM file cache.
+Time taken: 25718988 us
+Clearing system RAM file cache.
+Time taken: 28753744 us
+Clearing system RAM file cache.
+Time taken: 25983539 us
+Clearing system RAM file cache.
+Time taken: 27733195 us
+Clearing system RAM file cache.
+Time taken: 28122031 us
+Clearing system RAM file cache.
+Time taken: 28073827 us
+Clearing system RAM file cache.
+Time taken: 25840235 us
+Clearing system RAM file cache.
+Time taken: 27858899 us
+Clearing system RAM file cache.
+Time taken: 25939278 us
+Clearing system RAM file cache.
+Time taken: 28015881 us
+Clearing system RAM file cache.
+Time taken: 28172809 us
+Clearing system RAM file cache.
+Time taken: 27543192 us
+Clearing system RAM file cache.
+Time taken: 25487329 us
+Clearing system RAM file cache.
+Time taken: 27575416 us
+Clearing system RAM file cache.
+Time taken: 26439545 us
+Clearing system RAM file cache.
+Time taken: 28629321 us
+Clearing system RAM file cache.
+Time taken: 26672525 us
+Clearing system RAM file cache.
+Time taken: 29184548 us
+Clearing system RAM file cache.
+Time taken: 26870765 us
+64 1 t
+Clearing system RAM file cache.
+Time taken: 29243024 us
+Clearing system RAM file cache.
+Time taken: 26290151 us
+Clearing system RAM file cache.
+Time taken: 29119352 us
+Clearing system RAM file cache.
+Time taken: 28968985 us
+Clearing system RAM file cache.
+Time taken: 25958569 us
+Clearing system RAM file cache.
+Time taken: 28778774 us
+Clearing system RAM file cache.
+Time taken: 25437098 us
+Clearing system RAM file cache.
+Time taken: 28663316 us
+Clearing system RAM file cache.
+Time taken: 27867114 us
+Clearing system RAM file cache.
+Time taken: 28547046 us
+Clearing system RAM file cache.
+Time taken: 25959222 us
+Clearing system RAM file cache.
+Time taken: 29235601 us
+Clearing system RAM file cache.
+Time taken: 26033321 us
+Clearing system RAM file cache.
+Time taken: 29519307 us
+Clearing system RAM file cache.
+Time taken: 26068684 us
+Clearing system RAM file cache.
+Time taken: 27233074 us
+Clearing system RAM file cache.
+Time taken: 26150114 us
+Clearing system RAM file cache.
+Time taken: 26932977 us
+Clearing system RAM file cache.
+Time taken: 27239473 us
+Clearing system RAM file cache.
+Time taken: 26854794 us
+128 1 t
+Clearing system RAM file cache.
+Time taken: 27237950 us
+Clearing system RAM file cache.
+Time taken: 29211752 us
+Clearing system RAM file cache.
+Time taken: 27045780 us
+Clearing system RAM file cache.
+Time taken: 29077920 us
+Clearing system RAM file cache.
+Time taken: 26838826 us
+Clearing system RAM file cache.
+Time taken: 29169106 us
+Clearing system RAM file cache.
+Time taken: 26817302 us
+Clearing system RAM file cache.
+Time taken: 28541215 us
+Clearing system RAM file cache.
+Time taken: 26514285 us
+Clearing system RAM file cache.
+Time taken: 28256732 us
+Clearing system RAM file cache.
+Time taken: 29046497 us
+Clearing system RAM file cache.
+Time taken: 28283743 us
+Clearing system RAM file cache.
+Time taken: 29765705 us
+Clearing system RAM file cache.
+Time taken: 26357259 us
+Clearing system RAM file cache.
+Time taken: 29692277 us
+Clearing system RAM file cache.
+Time taken: 26540258 us
+Clearing system RAM file cache.
+Time taken: 29392625 us
+Clearing system RAM file cache.
+Time taken: 26408019 us
+Clearing system RAM file cache.
+Time taken: 30210563 us
+Clearing system RAM file cache.
+Time taken: 27518217 us
+1 10 t
+Clearing system RAM file cache.
+Time taken: 30846484 us
+Clearing system RAM file cache.
+Time taken: 31897575 us
+Clearing system RAM file cache.
+Time taken: 31781851 us
+Clearing system RAM file cache.
+Time taken: 31732186 us
+Clearing system RAM file cache.
+Time taken: 31665073 us
+Clearing system RAM file cache.
+Time taken: 31392072 us
+Clearing system RAM file cache.
+Time taken: 32063775 us
+Clearing system RAM file cache.
+Time taken: 31615932 us
+Clearing system RAM file cache.
+Time taken: 31209077 us
+Clearing system RAM file cache.
+Time taken: 30297075 us
+Clearing system RAM file cache.
+Time taken: 31250863 us
+Clearing system RAM file cache.
+Time taken: 31110023 us
+Clearing system RAM file cache.
+Time taken: 30952165 us
+Clearing system RAM file cache.
+Time taken: 32089104 us
+Clearing system RAM file cache.
+Time taken: 31448289 us
+Clearing system RAM file cache.
+Time taken: 31416332 us
+Clearing system RAM file cache.
+Time taken: 32568948 us
+Clearing system RAM file cache.
+Time taken: 31002669 us
+Clearing system RAM file cache.
+Time taken: 32346345 us
+Clearing system RAM file cache.
+Time taken: 31765742 us
+2 10 t
+Clearing system RAM file cache.
+Time taken: 30215563 us
+Clearing system RAM file cache.
+Time taken: 29152809 us
+Clearing system RAM file cache.
+Time taken: 30128528 us
+Clearing system RAM file cache.
+Time taken: 27091842 us
+Clearing system RAM file cache.
+Time taken: 30257528 us
+Clearing system RAM file cache.
+Time taken: 30233363 us
+Clearing system RAM file cache.
+Time taken: 27908756 us
+Clearing system RAM file cache.
+Time taken: 27908275 us
+Clearing system RAM file cache.
+Time taken: 30114356 us
+Clearing system RAM file cache.
+Time taken: 27583744 us
+Clearing system RAM file cache.
+Time taken: 29982148 us
+Clearing system RAM file cache.
+Time taken: 30172661 us
+Clearing system RAM file cache.
+Time taken: 29244035 us
+Clearing system RAM file cache.
+Time taken: 31040253 us
+Clearing system RAM file cache.
+Time taken: 31569635 us
+Clearing system RAM file cache.
+Time taken: 30522304 us
+Clearing system RAM file cache.
+Time taken: 28664930 us
+Clearing system RAM file cache.
+Time taken: 30498378 us
+Clearing system RAM file cache.
+Time taken: 30290799 us
+Clearing system RAM file cache.
+Time taken: 30669853 us
+4 10 t
+Clearing system RAM file cache.
+Time taken: 28452841 us
+Clearing system RAM file cache.
+Time taken: 29972409 us
+Clearing system RAM file cache.
+Time taken: 30782643 us
+Clearing system RAM file cache.
+Time taken: 30368002 us
+Clearing system RAM file cache.
+Time taken: 31040242 us
+Clearing system RAM file cache.
+Time taken: 31507762 us
+Clearing system RAM file cache.
+Time taken: 30890537 us
+Clearing system RAM file cache.
+Time taken: 28469045 us
+Clearing system RAM file cache.
+Time taken: 30144867 us
+Clearing system RAM file cache.
+Time taken: 30185614 us
+Clearing system RAM file cache.
+Time taken: 29812817 us
+Clearing system RAM file cache.
+Time taken: 30159027 us
+Clearing system RAM file cache.
+Time taken: 30127680 us
+Clearing system RAM file cache.
+Time taken: 31686811 us
+Clearing system RAM file cache.
+Time taken: 31719819 us
+Clearing system RAM file cache.
+Time taken: 31405158 us
+Clearing system RAM file cache.
+Time taken: 28842150 us
+Clearing system RAM file cache.
+Time taken: 31139371 us
+Clearing system RAM file cache.
+Time taken: 31338543 us
+Clearing system RAM file cache.
+Time taken: 27872506 us
+8 10 t
+Clearing system RAM file cache.
+Time taken: 31252824 us
+Clearing system RAM file cache.
+Time taken: 31651674 us
+Clearing system RAM file cache.
+Time taken: 31541791 us
+Clearing system RAM file cache.
+Time taken: 31775795 us
+Clearing system RAM file cache.
+Time taken: 31195695 us
+Clearing system RAM file cache.
+Time taken: 31211301 us
+Clearing system RAM file cache.
+Time taken: 30597938 us
+Clearing system RAM file cache.
+Time taken: 31095791 us
+Clearing system RAM file cache.
+Time taken: 31701789 us
+Clearing system RAM file cache.
+Time taken: 31308788 us
+Clearing system RAM file cache.
+Time taken: 28849088 us
+Clearing system RAM file cache.
+Time taken: 31087735 us
+Clearing system RAM file cache.
+Time taken: 32017046 us
+Clearing system RAM file cache.
+Time taken: 30673626 us
+Clearing system RAM file cache.
+Time taken: 31834387 us
+Clearing system RAM file cache.
+Time taken: 31245524 us
+Clearing system RAM file cache.
+Time taken: 28998107 us
+Clearing system RAM file cache.
+Time taken: 31893712 us
+Clearing system RAM file cache.
+Time taken: 31635079 us
+Clearing system RAM file cache.
+Time taken: 32157550 us
+16 10 t
+Clearing system RAM file cache.
+Time taken: 30734291 us
+Clearing system RAM file cache.
+Time taken: 31873811 us
+Clearing system RAM file cache.
+Time taken: 28713299 us
+Clearing system RAM file cache.
+Time taken: 29624506 us
+Clearing system RAM file cache.
+Time taken: 29525853 us
+Clearing system RAM file cache.
+Time taken: 31359115 us
+Clearing system RAM file cache.
+Time taken: 31375740 us
+Clearing system RAM file cache.
+Time taken: 30778664 us
+Clearing system RAM file cache.
+Time taken: 31550058 us
+Clearing system RAM file cache.
+Time taken: 28713187 us
+Clearing system RAM file cache.
+Time taken: 30247520 us
+Clearing system RAM file cache.
+Time taken: 30148249 us
+Clearing system RAM file cache.
+Time taken: 32312660 us
+Clearing system RAM file cache.
+Time taken: 32287785 us
+Clearing system RAM file cache.
+Time taken: 28812727 us
+Clearing system RAM file cache.
+Time taken: 32362828 us
+Clearing system RAM file cache.
+Time taken: 32801873 us
+Clearing system RAM file cache.
+Time taken: 30256088 us
+Clearing system RAM file cache.
+Time taken: 32852015 us
+Clearing system RAM file cache.
+Time taken: 32328762 us
+32 10 t
+Clearing system RAM file cache.
+Time taken: 32808747 us
+Clearing system RAM file cache.
+Time taken: 29267705 us
+Clearing system RAM file cache.
+Time taken: 32551519 us
+Clearing system RAM file cache.
+Time taken: 30232579 us
+Clearing system RAM file cache.
+Time taken: 32468707 us
+Clearing system RAM file cache.
+Time taken: 32775593 us
+Clearing system RAM file cache.
+Time taken: 29101851 us
+Clearing system RAM file cache.
+Time taken: 30088993 us
+Clearing system RAM file cache.
+Time taken: 30221684 us
+Clearing system RAM file cache.
+Time taken: 32427080 us
+Clearing system RAM file cache.
+Time taken: 30196442 us
+Clearing system RAM file cache.
+Time taken: 32020784 us
+Clearing system RAM file cache.
+Time taken: 32833414 us
+Clearing system RAM file cache.
+Time taken: 30702870 us
+Clearing system RAM file cache.
+Time taken: 33297873 us
+Clearing system RAM file cache.
+Time taken: 30627796 us
+Clearing system RAM file cache.
+Time taken: 32419424 us
+Clearing system RAM file cache.
+Time taken: 32814283 us
+Clearing system RAM file cache.
+Time taken: 30063837 us
+Clearing system RAM file cache.
+Time taken: 32452515 us
+64 10 t
+Clearing system RAM file cache.
+Time taken: 30246618 us
+Clearing system RAM file cache.
+Time taken: 33016720 us
+Clearing system RAM file cache.
+Time taken: 33124624 us
+Clearing system RAM file cache.
+Time taken: 34079022 us
+Clearing system RAM file cache.
+Time taken: 33141517 us
+Clearing system RAM file cache.
+Time taken: 30554105 us
+Clearing system RAM file cache.
+Time taken: 32743079 us
+Clearing system RAM file cache.
+Time taken: 33118810 us
+Clearing system RAM file cache.
+Time taken: 31225665 us
+Clearing system RAM file cache.
+Time taken: 33837486 us
+Clearing system RAM file cache.
+Time taken: 33996403 us
+Clearing system RAM file cache.
+Time taken: 30536949 us
+Clearing system RAM file cache.
+Time taken: 33787726 us
+Clearing system RAM file cache.
+Time taken: 31019474 us
+Clearing system RAM file cache.
+Time taken: 32693648 us
+Clearing system RAM file cache.
+Time taken: 33489275 us
+Clearing system RAM file cache.
+Time taken: 31781112 us
+Clearing system RAM file cache.
+Time taken: 34285679 us
+Clearing system RAM file cache.
+Time taken: 31831118 us
+Clearing system RAM file cache.
+Time taken: 31026183 us
+128 10 t
+Clearing system RAM file cache.
+Time taken: 34335826 us
+Clearing system RAM file cache.
+Time taken: 31889041 us
+Clearing system RAM file cache.
+Time taken: 34202097 us
+Clearing system RAM file cache.
+Time taken: 34293770 us
+Clearing system RAM file cache.
+Time taken: 32004489 us
+Clearing system RAM file cache.
+Time taken: 34567982 us
+Clearing system RAM file cache.
+Time taken: 32051664 us
+Clearing system RAM file cache.
+Time taken: 30960618 us
+Clearing system RAM file cache.
+Time taken: 34306446 us
+Clearing system RAM file cache.
+Time taken: 31830585 us
+Clearing system RAM file cache.
+Time taken: 33846667 us
+Clearing system RAM file cache.
+Time taken: 35388077 us
+Clearing system RAM file cache.
+Time taken: 35852408 us
+Clearing system RAM file cache.
+Time taken: 35121333 us
+Clearing system RAM file cache.
+Time taken: 35328515 us
+Clearing system RAM file cache.
+Time taken: 31980248 us
+Clearing system RAM file cache.
+Time taken: 33629158 us
+Clearing system RAM file cache.
+Time taken: 27493222 us
+Clearing system RAM file cache.
+Time taken: 27453012 us
+Clearing system RAM file cache.
+Time taken: 25446112 us
+1 100 t
+Clearing system RAM file cache.
+Time taken: 30972552 us
+Clearing system RAM file cache.
+Time taken: 31636681 us
+Clearing system RAM file cache.
+Time taken: 29763208 us
+Clearing system RAM file cache.
+Time taken: 31417768 us
+Clearing system RAM file cache.
+Time taken: 31032193 us
+Clearing system RAM file cache.
+Time taken: 30007540 us
+Clearing system RAM file cache.
+Time taken: 30975770 us
+Clearing system RAM file cache.
+Time taken: 31386129 us
+Clearing system RAM file cache.
+Time taken: 31260964 us
+Clearing system RAM file cache.
+Time taken: 31496008 us
+Clearing system RAM file cache.
+Time taken: 31665347 us
+Clearing system RAM file cache.
+Time taken: 29666967 us
+Clearing system RAM file cache.
+Time taken: 29788311 us
+Clearing system RAM file cache.
+Time taken: 30015656 us
+Clearing system RAM file cache.
+Time taken: 30737905 us
+Clearing system RAM file cache.
+Time taken: 30153516 us
+Clearing system RAM file cache.
+Time taken: 30442785 us
+Clearing system RAM file cache.
+Time taken: 30924290 us
+Clearing system RAM file cache.
+Time taken: 30028771 us
+Clearing system RAM file cache.
+Time taken: 31525486 us
+2 100 t
+Clearing system RAM file cache.
+Time taken: 26517437 us
+Clearing system RAM file cache.
+Time taken: 27944480 us
+Clearing system RAM file cache.
+Time taken: 26574361 us
+Clearing system RAM file cache.
+Time taken: 27732326 us
+Clearing system RAM file cache.
+Time taken: 26661967 us
+Clearing system RAM file cache.
+Time taken: 28005599 us
+Clearing system RAM file cache.
+Time taken: 26355892 us
+Clearing system RAM file cache.
+Time taken: 28073167 us
+Clearing system RAM file cache.
+Time taken: 26736846 us
+Clearing system RAM file cache.
+Time taken: 28239197 us
+Clearing system RAM file cache.
+Time taken: 27275700 us
+Clearing system RAM file cache.
+Time taken: 28296191 us
+Clearing system RAM file cache.
+Time taken: 27051851 us
+Clearing system RAM file cache.
+Time taken: 28180988 us
+Clearing system RAM file cache.
+Time taken: 26977192 us
+Clearing system RAM file cache.
+Time taken: 27581907 us
+Clearing system RAM file cache.
+Time taken: 26040689 us
+Clearing system RAM file cache.
+Time taken: 27164546 us
+Clearing system RAM file cache.
+Time taken: 25962550 us
+Clearing system RAM file cache.
+Time taken: 26945370 us
+4 100 t
+Clearing system RAM file cache.
+Time taken: 26679938 us
+Clearing system RAM file cache.
+Time taken: 28202261 us
+Clearing system RAM file cache.
+Time taken: 27558451 us
+Clearing system RAM file cache.
+Time taken: 27960834 us
+Clearing system RAM file cache.
+Time taken: 28160302 us
+Clearing system RAM file cache.
+Time taken: 28045367 us
+Clearing system RAM file cache.
+Time taken: 28338045 us
+Clearing system RAM file cache.
+Time taken: 28022281 us
+Clearing system RAM file cache.
+Time taken: 27732581 us
+Clearing system RAM file cache.
+Time taken: 27615872 us
+Clearing system RAM file cache.
+Time taken: 27491994 us
+Clearing system RAM file cache.
+Time taken: 27566019 us
+Clearing system RAM file cache.
+Time taken: 27806449 us
+Clearing system RAM file cache.
+Time taken: 28032429 us
+Clearing system RAM file cache.
+Time taken: 28292956 us
+Clearing system RAM file cache.
+Time taken: 28114231 us
+Clearing system RAM file cache.
+Time taken: 28155469 us
+Clearing system RAM file cache.
+Time taken: 28022729 us
+Clearing system RAM file cache.
+Time taken: 28204642 us
+Clearing system RAM file cache.
+Time taken: 28197110 us
+8 100 t
+Clearing system RAM file cache.
+Time taken: 26983759 us
+Clearing system RAM file cache.
+Time taken: 27382277 us
+Clearing system RAM file cache.
+Time taken: 27141536 us
+Clearing system RAM file cache.
+Time taken: 24993855 us
+Clearing system RAM file cache.
+Time taken: 27324270 us
+Clearing system RAM file cache.
+Time taken: 28095167 us
+Clearing system RAM file cache.
+Time taken: 28127849 us
+Clearing system RAM file cache.
+Time taken: 25929600 us
+Clearing system RAM file cache.
+Time taken: 27629574 us
+Clearing system RAM file cache.
+Time taken: 26013359 us
+Clearing system RAM file cache.
+Time taken: 27481896 us
+Clearing system RAM file cache.
+Time taken: 25756884 us
+Clearing system RAM file cache.
+Time taken: 27762993 us
+Clearing system RAM file cache.
+Time taken: 25830634 us
+Clearing system RAM file cache.
+Time taken: 27241443 us
+Clearing system RAM file cache.
+Time taken: 25842976 us
+Clearing system RAM file cache.
+Time taken: 28186441 us
+Clearing system RAM file cache.
+Time taken: 26171497 us
+Clearing system RAM file cache.
+Time taken: 27975101 us
+Clearing system RAM file cache.
+Time taken: 26245682 us
+16 100 t
+Clearing system RAM file cache.
+Time taken: 27700262 us
+Clearing system RAM file cache.
+Time taken: 27526920 us
+Clearing system RAM file cache.
+Time taken: 27202736 us
+Clearing system RAM file cache.
+Time taken: 25248907 us
+Clearing system RAM file cache.
+Time taken: 25278518 us
+Clearing system RAM file cache.
+Time taken: 24591096 us
+Clearing system RAM file cache.
+Time taken: 28118564 us
+Clearing system RAM file cache.
+Time taken: 24799446 us
+Clearing system RAM file cache.
+Time taken: 25651494 us
+Clearing system RAM file cache.
+Time taken: 24805437 us
+Clearing system RAM file cache.
+Time taken: 25635211 us
+Clearing system RAM file cache.
+Time taken: 24839334 us
+Clearing system RAM file cache.
+Time taken: 25220625 us
+Clearing system RAM file cache.
+Time taken: 24811524 us
+Clearing system RAM file cache.
+Time taken: 28000157 us
+Clearing system RAM file cache.
+Time taken: 24861816 us
+Clearing system RAM file cache.
+Time taken: 27883154 us
+Clearing system RAM file cache.
+Time taken: 25187827 us
+Clearing system RAM file cache.
+Time taken: 28172692 us
+Clearing system RAM file cache.
+Time taken: 25212920 us
+32 100 t
+Clearing system RAM file cache.
+Time taken: 28267793 us
+Clearing system RAM file cache.
+Time taken: 25138534 us
+Clearing system RAM file cache.
+Time taken: 28274175 us
+Clearing system RAM file cache.
+Time taken: 24501128 us
+Clearing system RAM file cache.
+Time taken: 27893397 us
+Clearing system RAM file cache.
+Time taken: 24683331 us
+Clearing system RAM file cache.
+Time taken: 27727352 us
+Clearing system RAM file cache.
+Time taken: 27083357 us
+Clearing system RAM file cache.
+Time taken: 28109786 us
+Clearing system RAM file cache.
+Time taken: 25065174 us
+Clearing system RAM file cache.
+Time taken: 28606420 us
+Clearing system RAM file cache.
+Time taken: 25159099 us
+Clearing system RAM file cache.
+Time taken: 29055526 us
+Clearing system RAM file cache.
+Time taken: 24974697 us
+Clearing system RAM file cache.
+Time taken: 28308146 us
+Clearing system RAM file cache.
+Time taken: 27394714 us
+Clearing system RAM file cache.
+Time taken: 28174809 us
+Clearing system RAM file cache.
+Time taken: 24868365 us
+Clearing system RAM file cache.
+Time taken: 28065853 us
+Clearing system RAM file cache.
+Time taken: 25055374 us
+64 100 t
+Clearing system RAM file cache.
+Time taken: 28152148 us
+Clearing system RAM file cache.
+Time taken: 25208140 us
+Clearing system RAM file cache.
+Time taken: 28374846 us
+Clearing system RAM file cache.
+Time taken: 25129874 us
+Clearing system RAM file cache.
+Time taken: 28278825 us
+Clearing system RAM file cache.
+Time taken: 25205590 us
+Clearing system RAM file cache.
+Time taken: 28060247 us
+Clearing system RAM file cache.
+Time taken: 24729213 us
+Clearing system RAM file cache.
+Time taken: 27673553 us
+Clearing system RAM file cache.
+Time taken: 25624111 us
+Clearing system RAM file cache.
+Time taken: 29083559 us
+Clearing system RAM file cache.
+Time taken: 26147509 us
+Clearing system RAM file cache.
+Time taken: 28892701 us
+Clearing system RAM file cache.
+Time taken: 26455732 us
+Clearing system RAM file cache.
+Time taken: 29132924 us
+Clearing system RAM file cache.
+Time taken: 26047844 us
+Clearing system RAM file cache.
+Time taken: 26819189 us
+Clearing system RAM file cache.
+Time taken: 27105761 us
+Clearing system RAM file cache.
+Time taken: 28385307 us
+Clearing system RAM file cache.
+Time taken: 26828480 us
+128 100 t
+Clearing system RAM file cache.
+Time taken: 28565667 us
+Clearing system RAM file cache.
+Time taken: 26318987 us
+Clearing system RAM file cache.
+Time taken: 28664890 us
+Clearing system RAM file cache.
+Time taken: 26342697 us
+Clearing system RAM file cache.
+Time taken: 29402663 us
+Clearing system RAM file cache.
+Time taken: 26797691 us
+Clearing system RAM file cache.
+Time taken: 28689676 us
+Clearing system RAM file cache.
+Time taken: 26848853 us
+Clearing system RAM file cache.
+Time taken: 42919556 us
+Clearing system RAM file cache.
+Time taken: 29502339 us
+Clearing system RAM file cache.
+Time taken: 27273144 us
+Clearing system RAM file cache.
+Time taken: 29332982 us
+Clearing system RAM file cache.
+Time taken: 27014261 us
+Clearing system RAM file cache.
+Time taken: 29178785 us
+Clearing system RAM file cache.
+Time taken: 26921513 us
+Clearing system RAM file cache.
+Time taken: 28026178 us
+Clearing system RAM file cache.
+Time taken: 30107191 us
+Clearing system RAM file cache.
+Time taken: 26558650 us
+Clearing system RAM file cache.
+Time taken: 29635173 us
+Clearing system RAM file cache.
+Time taken: 26144864 us
+1 1000 t
+Clearing system RAM file cache.
+Time taken: 24216129 us
+Clearing system RAM file cache.
+Time taken: 22829043 us
+Clearing system RAM file cache.
+Time taken: 24166440 us
+Clearing system RAM file cache.
+Time taken: 22948355 us
+Clearing system RAM file cache.
+Time taken: 23090685 us
+Clearing system RAM file cache.
+Time taken: 24182264 us
+Clearing system RAM file cache.
+Time taken: 23056179 us
+Clearing system RAM file cache.
+Time taken: 23297042 us
+Clearing system RAM file cache.
+Time taken: 25696158 us
+Clearing system RAM file cache.
+Time taken: 98312765 us
+Clearing system RAM file cache.
+Time taken: 73380347 us
+Clearing system RAM file cache.
+Time taken: 68514505 us
+Clearing system RAM file cache.
+Time taken: 87715534 us
+Clearing system RAM file cache.
+Time taken: 95889861 us
+Clearing system RAM file cache.
+Time taken: 82138613 us
+Clearing system RAM file cache.
+Time taken: 81406765 us
+Clearing system RAM file cache.
+Time taken: 24582578 us
+Clearing system RAM file cache.
+Time taken: 24266107 us
+Clearing system RAM file cache.
+Time taken: 25243810 us
+Clearing system RAM file cache.
+Time taken: 25028364 us
+2 1000 t
+Clearing system RAM file cache.
+Time taken: 15101880 us
+Clearing system RAM file cache.
+Time taken: 16305869 us
+Clearing system RAM file cache.
+Time taken: 15127861 us
+Clearing system RAM file cache.
+Time taken: 16288981 us
+Clearing system RAM file cache.
+Time taken: 25563322 us
+Clearing system RAM file cache.
+Time taken: 15705882 us
+Clearing system RAM file cache.
+Time taken: 16355625 us
+Clearing system RAM file cache.
+Time taken: 15233745 us
+Clearing system RAM file cache.
+Time taken: 15520274 us
+Clearing system RAM file cache.
+Time taken: 16251242 us
+Clearing system RAM file cache.
+Time taken: 15160245 us
+Clearing system RAM file cache.
+Time taken: 15482650 us
+Clearing system RAM file cache.
+Time taken: 15186586 us
+Clearing system RAM file cache.
+Time taken: 16437802 us
+Clearing system RAM file cache.
+Time taken: 16271338 us
+Clearing system RAM file cache.
+Time taken: 15151977 us
+Clearing system RAM file cache.
+Time taken: 16325254 us
+Clearing system RAM file cache.
+Time taken: 15141269 us
+Clearing system RAM file cache.
+Time taken: 16382158 us
+Clearing system RAM file cache.
+Time taken: 15162191 us
+4 1000 t
+Clearing system RAM file cache.
+Time taken: 15324478 us
+Clearing system RAM file cache.
+Time taken: 16605070 us
+Clearing system RAM file cache.
+Time taken: 15358346 us
+Clearing system RAM file cache.
+Time taken: 16430485 us
+Clearing system RAM file cache.
+Time taken: 15334539 us
+Clearing system RAM file cache.
+Time taken: 16598604 us
+Clearing system RAM file cache.
+Time taken: 16209230 us
+Clearing system RAM file cache.
+Time taken: 15481079 us
+Clearing system RAM file cache.
+Time taken: 16545175 us
+Clearing system RAM file cache.
+Time taken: 15671105 us
+Clearing system RAM file cache.
+Time taken: 16735687 us
+Clearing system RAM file cache.
+Time taken: 18082692 us
+Clearing system RAM file cache.
+Time taken: 15422444 us
+Clearing system RAM file cache.
+Time taken: 16551301 us
+Clearing system RAM file cache.
+Time taken: 15309088 us
+Clearing system RAM file cache.
+Time taken: 16565858 us
+Clearing system RAM file cache.
+Time taken: 15581036 us
+Clearing system RAM file cache.
+Time taken: 15516249 us
+Clearing system RAM file cache.
+Time taken: 16590114 us
+Clearing system RAM file cache.
+Time taken: 15422225 us
+8 1000 t
+Clearing system RAM file cache.
+Time taken: 18801113 us
+Clearing system RAM file cache.
+Time taken: 17707713 us
+Clearing system RAM file cache.
+Time taken: 19014097 us
+Clearing system RAM file cache.
+Time taken: 19162323 us
+Clearing system RAM file cache.
+Time taken: 18886756 us
+Clearing system RAM file cache.
+Time taken: 19227146 us
+Clearing system RAM file cache.
+Time taken: 17922416 us
+Clearing system RAM file cache.
+Time taken: 18046371 us
+Clearing system RAM file cache.
+Time taken: 19215980 us
+Clearing system RAM file cache.
+Time taken: 17957148 us
+Clearing system RAM file cache.
+Time taken: 19077300 us
+Clearing system RAM file cache.
+Time taken: 17926603 us
+Clearing system RAM file cache.
+Time taken: 18923935 us
+Clearing system RAM file cache.
+Time taken: 19286305 us
+Clearing system RAM file cache.
+Time taken: 19723342 us
+Clearing system RAM file cache.
+Time taken: 19288820 us
+Clearing system RAM file cache.
+Time taken: 19475307 us
+Clearing system RAM file cache.
+Time taken: 19102318 us
+Clearing system RAM file cache.
+Time taken: 19437605 us
+Clearing system RAM file cache.
+Time taken: 17860067 us
+16 1000 t
+Clearing system RAM file cache.
+Time taken: 34193617 us
+Clearing system RAM file cache.
+Time taken: 34176925 us
+Clearing system RAM file cache.
+Time taken: 30770755 us
+Clearing system RAM file cache.
+Time taken: 27793424 us
+Clearing system RAM file cache.
+Time taken: 26159131 us
+Clearing system RAM file cache.
+Time taken: 27512959 us
+Clearing system RAM file cache.
+Time taken: 26125340 us
+Clearing system RAM file cache.
+Time taken: 27353715 us
+Clearing system RAM file cache.
+Time taken: 26158913 us
+Clearing system RAM file cache.
+Time taken: 27601743 us
+Clearing system RAM file cache.
+Time taken: 26153006 us
+Clearing system RAM file cache.
+Time taken: 27717288 us
+Clearing system RAM file cache.
+Time taken: 26584269 us
+Clearing system RAM file cache.
+Time taken: 28058341 us
+Clearing system RAM file cache.
+Time taken: 26647815 us
+Clearing system RAM file cache.
+Time taken: 27801362 us
+Clearing system RAM file cache.
+Time taken: 26486383 us
+Clearing system RAM file cache.
+Time taken: 27662642 us
+Clearing system RAM file cache.
+Time taken: 25573604 us
+Clearing system RAM file cache.
+Time taken: 26547414 us
+32 1000 t
+Clearing system RAM file cache.
+Time taken: 23646899 us
+Clearing system RAM file cache.
+Time taken: 24425263 us
+Clearing system RAM file cache.
+Time taken: 23339744 us
+Clearing system RAM file cache.
+Time taken: 24948314 us
+Clearing system RAM file cache.
+Time taken: 27851019 us
+Clearing system RAM file cache.
+Time taken: 25217840 us
+Clearing system RAM file cache.
+Time taken: 26879447 us
+Clearing system RAM file cache.
+Time taken: 25503495 us
+Clearing system RAM file cache.
+Time taken: 26912813 us
+Clearing system RAM file cache.
+Time taken: 25261075 us
+Clearing system RAM file cache.
+Time taken: 27202598 us
+Clearing system RAM file cache.
+Time taken: 24880803 us
+Clearing system RAM file cache.
+Time taken: 27003883 us
+Clearing system RAM file cache.
+Time taken: 25519635 us
+Clearing system RAM file cache.
+Time taken: 27156407 us
+Clearing system RAM file cache.
+Time taken: 25676097 us
+Clearing system RAM file cache.
+Time taken: 28067560 us
+Clearing system RAM file cache.
+Time taken: 25627284 us
+Clearing system RAM file cache.
+Time taken: 27459757 us
+Clearing system RAM file cache.
+Time taken: 25430732 us
+64 1000 t
+Clearing system RAM file cache.
+Time taken: 27320473 us
+Clearing system RAM file cache.
+Time taken: 24592229 us
+Clearing system RAM file cache.
+Time taken: 26539442 us
+Clearing system RAM file cache.
+Time taken: 24963729 us
+Clearing system RAM file cache.
+Time taken: 26490884 us
+Clearing system RAM file cache.
+Time taken: 23572935 us
+Clearing system RAM file cache.
+Time taken: 24582273 us
+Clearing system RAM file cache.
+Time taken: 24323287 us
+Clearing system RAM file cache.
+Time taken: 25064145 us
+Clearing system RAM file cache.
+Time taken: 24255909 us
+Clearing system RAM file cache.
+Time taken: 27102517 us
+Clearing system RAM file cache.
+Time taken: 28787957 us
+Clearing system RAM file cache.
+Time taken: 31905971 us
+Clearing system RAM file cache.
+Time taken: 29409648 us
+Clearing system RAM file cache.
+Time taken: 28485730 us
+Clearing system RAM file cache.
+Time taken: 29126958 us
+Clearing system RAM file cache.
+Time taken: 28703689 us
+Clearing system RAM file cache.
+Time taken: 31068834 us
+Clearing system RAM file cache.
+Time taken: 29260032 us
+Clearing system RAM file cache.
+Time taken: 31981185 us
+128 1000 t
+Clearing system RAM file cache.
+Time taken: 29220854 us
+Clearing system RAM file cache.
+Time taken: 28384003 us
+Clearing system RAM file cache.
+Time taken: 32055301 us
+Clearing system RAM file cache.
+Time taken: 28515538 us
+Clearing system RAM file cache.
+Time taken: 31832418 us
+Clearing system RAM file cache.
+Time taken: 29170346 us
+Clearing system RAM file cache.
+Time taken: 28721639 us
+Clearing system RAM file cache.
+Time taken: 32283761 us
+Clearing system RAM file cache.
+Time taken: 28706092 us
+Clearing system RAM file cache.
+Time taken: 29511424 us
+Clearing system RAM file cache.
+Time taken: 29692825 us
+Clearing system RAM file cache.
+Time taken: 28681350 us
+Clearing system RAM file cache.
+Time taken: 29120065 us
+Clearing system RAM file cache.
+Time taken: 28597986 us
+Clearing system RAM file cache.
+Time taken: 32454283 us
+Clearing system RAM file cache.
+Time taken: 30181865 us
+Clearing system RAM file cache.
+Time taken: 32696552 us
+Clearing system RAM file cache.
+Time taken: 29634577 us
+Clearing system RAM file cache.
+Time taken: 29154303 us
+Clearing system RAM file cache.
+Time taken: 32214091 us

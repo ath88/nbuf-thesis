@@ -211,45 +211,60 @@ include deadlocks or other race conditions. This section will explain some of th
 
 
 \subsubsection{Flow and Deadlocks}
-Concurrency done wrong can result in processes running out of control, or not running at all. The school-example used in teaching
-deadlocks to classes is known as the Dining Philosophers Problem, which was presented by E. W. Dijkstra in 1971.
-[Dijkstra, Hierarchical ordering of sequential processes]
+Concurrency done wrong can result in processes running out of control, or not running at all. The school-example used in teaching deadlocks to classes is known as the Dining Philosophers Problem, which was presented by E. W. Dijkstra in 1971. [Dijkstra, Hierarchical ordering of sequential processes]
 
-Deadlocks and deadlock prevention is paramount when working with concurrency, but explaining why should be trivial at this point.
-I will suggest reading Concurrent Systems, by Jean Bacon [reference!], if you want to learn more on this topic. This report will
-assume thorough knowledge of how deadlocks can happen, and what measures can be deployed to avoid them, both theoretical and practical,
-but I will not explain further here.
+Deadlocks and deadlock prevention is paramount when working with concurrency, but explaining why should be trivial at this point. I will suggest reading Concurrent Systems, by Jean Bacon [reference!], if you want to learn more on this topic. This project requires knowledge of how deadlocks can happen, and what measures can be deployed to avoid them, both theoretical and practical, but I will not explain further here.
 
 
 \subsubsection{Finite-state Diagrams}
-[rewrite to match how they are used in the design-section.]
-Any process can be viewed as a finite-state machine. Doing so will help understanding the process,
-its possible states, and the triggers that will change the internal state of the process. This is known as the scientific
-body of "Automata Theory" and what I will elaborate on here, is a subset of this field.
+Any process can be interpreted as a finite-state machine. Doing so will help understanding the process, its possible states, and the triggers that will change the internal state of the process. This is known as the scientific body of "Automata Theory" and what I will elaborate on here, is a subset of this field.
 
-To gain a better understanding of a finite-state machines, finite-state diagrams are brilliant for ensuring that the process at hand reacts and
-interacts as expected. The finite-state diagrams are trivial to both create and understand, and can be used for reasoning about a process,
-as a development tool and as documentation about a certain system or process. It gives an abstract idea of how a concrete process works.\\\\
+To gain a better understanding of a finite-state machine, a finite-state diagram can be created. It is a tool that can be used to ensure that the process at hand reacts and interacts as expected. Finite-state diagrams are trivial to both create and understand, and can be used to reason about a process, as a development tool and as documentation about a certain system or process. It gives an abstract idea of how a concrete process progresses.\\
 
-In figure [DOOR EXAMPLE not yet made] there is an example finite state diagram. This diagram is quite simple, and shows how a door with a lock will behave.
-There are 3 states, "open", "closed" and "locked", and this finite set is often denoted as $Q$. This means that the door must be either open, closed or locked (in reality the door is both closed and locked at the same time, but I leave this out for brevity). Further, there are 4 different events that can happen, "open door", "close door", "lock door" and "unlock door". This set is called the "alphabet" and is denoted $\sum$.
+% State Diagram 1
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+    \def\svgwidth{\columnwidth}
+    \input{figures/door.pdf_tex}
+  	\caption{This is an example of a finite-state diagram. It represents a door which can be in 3 states, and there are 4 different transitions.}
+	\label{figure:door}
+	\end{adjustwidth}
+\end{figure}
 
+In figure \autoref{figure:door} there is an example finite state diagram. This diagram is quite simple, and shows how a door with a lock will behave.
 
+There are 3 states, \textit{Open}, \textit{Closed} and \textit{Locked}. The process must be in either state at any one time. Further, there are 4 different events that can happen, \textit{open}, \textit{close}, \textit{lock} and \textit{unlock}. These can happen at any time, and the door will transition to another state. There are implicit transitions on every state, which lead to itself on events that there are not explicit transitions for. For example, locking an open door will make the door transition to the same state, while locking a closed door will make the door transition to the \textit{Locked}-state.\\
 
-
-
-\subsubsection{CSP}
-CSP is a formal language to describe patterns of interactions in concurrent systems. This can be used to prove that a system
-will react as expected.
+When explaining how the \nbuf framework works, I will use finite-state diagrams to show how the worker threads behaves. This helps understand how the threads are initialized, used and terminated, and more importantly, how they interact with each other through synchronization primitives.
 
 
 \subsubsection{Synchronization Primitives}
-future 
-promise
-mutexes
-condition variables
+Concurrent programming entails using some kind of multiprocessing. This is usually done by using multiple threads which can be scheduled individually on cores. This allows multiple thread to run simultaneous, using the same memory space. While sharing memory is very practical, it also brings several pitfalls that can seem in-obvious to a programmer who aren't used to concurrency. To solve these problems, it is necessary to use some kind of synchronization, to ensure \textit{thread-safety}.
 
-The \nbuf framework uses the promise-future construct. This is a construct which allows the 
+All synchronization mechanisms are based on the hardware instruction \textit{test-and-set}. Using this instruction, locks, semaphores and queues can be implemented. These are all known as \textit{Synchronization Primitives}. These are abstractions, and are intended to make it easier to make more elaborate synchronization in systems. The primitives that are relevant to this project are the following:
+
+\begin{itemize}
+\item \textbf{Mutex} - A mutex is merely an advanced locking primitive. The name is derived from 'mutual exclusion'.
+\item \textbf{Condition Variable} - A condition variable is a primitive that can be used to make threads wait for specific events.
+\item \textbf{Future} - A future is a primitive that encapsulates the result of an asynchronous calculation for the calling thread. The naming is intended to be understood as; \textit{In the future I have this}.
+\item \textbf{Promise} - A promise is a primitive that encapsulates the result of an asynchronous calculation for the executing thread. The naming is intended to be understood as; \textit{I will have to fulfil the promise}.
+\end{itemize}
+
+
+A \textbf{mutex} is basically a lock. It can be used to protect critical section of code. It is a higher-level construct, and automatically makes a thread wait, when it attempts to obtain the mutex while it is already taken.\\
+
+A \textbf{Condition Variable} is a primitive which can be used to block threads on purpose. A thread can be set to wait on a specific condition variable, which means that it will block until another thread has notified one or all threads that are waiting on that specific condition variable. Most condition variables have a mechanism for notifying just one thread, or all threads. This is practical, since there might be cases where many threads are waiting, but only one can continue, and the other threads will have to wait for some time. In other cases, all threads might be able to continue working after this event. 
+
+Normally, using a condition variable requires that some condition has to be true, before continuing, since many implementations allow threads to wake up spuriously, even though no threads has notified. In case of a spurious wakeup, the thread should be able to detect if the wakeup was due to a notification, or if it was spurious.\\
+
+A \textbf{Future} is a primitive which is created by the calling thread, sometimes referred to as the master thread. This thread creates the future primitive and pairs it with a task that can be performed asynchronously. The task can be started, and the master thread can perform other calculations. When the master thread needs the result from the task, it can wait for the future to be finished, such that the result can be retrieved from the future.\\
+
+A \textbf{Promise} is a primitive which is created by the calling thread, and passed off to another thread. From the promise, the calling thread can create a future. The worker thread which received the promise as a parameter can set the content of the promise when it exits, such that it can be retrieved.\\
+
+When working with multiple threads, it is historically very hard to handle exceptions that happens in other threads than the master thread. When a thread encountered an exception, it would terminate, and throw away the exception. A solution was to define a shared exception variable prior to starting the task, which could then be used to inform about what happened to the thread. 
+
+When using the Future-Promise constructs, exceptions are stored in the promise and re-thrown when the master thread attempts to retrieve the result through the future. This makes debugging concurrency a lot easier, since the exceptions are no longer thrown away, and doesn't require the programmer to declare exception variables before every asynchronous call.
 
 
 \newpage
@@ -522,6 +537,11 @@ But, there are even more possible configurations. There are cases where we want 
 
 This concludes the requirements to the the \nbuf framework. A framework which supports all of these items, should be generic enough to be useful, while still being practical.
 
+
+\subsection{Algorithmic Overview}
+
+
+
 \newpage
 \subsection{Framework Interface}
 When building a framework for other people to use, it is important to keep a clean, intuitive and usable interface. While man-pages are very useful, they can be dreading to read, for the non-guru. There are several ways to design a clean interface. Some developers tend to require a ton of configuration to do the simplest of things \footnote{The linux-command \textit{find} is a good example of non-intuitive CLI. You would expect the first argument to be the filename you want to find, but you need to specify the filename with -name.}, while others merely have sane defaults, and requires configuration to use the more advanced features\footnote{The linux-command \textit{locate} does what you would expect, it locates files with the name you supply as the first argument.}.\\
@@ -575,12 +595,13 @@ The \nbuf framework has two primary goals. It has to be efficient, and it has to
 
 
 \subsection{Experimental Setup}
-The framework solves a practical problem, namely the speed of disks, bandwidth of networks, etc., and therefore it must be benchmarked in a practical environment to prove its effectiveness. This, however, will add a lot of factors, which are not controllable, to the results of the benchmarking. This section will elaborate on how different factors can affect the benchmarking, and how to eliminate these factors.\\
-
+The framework solves a practical problem, namely it tries to fully utilize the speed of disks, bandwidth of networks, etc., and therefore it must be benchmarked in a practical environment to prove its effectiveness. This however, will add a lot of uncontrollable factors, to the results of the benchmarking. This section will elaborate on how different factors can affect the benchmarking, and how to eliminate these factors.\\
 
 What I would like to measure is \textit{throughput}. The throughput can be measured as bytes processed per second. This clearly depends on how much execution work is required, and how much computational resources are available. If enough computing power is available though, the throughput depends less on the computation task.\\
 
-I have decided that the benchmarking calculation is as simple as a search for minimum and maximum and calculating an average value. The naive implementation is simply a sequential loop which sums the values, while looking for minimum and maximum values and counting the amount of values. This implementation can be used as a baseline to test how much faster the \nbuf framework can perform these calculations. If the framework is slower than this naive implementation, then the framework is useless.
+I have decided that the benchmarking calculation is as simple as a search for minimum and maximum and calculating an average value. The naive implementation is simply a sequential loop which sums the values, while looking for minimum and maximum values and counting the amount of values. This implementation can be used as a baseline to test how much faster the \nbuf framework can perform these calculations. If the framework is slower than this naive implementation, then the framework is useless.\\
+
+The benchmarking will be done on a machine with a Intel Core i7-2600K CPU 3.40GHz x 8. This is a processor with 4 cores, all with hyperthreading. On a system, it will appear to have 8 logical cores, but it can only run 4 hardware threads at a time. Futher, the system has 4 * 4GB of DDR3 1333MHz as main memory. This will sum up to 16 GB of main memory. Finally, the machines has a Samsung 500GB hard disk drive, with 16MB cache and 7200 RPM. The machine runs Ubuntu 14.04 64-bit as operating system. 
 
 
 \subsubsection{From disk}
@@ -592,7 +613,7 @@ Imagine performing an experiment twice, which includes timing how fast a file is
 
 Second, the operating systems doesn't write your file to disk, just because you tell it to. It has to schedule all disk I/O and therefore it keep an internal buffer of data to be written to disk. This means that when some code writes to a file-stream, it will return before the data is actually written to the disk. The data is copied to another part of the system memory, and kept there until the OS decides to write it. The size of this buffer can vary, depending on how much memory the OS keeps to itself. When the buffer is full, the OS is forced to wait to disk, and let the program wait, until the OS has enough memory to copy the data from the program. To show how large the wait on disk input and disk output is, a simple experiment has been conducted.\\
 
-The I/O experiment is meant to show the different between return times when performing disk input and disk output, when an operating systems manages the I/O. First, a file with 1GB of data is located on a file, on a consumer-grade hard disk drive. The OS file cache is emptied, a timer is started, and the program starts reading the entire file into main memory. When returning from the read, the timer is stopped and the resulting time duration is printed. Then a timer starts, and the program starts writing the 1GB data to a new file on the disk drive. When the OS returns to the user-code, the timer is stopped and the duration is printed. The experiment is repeated 5 times, after letting the operating system flush the buffer to disk, to ensure consistent results. The results can be seen in \autoref{table:io-test}.\\
+The I/O experiment is meant to show the different between return times when performing disk input and disk output, when the operating systems manages the I/O. First, a file with 1GB of data is located on a file, on a consumer-grade hard disk drive. The OS file cache is emptied, a timer is started, and the program starts reading the entire file into main memory. When returning from the read, the timer is stopped and the resulting time duration is printed. Then a timer starts, and the program starts writing the 1GB data to a new file on the disk drive. When the OS returns to the user-code, the timer is stopped and the duration is printed. The experiment is repeated 20 times, after letting the operating system flush the buffer to disk, to ensure consistent results. The results can be seen in \autoref{table:io-test}.\\
 
 \begin{table}[]
 \begin{adjustwidth}{-0.5in}{-0.5in}
@@ -600,21 +621,22 @@ The I/O experiment is meant to show the different between return times when perf
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Action}                & \textbf{Average time taken}               & \textbf{Standard Deviation / Average} \\ \midrule
-Reading 1GB of data from disk  & 16550732 $\mu s$                          & 0.0425                                \\ \midrule
-Writing 1GB of data to disk    & 396883   $\mu s$                          & 0.0333                                \\ \midrule
-Copying 1GB in memory          & 184583   $\mu s$                          & 0.0046                                \\ \bottomrule
+Reading 1GB of data from disk  & 13411522 $\mu s$                          & 0.0281                                \\ \midrule
+Writing 1GB of data to disk    & 541844   $\mu s$                          & 0.0128                                \\ \midrule
+Copying 1GB in memory          & 184583   $\mu s$                          & 0.0046                                \\ \midrule
+Processing 1GB in memory       & 4757252  $\mu s$                          & 0.0068                                \\ \bottomrule
 \end{tabular}
-\caption{The results from the disk I/O experiment. Note that when writing data to disk, the operating system performs \textit{latency hiding}, which is why we observe much faster \textit{writing} that \textit{reading}. This is the timings we should expect to see when reading or writing 1GB of data to disk.}
+\caption{The results from the disk I/O experiment on the actual hardware. Note that when writing data to disk, the operating system performs \textit{latency hiding}, which is why we observe much faster \textit{writing} that \textit{reading}. These are the timings we should expect to see when reading or writing 1GB of data to disk.}
 \label{table:io-test}
 \end{adjustwidth}
 \end{table}
 
 
-When this has been concluded, we know that the throughput of the \nbuf framework, is limited by the rate at which it can read data from the disk. The throughput should be as close to this as possible, to exhibit efficient I/O. If the throughput becomes higher than the disk loading times, it is a clear warning that something doesn't work as expected.
+When this has been concluded, we know that the throughput of the \nbuf framework, is limited by the rate at which it can read data from the disk. The throughput of the framework should be as close to this as possible, to exhibit efficient I/O. If the framework can parse data faster than the disk loading times, it is a clear warning that something doesn't work as expected.
 
 
-\subsubsection{From RAM}
-In comparison, main memory on a system suffers from much less latency, than disk. This means that the potential throughput is much larger, when processing data that are already in memory. The experiment conducted here, merely copies 1GB of ram from one allocation to another. It is not necessary to test reads and writes, since they are essentially the same, in memory.\\
+\subsubsection{From memory}
+In comparison, main memory on a system suffers from much lower latency, than disk. This means that the potential throughput is much larger, when processing data that are already in memory. The experiment conducted here, merely copies 1GB of ram from one allocation to another. It is not necessary to test reads and writes, since they are essentially the same, in memory.\\
 
 The results in \autoref{table:io-test} clearly shows that working with data that is already in-memory is much faster than when it has to be fetched from disk, to no surprise. Also, the timings are much more consistent, since we aren't working with a spinning metal disk that has to seek and find.\\
 
@@ -622,26 +644,104 @@ We can use these results to gain a higher confidence, when benchmarking the \nbu
 
 
 \subsection{Experimental Results}
+Every experiment has been run 20 times, averaging the results and calculating the standard deviation. In the experiments where data is read from disk, the file cache has been cleared just prior to starting the experiment. Further, all non-critical software running on the experiment machine was terminated, to ensure that there was as few other processes running on the system. While this was possible to a large extend, it is still necessary to keep in mind that this is a live and running Linux system, so some inconsistency between experimental results are to be expected.
 
-
-Every experiment has been run 5 times, averaging the results and calculating the standard deviation. In the experiments where data is read from disk, the file cache has been cleared just prior to starting the experiment.
 
 \subsubsection{From disk}
-Here is the results from running the experiment with parallel execution.
+The results from running the experiment with parallel execution can be seen in \autoref{figure:disk-par}, and with sequential execution in \autoref{figure:disk-seq}. The practical timings from \autoref{table:io-test} tell us that the rate at which we can read 1GB data from the hard disk on the actual system is approximately 13.4 seconds. Further, the processing takes approximately 4.8 seconds. Performed sequentially, we can add the timings, this becomes 18.2 seconds.\\
+
+The best result we get is approximately 15.1 seconds, which was achieved with 2 threads and using 1GB of memory. The result is quite close to the practical limit of 13.4 seconds. It is worth noticing that the system performs much worse when using more than 8 threads. This is probably due to many unnecessary context-switches, since we can only schedule up to 8 threads on the system.\\
+
+It it difficult to say why the system performs so much worse with less available memory. The smaller amounts of memory will result in less memory allocated per thread, and in turn result in many smaller I/O operations. However, the experiments with 10M available memory performed even worse than the 1M experiments. I am unable to explain why.\\
+
+The key points are to let the framework have as much memory as possible, and not running more threads than there are hardware support for. 
+
+% Disk Parallel
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.7]{../test_results/disk_par.png}
+  	\caption{These are the results from running the benchmarking method on a 1GB data from a file stream, with varying amounts of available memory, from 1 megabyte to 1 gigabyte. Processing of the data was done in parallel. The standard deviation resembles the standard deviation from the disk-benchmarking and lies from 1\% to 8\%.}
+	\label{figure:disk-par}
+	\end{adjustwidth}
+\end{figure}
+
+% Disk Sequential
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.7]{../test_results/disk_seq.png}
+  	\caption{These are the results from running the benchmarking method on a 1GB data from a file stream, with varying amounts of available memory, from 1 megabyte to 1 gigabyte. Processing of the data was done sequentially. The standard deviation resembles the standard deviation from the disk-benchmarking and lies from 1\% to 8\%.}
+	\label{figure:disk-seq}
+	\end{adjustwidth}
+\end{figure}
 
 
-\subsubsection{From RAM}
+\subsubsection{From memory}
+The results from running the framework on streams of data that are already loaded into memory can be seen in \autoref{figure:mem-par} and in \autoref{figure:mem-seq}. The first one shows the results from running the system with parallel processing, where the second exhibits sequential processing. This is the ideal case, where we have a fast input stream, and we have a somewhat large amount of processing power available.\\
+
+The practical timings in \autoref{table:io-test} shows that copying 1GB of memory takes approximately 0.2 seconds, this will be done twice in the benchmarking. First, when copying data to the worker buffers, and then to the output buffer. Further, the processing itself takes around 4.8 seconds. In total, that sums up to 5.2 seconds, if it were to be done sequentially.\\
+
+The results shows that when we can perform sequential processing, the buffer-size does not make much of a difference. \autoref{figure:mem-par} clearly has very identical results for all four sizes of memory. With sequential processing, however, using the most memory clearly makes the framework faster. Larger buffers results in more processing, before switching threads, which in turn results in less overall locking and unlocking. The sequential processing manages to perform the benchmarks in approximately 4.8 seconds. This shows that the I/O has been hidden completely, and only the processing itself takes time. The parallel processing performs the benchmarking in approximately 1.6 seconds, effectively making it approximately 3.5 times faster thant the sequential processing. There is some inherent overhead from multithreading, which is why we can't achieve a 4 times speed-up with 4 cores.\\
+
+The results also shows that with 1 thread, the timings match with performing the calculations in sequence. \autoref{figure:mem-seq} shows that with smaller amounts of memory, the locking becomes more expensive, with multiple threads. With 1M memory and 16 threads, there is a speed-up from 8 threads. The same tendency can be seen with 10M from 64 threads to 128 threads. This behaviour is hard to explain, and I have no apparent explanation. However, with plenty of memory, the sequential system performs best at around 8 threads. 
 
 
+% Memory Parallel
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.7]{../test_results/mem_par.png}
+  	\caption{These are the results from running the benchmarking method on a 1GB data from main memory, with varying amounts of available memory, from 1 megabyte to 1 gigabyte. Processing of the data was done in parallel. The standard deviation resembles the standard deviation from the memory-benchmarking and lies from 1\% to 2\%.}
+	\label{figure:mem-par}
+	\end{adjustwidth}
+\end{figure}
 
+% Memory Sequential
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.7]{../test_results/mem_seq.png}
+  	\caption{These are the results from running the benchmarking method on a 1GB data from main memory, with varying amounts of available memory, from 1 megabyte to 1 gigabyte. Processing of the data was done sequentially. standard deviation resembles the standard deviation from the memory-benchmarking and lies from 1\% to 2\%.}
+	\label{figure:mem-seq}
+	\end{adjustwidth}
+\end{figure}
 
 
 \newpage
 \section{Conclusion}
-There is nothing new and groundbreaking in this, but using knowledge to create something useful for other computer scientists (and physicists!)
+The \nbuf framework has been built with one main purpose. It should allow users with less experience in writing multithreaded applications to perform optimal and parallel I/O. This entails two different criteria. 
+
+The first criteria depends on whether the framework really exhibits optimal I/O. The second criteria depends on whether the task of abstracting away the concurrency has created an interface that requires less multithreading experience to use.
 
 
+\subsection{Performance}
+Benchmarking the \nbuf framework has been done with a method that finds minimum and maximum values, and calculates an average value. This is a very light computation, and as such leaves most of the execution time of the framework to performing I/O. This is a good thing, because it lets us see directly, how the speed of the I/O resources affects the performance of the framework.\\
 
+When working with a slow stream, the framework benefits from having a large amount of memory. Further, having more threads than there are hardware threads for, only reduces the efficiency. 
+
+When using a slow hard disk drive, the sequential operation takes approximately 18.2 seconds, where the optimal configuration of the framework only takes approximately 15.1 seconds. The practical limit is approximately 13.4 seconds. This is independent of whether we perform sequential or parallel execution.\\
+
+When working with a fast stream, the framework exhibits different behaviours when performing parallel processing and sequential processing. With sequential processing, having a large amount of memory helps. With parallel processing, the amount of memory doesn't make a large difference. In both cases, the optimal amount of threads matches with the amount of hardware threads. 
+
+The the benchmarking task can be done sequentially in approximately 5.2 seconds, and the framework performs the benchmarking task in approximately 1.6 seconds. This is a factor 3.5 speed-up, which aligns with the 4 hardware cores on the system at hand.\\
+
+To sum up, both with slow and fast I/O streams, speed-ups were achieved as expected. The highest throughput was obtained when having a fast stream, and parallel processing. When working with a slow stream, allocating extra memory gives a higher throughput. Using more threads than the hardware supports never gives higher throughput.
+
+
+\subsection{Usefulness}
+Producing on the \nbuf framework has resulted in a C++11 library that can be included by people with less experience with multi threaded applications. The library has been proven to increase performance whenever data is too large to fit in main memory, or when a small memory footprint is desired and larger amounts of data needs to be processed.
+
+The framework gives access to native threading on most *NIX, while exposing an interface where no locks or synchronization has to be handled. The user of the library still has to know to what extend he can parallelize the task at hand, so that the task is solved correctly. This does require some amount of knowledge about how concurrency works.\\
+
+Concurrency is inherently hard, and the framework performs correct concurrency. Users who decide to include this library will be able to perform tasks with efficient and parallel I/O, without having to debug for race conditions. This was the intention, and the framework solves the problem.\\
+
+The framework does not yet support the queue mechanics, which is necessary for computational tasks which require more synchronization. This limitation decreases the usefulness of the system. Implementing such queue mechanic can be done rather easily, and therefore this is \textit{not a big problem}. The design has already been laid out.\\
+
+The \nbuf framework is already available for people to work with through GitHub\footnote{The library is available on http://github.com/ath88/nbuf.}, and I expect to submit it to Boost\footnote{Boost is a repository for peer-reviewed C++ libraries. It can be found at http://www.boost.org.} if the code reaches maturity levels beyond this master's thesis.
+
+
+\newpage
 \section{Future Work}
 \subsubsection{IO throttling}
 not reading 1gb of data as a start, but starting low, and slowly increasing the buffer sizes.
@@ -652,20 +752,14 @@ When reading small files, allocating large buffers is unnecessary.
 \subsubsection{Slow network? How does istream handle that}
 
 
+
+
+
 \bibliographystyle{abbrv}
 \bibliography{bib}
 
-The End \\\\\\\\\\\\\\\\\\
 
-The learning goals for reference:
 
-\begin{itemize}
-  \item Programming for and with Big Data  // DONE
-  \item Thoroughly understand and design generic synchronization  // Eh..
-  \item Reason about complexity in relation to Big Data // Scheduled under 'Motivation'
-  \item Reason about IO problems  // Scheduled under motivation and theory
-  \item Design correct benchmarking  // Scheduled under Experimentation and benchmarking
-\end{itemize}
 
 
 \end{document}

@@ -46,7 +46,7 @@ class Accumulator : public VirtualAccumulator {
         int64_t count = 0;
         double sum = 0;
         double min = std::numeric_limits<double>::max();
-        double max = 0;
+        double max = std::numeric_limits<double>::min();
 };
 
 
@@ -110,7 +110,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Time taken: " << duration << " us" << std::endl;
 
 
-//    skip writing output
+//    skip writing output to disk, since data has merely been moved to the other stringbuffer
 //    os << oss.str();
 
     cout << *acc << endl;

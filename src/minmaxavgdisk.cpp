@@ -46,7 +46,7 @@ class Accumulator : public VirtualAccumulator {
         int64_t count = 0;
         double sum = 0;
         double min = std::numeric_limits<double>::max();
-        double max = 0;
+        double max = std::numeric_limits<double>::min();
 };
 
 

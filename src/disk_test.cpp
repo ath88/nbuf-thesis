@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Starting input-test" << std::endl;
     std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
-//    is.read(chars, filesize);
+    is.read(chars, filesize);
 
     std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
     std::cout << "Stopping input-test" << std::endl;

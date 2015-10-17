@@ -1,0 +1,140 @@
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13501708 us
+Output-test time taken: 536535 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13767104 us
+Output-test time taken: 536695 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13145156 us
+Output-test time taken: 545073 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13020663 us
+Output-test time taken: 542377 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 12995866 us
+Output-test time taken: 546766 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13866574 us
+Output-test time taken: 538699 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13908063 us
+Output-test time taken: 552244 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13879471 us
+Output-test time taken: 530004 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13841709 us
+Output-test time taken: 548309 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13825111 us
+Output-test time taken: 546363 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13941233 us
+Output-test time taken: 533086 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13472651 us
+Output-test time taken: 539597 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13004127 us
+Output-test time taken: 550866 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13017000 us
+Output-test time taken: 551088 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13045606 us
+Output-test time taken: 547616 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13037304 us
+Output-test time taken: 534231 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13087064 us
+Output-test time taken: 549340 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13086286 us
+Output-test time taken: 534155 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13236336 us
+Output-test time taken: 536078 us
+Clearing system RAM file cache.
+Starting input-test
+Stopping input-test
+Starting output-test
+Stopping output-test
+Input-test time taken: 13551416 us
+Output-test time taken: 537768 us

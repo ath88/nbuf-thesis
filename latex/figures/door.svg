@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="22cm"
+   height="6cm"
+   viewBox="309 -147 438 105"
+   id="svg3113"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="door.svg">
+  <metadata
+     id="metadata3201">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3199" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     id="namedview3197"
+     showgrid="false"
+     inkscape:zoom="1.0839899"
+     inkscape:cx="482.03824"
+     inkscape:cy="161.83801"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3113" />
+  <g
+     id="g3115"
+     transform="matrix(1.0896038,0,0,1,-27.812853,0)">
+    <rect
+       style="fill:#ffffff"
+       x="310.39801"
+       y="-114"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3117" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="310.39801"
+       y="-114"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3119" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="350.39801"
+       y="-92.099998"
+       id="text3121">
+      <tspan
+         x="350.39801"
+         y="-92.099998"
+         id="tspan3123">Open</tspan>
+    </text>
+  </g>
+  <g
+     id="g3125"
+     transform="matrix(1.1792525,0,0,1,-94.30065,0)">
+    <rect
+       style="fill:#ffffff"
+       x="491.79999"
+       y="-113.9"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3127" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="491.79999"
+       y="-113.9"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3129" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="531.79999"
+       y="-92"
+       id="text3131">
+      <tspan
+         x="531.79999"
+         y="-92"
+         id="tspan3133">Closed</tspan>
+    </text>
+  </g>
+  <g
+     id="g3135"
+     transform="matrix(1.1216052,0,0,1,-90.71457,0)">
+    <rect
+       style="fill:#ffffff"
+       x="665.97601"
+       y="-112.41"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3137" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2"
+       x="665.97601"
+       y="-112.41"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect3139" />
+    <text
+       font-size="12.8"
+       style="font-size:12.80000019px;font-style:normal;font-weight:normal;text-anchor:middle;fill:#000000;font-family:sans-serif"
+       x="705.97601"
+       y="-90.509903"
+       id="text3141">
+      <tspan
+         x="705.97601"
+         y="-90.509903"
+         id="tspan3143">Locked</tspan>
+    </text>
+  </g>
+  <g
+     id="g3145">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 483.698,-119.213 A 85.3318,85.3318 0 0 0 390.398,-114"
+       id="path3147" />
+    <polygon
+       style="fill: #000000"
+       points="490.003,-115.23 478.99,-117.161 483.975,-119.693 484.94,-125.199 "
+       id="polygon3149" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="490.003,-115.23 478.99,-117.161 483.975,-119.693 484.94,-125.199 "
+       id="polygon3151" />
+  </g>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="545"
+     y="-25"
+     id="text3153">
+    <tspan
+       x="545"
+       y="-25"
+       id="tspan3155" />
+  </text>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="425.771"
+     y="-134.084"
+     id="text3157">
+    <tspan
+       x="425.771"
+       y="-134.084"
+       id="tspan3159">close</tspan>
+  </text>
+  <g
+     id="g3161">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 398.653,-72.9306 A 84.2006,84.2006 0 0 0 490.065,-80.5245"
+       id="path3163" />
+    <polygon
+       style="fill: #000000"
+       points="392.233,-76.7222 403.296,-75.1111 398.388,-72.4364 397.582,-66.9046 "
+       id="polygon3165" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="392.233,-76.7222 403.296,-75.1111 398.388,-72.4364 397.582,-66.9046 "
+       id="polygon3167" />
+  </g>
+  <g
+     id="g3169">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 658.014,-117.915 A 77.6615,77.6615 0 0 0 571.8,-113.9"
+       id="path3171" />
+    <polygon
+       style="fill: #000000"
+       points="664.219,-113.794 653.27,-116.055 658.328,-118.436 659.459,-123.91 "
+       id="polygon3173" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="664.219,-113.794 653.27,-116.055 658.328,-118.436 659.459,-123.91 "
+       id="polygon3175" />
+  </g>
+  <g
+     id="g3177">
+    <path
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       d="M 579.761,-72.3949 A 77.6615,77.6615 0 0 0 665.976,-76.4099"
+       id="path3179" />
+    <polygon
+       style="fill: #000000"
+       points="573.556,-76.5161 584.506,-74.2544 579.447,-71.8743 578.317,-66.3997 "
+       id="polygon3181" />
+    <polygon
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="573.556,-76.5161 584.506,-74.2544 579.447,-71.8743 578.317,-66.3997 "
+       id="polygon3183" />
+  </g>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="425.138"
+     y="-49.2698"
+     id="text3185">
+    <tspan
+       x="425.138"
+       y="-49.2698"
+       id="tspan3187">open</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="606.194"
+     y="-134.785"
+     id="text3189">
+    <tspan
+       x="606.194"
+       y="-134.785"
+       id="tspan3191">lock</tspan>
+  </text>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="599.408"
+     y="-45.4143"
+     id="text3193">
+    <tspan
+       x="599.408"
+       y="-45.4143"
+       id="tspan3195">unlock</tspan>
+  </text>
+</svg>

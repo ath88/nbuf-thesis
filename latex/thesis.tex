@@ -2,7 +2,7 @@
 
 \usepackage[latin1]{inputenc}
 \usepackage{palatino}
-\usepackage{color}
+\usepackage[usenames]{color}
 
 \usepackage{hyperref}
 
@@ -12,7 +12,13 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 
+\usepackage[]{algorithm2e}
+\usepackage{varwidth}
 
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\usepackage[babel, en, nat, farve, titelside]{ku-forside}
 
 % nbuf command
 \newcommand{\nbuf}{\textit{nbuf} }
@@ -29,9 +35,13 @@
 \begin{center}{\colorbox{checkcolor}{\usebox{\definitionbox}}}%
 \end{center}}
 
+\opgave{Master's Thesis}
 \title{Automatic $n$-buffering for Big Data processing}
-\author{Asbj\o rn Thegler}
+\undertitel{Department of Computer Science}
+\author{Asbj\o rn Thegler - asbjoern@gmail.com}
 \date{October 2015}
+\vejleder{Professor Brian Vinter}
+
 
 \begin{document}
 
@@ -40,74 +50,71 @@
 \sloppy
 
 \begin{abstract}
-WRITE LAST
+\begin{doublespace}
+This study attempts to construct a generally applicable library for efficient and parallel processing of data from generic data streams.
 
-During the research, it was discovered that using three buffers was an arbitrary constraint, and
-concluded that many use cases would benefit from a different number of buffers.
+The \nbuf library is intended to be used mainly for live processing of very voracious streams. This is useful when huge amounts of data is being generated and when processing those data must be done before archiving them in slow storage solutions.
+
+The library has been built with the abstract synchronization primitives made available in C++11, which is based on POSIX threads. Further care was placed in making the library as flexible as possible for every thinkable scenario.
+
+Benchmarking results shows that the library can fully utilize the rate of a data stream, when sufficient computational powers are available. In cases where there are additional constraints on the level of parallelism, the library exhibit brilliant latency hiding capabilities.
+
+The library successfully enables developers to efficiently process streams of data in a concurrent manner, without extensive knowledge about multiprocessing and inter-process communication.\\
+
+The \nbuf library can be found at \url{http://github.com/ath88/nbuf}.
+
+\end{doublespace}
 \end{abstract}
 
 \newpage
 \tableofcontents
 
-
-
 \newpage
 \section{Introduction}
-It is hardly a secret that Big Data has become a huge topic over the last few years. Huge companies worldwide
-compete on this new trend, and searching for 'big data trend' on Google reveals how popular this topic is, and is predicted to
-be, for years to come. Forbes, CIO, ComputerWorld and Gartner all predict increases in the Big Data industry. (More)\\
+Big Data has become a huge topic over the last few years. Google Trends reveal that the interest for 'big data' has exploded since 2012. Huge companies worldwide speculate on how to profit from this new trend, and many widely respected conferences include entire tracks on how to work with Big Data.\\
 
-There are many definitions to what Big Data really is. The truly new aspects of Big Data is to have large enough datasets to be able to find
-and recognize patterns that previously were too vague or noisy to find, using only smaller datasets. When traditional data
-processing techniques grow inapplicable, we must gain new knowledge to find methods to work with Big Data.
+There are many definitions to what Big Data really is. In 2001, an analyst from Gartner, Doug Laney, defined big data to consist of 3 V's. He defines them as \textbf{Velocity}, \textbf{Volume} and \textbf{Variety}.\\
 
-(Moore's Law for data growth? Harddisk space?)
-Having data doesn't make any interesting results. The data must be processed, analyzed, and scrutinized. This is no small
-task, and given that many new measurement tools generate tera-bytes of data per hour, back in 2013, we need to have mechanisms
-in place for analyzing the data in a similar rate.\\
+\textbf{Velocity} refers to the speed at which data is produced. Previously, most dataset could be processed and analysed with primitive mechanisms, without much thought into architecture and algorithms. With the new velocity of data generation, it is necessary to design solutions that can handle and utilize very fast streams of information.
+
+\textbf{Volume} refers to the huge volumes of data that are being gathered in recent times. Modern scientific equipment will generate several terabytes per day, which all have to be processed and stored. To support these growing amounts of data, it is necessary to keep producing larger and cheaper storage solutions.
+
+\textbf{Variety} refers to the endless amounts of different formats that data is stored in. To be able to interpret such unstructured data, it is necessary to have a wide array of tools and mechanisms to analyse these different sorts of information in a way that enables the usefulness of the resulting information.\\
+
+In 2014, Mark van Rijmenam from Datafloq argued that the definition of Big Data could be extended with 4 additional V's. He defines them as \textbf{Veracity}, \textbf{Variability}, \textbf{Visualisation} and \textbf{Value}\\
+
+\textbf{Veracity} refers to the validity of the data. Even though data is being generated, they are worthless if they are not correct. Smaller amounts of data can be sanity-checked manually, but these huge amounts of data cannot be checked for errors in any sensible way. The data generation mechanisms must be precise and correct.
+
+\textbf{Variability} refers to the changing meaning of a subject. Languages and meanings change over time, and as such, the interpretation of data must adhere to the current context, and not a context that has been established over many years.
+
+\textbf{Visualization} refers to the need for presenting the results from analysing Big Data in a sensible way. Two dimensional graphs can no longer express the multitude of finding that can be found in such huge datasets. New mechanisms will have to be create, which can be used to visualize interesting parts, such that decisions can be made on a clear basis.
+
+\textbf{Value} refers to the potentially lucrativeness of the Big Data industry. While using those huge datasets can indeed help increase profit for many companies, these techniques are not cheap to use. Done wrong, a Big Data venture can cost a lot in storage and processing power.\\
+
+
+This project does not aim to solve all problems encountered in the field of Big Data. The main focus of this study is to attempt to mitigate some of the difficulties that arise from having data streams with \textit{extreme velocity}. 
 
 
 \subsection{Terminology}
-(Should this be past tense?)
-The first popularly known occurrences of the term 'Triple Buffering' stems from the computer graphics industry.
-This is a technique where the graphics card renders images into 3 different buffers. Previous to this technique, a double buffer
-was used. A 'front-buffer' and a 'back-buffer'. The renderer would render a frame into the back buffer, and the buffers would swap. Since no
-synchronization exists between the renderer and the consumer, a buffer swap could happen in the middle of consumption,
-resulting in what is known as 'screen tearing'. Some attempts at fixing this problem is know as 'vertical sync' or 'vSync'.
-This included adding artificial delays to the renderer, to match the frame rate of the consuming screen.
+The first popularly known occurrences of the term 'Triple Buffering' stems from the computer graphics industry. This is a technique where the graphics card renders images into 3 different buffers. Previous to this technique, a double buffer was used. A 'front-buffer' and a 'back-buffer'. The renderer would render a frame into the back buffer, and the buffers would swap. Since no synchronization exists between the renderer and the consumer, a buffer swap could happen in the middle of consumption, resulting in what is known as 'screen tearing'. Some attempts at fixing this problem is know as 'vertical sync' or 'vSync'. This included adding artificial delays to the renderer, to match the frame rate of the consuming screen.
 
-To better solve this problem, a third buffer is employed, effectively making it 'Triple Buffering'. The renderer could now
-switch between two back-buffers, and always have a free buffer to write a new frame to. If the consumer was too slow, frames
-would simply be lost, with no greater loss to the viewer. This obviously require extra memory on the graphics card.\\
+To better solve this problem, a third buffer is employed, effectively making it 'Triple Buffering'. The renderer could now switch between two back-buffers, and always have a free buffer to write a new frame to. If the consumer was too slow, frames would simply be lost, with no greater loss to the viewer. This obviously require extra memory on the graphics card.\\
 
 
 \subsection{Triple Buffering Big Data}
-'Triple Buffering' within computer graphics is a different thing, though there are many similarities. We can translate some of the solution
-to the field of Big Data. The bottlenecks of a graphics card are namely the rate of the renderer and the rate of the consumer. This translates to the IO problems we encounter when working with Big Data. The graphics industry solved the problem by utilizing more space, in the shape of an extra buffer
-and in theory, this can solve, or at least mitigate, some of the IO problems related to Big Data.\\
+'Triple Buffering' within computer graphics is a different thing, though there are many similarities. We can translate some of the solution to the field of Big Data. The bottlenecks of a graphics card are namely the rate of the renderer and the rate of the consumer. This translates to the IO problems we encounter when working with Big Data. The graphics industry solved the problem by utilizing more space, in the shape of an extra buffer and in theory, this can solve, or at least mitigate, some of the IO problems related to Big Data.\\
 
 
-The focus of this thesis project is to produce a framework or library that enables programmers to process or transform
-large amounts of data in an efficient and concurrent way, without having to worry about concurrency issues and memory
-management. The framework or library should be generic, such that it is as generally applicable as possible, while still
-being useful and simple enough to understand for people who aren't familiar with multiprogramming. It is important to note
-that this project in no way introduces new technology or uncovers scientific ground. This is a
-study in working with existing technology to create a highly optimized and effective library.
+The focus of this thesis project is to produce a framework or library that enables programmers to process or transform large amounts of data in an efficient and concurrent way, without having to worry about concurrency issues and memory management. The framework or library should be generic, such that it is as generally applicable as possible, while still being useful and simple enough to understand for people who aren't familiar with multiprogramming. It is important to note that this project in no way introduces new technology or uncovers scientific ground. This is a study in working with existing technology to create a highly optimized and effective library.
 
 
 
 \subsection{Motivation}
-This project didn't manifest from thin air. Many people have probably seen it coming from a long
-distance. Triple Buffering has been used many places, many times before, and it is a well-known
-term. The reason why this project was started now, and not 10 years ago or in 10 years, is a combination and collision between
-Moore's Law, data bus speed and the growing Open Source community, both within academia, but also within established industries.
+This project didn't manifest from thin air. Many people have probably seen it coming from a long distance. Triple Buffering has been used many places, many times before, and it is a well-known term. The reason why this project was started now, and not 10 years ago or in 10 years, is a combination and collision between Moore's Law, data bus speed and the growing Open Source community, both within academia, but also within established industries.
 
 
 \subsubsection{The IO Problem}
-When processing data, it is relatively easy to increase the amount of computational resources, but moving
-data to and from the computational resources results in IO, which quickly becomes a bottleneck. To process
-data as fast as possible, we want to squeeze as much effect out of every available resource. When
-processing data sequentially, the traditional method is to;
+When processing data, it is relatively easy to increase the amount of computational resources, but moving data to and from the computational resources results in IO, which quickly becomes a bottleneck. To process data as fast as possible, we want to squeeze as much effect out of every available resource. When processing data sequentially, the traditional method is to;
 
 \begin{enumerate}
 \item Load data into buffer from disk
@@ -116,75 +123,38 @@ processing data sequentially, the traditional method is to;
 \item If there is more data; go to 1
 \end{enumerate}
 
-If the computational task of processing or transforming is large enough, the IO becomes negligible. If the
-computational task is very small, most of the execution time will be spent waiting for IO. In the latter case,
-there are two notable resources, which are being used in turn, namely the \textit{input stream} and the
-\textit{output stream}. This means that only half of the resources are being used at any given moment. In this
-case, we could have two concurrent workers, each swapping what resource they use, to utilize all of the resources
-at any given time.
+If the computational task of processing or transforming is large enough, the IO becomes negligible. If the computational task is very small, most of the execution time will be spent waiting for IO. In the latter case, there are two notable resources, which are being used in turn, namely the \textit{input stream} and the \textit{output stream}. This means that only half of the resources are being used at any given moment. In this case, we could have two concurrent workers, each swapping what resource they use, to utilize all of the resources at any given time.
 
-When the I/O becomes negligible, we have a very compute-heavy task. In this case, we can attempt to add more
-compute resources, which in turn, will shorten the execution time. This means that we could have 5, 10 or 50
-buffers, depending on how large the computation task is, in comparison to I/O.
-
-(More?)
+When the I/O becomes negligible, we have a very compute-heavy task. In this case, we can attempt to add more compute resources, which in turn, will shorten the execution time. This means that we could have 5, 10 or 50 buffers, depending on how large the computation task is, in comparison to I/O.
 
 
 \subsubsection{The Generic Problem}
-TODO: Rewrite to \textit{software bloat} Reading man pages is dreading
+When programmers and developers write software, they are generally encouraged to utilize established libraries as much as possible, instead of relying on their own ability to create elaborate and correct code. Often, a programmer has to solve a specific problem, which can be translated into a general problem which has already been solved multiple times. The productivity of the programmer can increase greatly, when using tested and accomplished libraries. Some topics are inherently difficult for programmers, such as memory management and concurrency, often leading to memory leaks and race conditions. When using established libraries, these problems are often already addressed.
 
-When programmers and developers write software, they are generally encouraged to utilize established
-libraries as much as possible, instead of relying on their own ability to create elaborate and correct
-code. Often, a programmer has to solve a specific problem, which can be translated into a general problem
-which has already been solved multiple times. The productivity of the programmer can increase greatly,
-when using tested and accomplished libraries. Some topics are inherently difficult for programmers, such
-as memory management and concurrency, often leading to memory leaks and race conditions. When using
-established libraries, these problems are often already addressed.
+Within the Open Source community, it is common practice to make ones code available for others to use. When multiple entities utilize the same code or library, bugs and race conditions are found, reported and corrected much faster than when code is only used privately (link?). Over time, this often result in libraries that are used globally, and has many contributors.
 
-Within the Open Source community, it is common practice to make ones code available for others to use.
-When multiple entities utilize the same code or library, bugs and race conditions are found, reported and corrected
-much faster than when code is only used privately (link?). Over time, this often result in libraries that are
-used globally, and has many contributors.
+When a library does not exist for the specific problem, programmers must solve the problem themselves. This will result in many programmers solving the same problem over and over again. At some point, someone will see the pattern and pick up the task, and attempt to build a generally applicable library.
 
-When a library does not exist for the specific problem, programmers must solve the problem themselves. This will
-result in many programmers solving the same problem over and over again. At some point, someone will see the pattern
-and pick up the task, and attempt to build a generally applicable library.
-
-There are some pitfalls to using libraries to solve tasks. When a problem is simple, using a complex library might
-be too much work, since many libraries has a ton of options that might be relevant. Reading the 'man'-page of any
-Linux tool can be a daunting task, while often simple problems can be solved faster in other ways. Also, Open Source
-projects tend to have organic growth. Without tight steering from some small group of committed developers, a project
-will be monolithic and many people will classify it as 'bloatware'.
+There are some pitfalls to using libraries to solve tasks. When a problem is simple, using a complex library might be too much work, since many libraries has a ton of options that might be relevant. Reading the 'man'-page of any Linux tool can be a daunting task, while often simple problems can be solved faster in other ways. Also, Open Source projects tend to have organic growth. Without tight steering from some small group of committed developers, a project will be monolithic and many people will classify it as 'bloatware'.
 
 [cite Zawinski's law of software envelopment]
     Every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can.
 
 
 \subsubsection{Use Cases}
-The intended library can be used for several specific purposes. Many places, large amounts of data are being processed.
-Following are a few use cases where using such a library is indeed a good solution.\\
+The intended library can be used for several specific purposes. Many places, large amounts of data are being processed. Following are a few use cases where using such a library is indeed a good solution.\\
 
 
-Hash algorithms are designed to be compute-heavy. When hash-values are needed on very large local files, it would
-be more efficient to use a n-buffering mechanism, and add buffers until the IO again becomes the bottleneck. The
-command line tools md5sum and sha512sum both have implementations that read 512 bytes at a time, which results in
-many IO operations, in case of large files, which could be avoided, if more memory is available for multiple buffers. Gathering statistics
-on sensor data is also a brilliant use case.\\
+Hash algorithms are designed to be compute-heavy. When hash-values are needed on very large local files, it would be more efficient to use a n-buffering mechanism, and add buffers until the IO again becomes the bottleneck. The command line tools md5sum and sha512sum both have implementations that read 512 bytes at a time, which results in many IO operations, in case of large files, which could be avoided, if more memory is available for multiple buffers. Gathering statistics on sensor data is also a brilliant use case.\\
 
 
-When large amounts of sensor data are received via a network, they are usually written directly to disk, before
-they get processed. In cases where much of the data is merely noise it could be good to have an option to process
-the data the instant it arrives, instead of waiting until after is has been written to disk. This can include
-gathering statistics, calculating hash values or filtering irrelevant data.\\\\
-
-(More use cases?)
+When large amounts of sensor data are received via a network, they are usually written directly to disk, before they get processed. In cases where much of the data is merely noise it could be good to have an option to process the data as it arrives, instead of delaying until after is has been written to disk. This can include gathering statistics, calculating hash values or filtering irrelevant data.\\
 
 
+The ESS\footnote{European Spallation Source, \url{https://europeanspallationsource.se}.} project aims to create a state of the art super microscope. Such microscope is bound to produce tons of information which many different peers will be interested in analysing. The raw data will have to be stored, in case questions arise about some data. Typically, the data will be stored on inexpensive tape or cheap hard disks, which are very slow storage solutions. 
 
-\subsubsection{Big Data and Complexity}
-Complexity of algorithms doesn't matter with small data-sizes. Big Data makes complexity really important.
+Whenever data is generated from the microscope, there will be a set of different  statistical results which will always be necessary. If these statistics could be gathered as the data is in-route to the storage solution, it would not be necessary to load the data back into memory to perform these statistical calculations. This would save a lot of waiting time and free time to perform other tasks.
 
-time to access disk compared to memory
 
 
 
@@ -211,9 +181,9 @@ include deadlocks or other race conditions. This section will explain some of th
 
 
 \subsubsection{Flow and Deadlocks}
-Concurrency done wrong can result in processes running out of control, or not running at all. The school-example used in teaching deadlocks to classes is known as the Dining Philosophers Problem, which was presented by E. W. Dijkstra in 1971. [Dijkstra, Hierarchical ordering of sequential processes]
+Concurrency done wrong can result in processes spinning out of control, or not running at all. The widest known example used in teaching about deadlocks is known as the Dining Philosophers Problem, which was presented by E. W. Dijkstra in 1971. [Dijkstra, Hierarchical ordering of sequential processes]
 
-Deadlocks and deadlock prevention is paramount when working with concurrency, but explaining why should be trivial at this point. I will suggest reading Concurrent Systems, by Jean Bacon [reference!], if you want to learn more on this topic. This project requires knowledge of how deadlocks can happen, and what measures can be deployed to avoid them, both theoretical and practical, but I will not explain further here.
+Deadlocks and deadlock prevention is paramount when working with concurrency, but explaining why should be trivial at this point. I will suggest reading Concurrent Systems, by Jean Bacon [reference!], if you want to learn more on this topic. When working with concurrency, it is important to have knowledge of how deadlocks can happen, and what measures can be deployed to avoid them, both theoretical and practical.
 
 
 \subsubsection{Finite-state Diagrams}
@@ -269,38 +239,123 @@ When using the Future-Promise constructs, exceptions are stored in the promise a
 
 \newpage
 \subsection{Data Handling}
-Working efficiently with data is no small task. There are many physical limits to what results we can obtain, but getting
-to these limits often requires a lot of thought, since there are many abstraction layers between hardware and software. This section
-will elaborate on how to work with these sizes of data in a correct and efficient manner.
-
-
-\subsubsection{Optimal Buffer Size}
-The size of a buffer
-
-Buffer size should be less than the file size. If buffer sizes are 3*300M but file is 100M,
-then it is inherently sequential.
-
+Working efficiently with data is no small task. There are many physical limits to what results we can obtain, but getting to these limits often requires a lot of thought, since there are many abstraction layers between hardware and software. This section will elaborate on how to work with these sizes of data in a correct and efficient manner.
 
 
 \subsubsection{Data Marshalling}
-When receiving and sending data to and from a stream, care should be taken to correctly de-serialize and serialize data.
-(Google Proto-buffers)
+When receiving and sending data to and from a stream, care should be taken when interpreting the data. The act of turning an object into a string representation is known as \textit{marshalling} or \textit{serialization}. The opposite act, turning a string representation into an object is called \textit{demarshalling} or \textit{de-serialization}.\\
+
+There are many ways to serialize an object, depending on what data the object contains. If the object contains variable length strings, there are several ways to design the string representation. One solution is to decide on the maximum length of the string, and then allocate that same size in the string representation. This can result in a lot of unnecessary white space, if the string turns out to always be very small, compared to the allocated size. De-marshalling becomes trivial, because you know exactly where and how long the string is. Also, the size of the string representation can be predicted precisely.\\
+
+Another solution is to use some kind of delimiters. Depending on the content of the string, we can use a symbol such as the pipe or a simple semi-colon. This solution saves a lot of space, but makes parsing harder, since it is necessary to inspect the data, before parsing it. Further, you cannot reason about the maximum size of the string representation, since the strings can have arbitrary length.\\
+
+When using a very simple object structure, it may be easier to simply use the binary representation of the object. In some cases this will work, and others it will not. Different platforms and compilers may differ in how the memory layout of an object is constructed. This will lead to inconsistencies and ultimately in-correctness.\\
+
+Google has given a solution to the marshalling problem with a mechanism they call Protocol Buffers \footnote{reference google project page}. They allow you to specify a data structure in a platform- and language-independent way, and have constructed cross-platform libraries for C++, Java and Python. These libraries can be used to create a protocol buffer object, from the specified structure. When desired, one such object can be marshalled, and de-marshalled by another program, on another platform or in another language. This helps keeping a consistent view of how data is interpreted and altered across multiple systems and implementations.
+
+The Protocol Buffer implementations inspect the string representation when de-marshalling the data, and it is impossible to predict the length of an objects string representation, unless you yourself enforce fixed width-strings. While inspecting is slower than parsing a fixed-width string representation, Google has promised that the implementations are highly optimized. Further, they recommend keeping protocol buffer objects smaller than 1 megabyte.\\
+
+When a developer uses the \nbuf framework, it is recommended to use a protocol buffer, when processing the data. However, since the \nbuf framework only allows fixed-width parsing, care must be taken to ensure that the width of the string representation is constant, or ensure that proper padding is added.
+
+
+\subsubsection{Optimal Buffer Size}
+Buffers are used everywhere. The optimal size is a ubiquitous definition, and all depends on what you want to \textit{optimize for}. In some cases, you want speed, in other cases, you want a low memory footprint.\\
+
+Typically, you want the system to perform well, within some given constraints. Sometimes using too large buffers merely slows down a system, since other processes won't be able to allocate the desired memory.\\
+
+When processing data, a buffer that is larger than the amount of data it needs to buffer is unnecessary. As an example, a video-buffer is large enough to ensure that connection fallouts of a certain size can be mitigated. If the buffer is so large that it can contain the entire video file, most of the buffer is wasted, since memory could easily be reused, when playing the video.\\
+
+When using the \nbuf framework, using buffers that allows a single thread to contain the entire file in its local buffer, will make the framework behave inherently sequential. This reduces the multiprocessing capabilities of the framework. However, using too small buffers will induce extra overhead, since the amount of I/O operations will be increasing. Finding the right balance is essential, but it is hard to generalize what size will fit most projects.
 
 
 \subsubsection{System Data Steams}
-Why is output to disk fast, while input from disk is slow? Systems buffers.
+The \nbuf framework seeks to give an agnostic approach to how the streams behave. The framework should give the same results, when given the same data, whether the data comes from a network stream, a file stream, or a stream from a memory location. This means that it has to use only slightly abstract methods, on the streams that are supplied.\\
+
+It is important to know how different streams behave, even though the framework must have agnostic behaviour. When benchmarking, it is indeed important, to be able to identify where and why certain results are attained.\\
+
+In C++11, there are two different kinds of basic streams, which both inherit from a general stream type. These streams are known as \textit{string streams} and \textit{file streams}. A third kind of stream can be gained from third-party libraries, such as the Boost.Asio library\footnote{ http://www.boost.org/doc/libs/1\_59\_0/doc/html/boost\_asio.html}, namely a \textit{network stream}.\\
+
+These three kinds of streams can be used in the \nbuf framework, which gives a very versatile system. Each kind of stream, however, has limitations which in general will limit the throughput of the framework.\\
+
+A \textit{network stream} used as input is limited by the bandwidth of the connection to the data source. If the data source is on a local wired network, it is common to have a large bandwidth, while a remote data source, transmitting via a modem will have a drastically reduced bandwidth. The same limit applies when sending data to a network stream. However, most operating systems keep a buffer, such that the program can quickly return, while data may not be sent yet. The data may stay in the buffer for some time, until the operating system decides to transmit the data. If large amounts of data is transmitted at once, the buffer might be too small, and the operating system is forced to transmit some data, before returning control to the calling process.\\
+
+A \textit{file stream} used as an input stream is limited by the bandwidth of the disk and the bus that connects the disk to the system. When traditional hard disks or tapes are used, locating data can be a slow task, and benchmarking such tasks will result in very inconsistent results. The disk has to seek to the right disk and location, before it is able to read the file. Newer technology, such as a solid state disk or raid configurations can mitigate or eliminate these inconsistencies. When a file stream is used as output, the operating system again buffers the data, which allows the calling program to return rather quickly. Similarly, with output data that is too large to fit in the buffer, the operating system will have to save some data to disk, before returning to the calling process.\\
+
+A \textit{string stream} is a stream that streams directly from data that is already located in main memory. The bandwidth of such stream is only limited by the transfer rate of the main memory technology and the bus that connects the memory to the CPU. This is, without doubt, the fastest stream that can be used in the framework. When used as an output stream, it has the same fast transfer rate. The downside to this kind of stream is that it is very impractical, since you will hardly ever be able to fit all your data into a string stream, and if you do, you might as well have processed directly from the other stream, instead of putting data into the string stream.\\
+
+When benchmarking the \nbuf system, we want to ensure that optimal I/O has been achieved. If the framework can handle concurrency from fast streams, slower streams should be trivial to handle concurrently.
 
 
+\subsection{Theoretical Speed-up with Threads}
+Most modern CPUs include multiple cores with hyper threading. On a single-core systems, only one thread can execute at any one time. On multi core systems, multiple threads can execute in parallel. If every process only contains a single thread, no memory is shared between multiple threads, unless explicit process memory sharing is used.\\
 
-\subsection{Theoretical Speedup with threads}
-Using multiple threads will still only use one process. This can use all computational cores on a system, but will not be able to use other devices, such as extra CPUs or GPUs.
+If a process contains several threads, the process can have several threads executing simultaneous on multiple cores. When tasks can be done in parallel, the entire bunch of tasks can be finished faster than if they were performed in sequence.\\
+
+The \nbuf framework allows developers to interlace the tasks of \textit{reading}, \textit{processing} and \textit{writing} data. Following are a few examples of how the three tasks at hand can be interlaced.\\
+
+In \autoref{figure:timings1} is an example of how the framework could interlace if both the read-, the process- and the write-task took an identical amount of time. In this case, three threads would be able to completely occupy both the read and the write resource at all times. If another thread was added, it would only introduce idle times, while waiting for the resources to become available.\\
+
+% Timings 1
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.5]{figures/timings1.png}
+  	\caption{This is an example of how the \nbuf framework could interlace, if all three tasks are similar in time taken.}
+	\label{figure:timings1}
+	\end{adjustwidth}
+\end{figure}
+
+% Timings 2
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.5]{figures/timings2.png}
+  	\caption{This is an example of how the \nbuf framework could interlace, if the processing task takes more time than the read and write tasks.}
+	\label{figure:timings2}
+	\end{adjustwidth}
+\end{figure}
+
+In \autoref{figure:timings2} is an example of how the framework could interlace if the processing task takes longer time than the read and the write task. The processing task can be done in parallel, but after the third thread has read, the read-resource is available for some time, until the first thread is done processing and writing. In this case, more threads are needed to fully utilize the read- and write-resources.\\
 
 
+In \autoref{figure:timings3} is an example of how the framewould could interlace if the processing task takes less time than the read and the write task. The read- and write-resources are occupied at all time, but threads are merely waiting idle, for resources to become available. In this case, two threads would not be able to fully utilize the read- and write-resources, but the smaller the processing task becomes, the more idle time there will be. In the case where there is no processing at all, only two threads would be able to fully utilize the resources. \\
 
-\subsection{Theoretical Speedup with devices}
-Using multiple devices, such as GPUs can greatly affect the computational power. When performing the same task on many pieces
-of data, one should always consider using a GPU, since it is massively parallel.
+% Timings 3
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.5]{figures/timings3.png}
+  	\caption{This is an example of how the \nbuf framework could interlace, if the processing task takes less time than the read and write tasks.}
+	\label{figure:timings3}
+	\end{adjustwidth}
+\end{figure}
 
+In \autoref{figure:timings4} is an example of how the framework could interlace if the processing task takes more time than the read and the write task, and the processing step can only be done sequentially. The read- and write-resources are not fully utilized, but processing happens as often as possible. Adding or removing threads would not increase the utilization of the read- and write-resources, so in this case, the utilization cannot become any higher.\\
+
+% Timings 4
+\begin{figure}
+	\begin{adjustwidth}{-0.5in}{-0.5in}
+    \centering
+     \includegraphics[scale=0.5]{figures/timings4.png}
+  	\caption{This is an example of how the \nbuf framework could interlace, if the processing task takes more time than the read and write tasks, but the processing task can only be performed by one thread at a time}
+	\label{figure:timings4}
+	\end{adjustwidth}
+\end{figure}
+
+
+From this, we can conclude that full utilization always can be achieved when we have an unlimited amounts of threads. With four threads, we can, theoretically, obtain close to a quarter of the execution time, including some latency hiding, compared to only having one thread. In cases where the processing task is very small, more than three threads does not increase the throughput. When the processing step has to be done in sequence, it might not be possible to achieve full utilization of the I/O resources.
+
+
+\subsection{Theoretical Speed-up with Devices}
+Using a single CPU on the machine at hand severely limits the obtainable speed-ups. Modern CPUs can include up to 16 cores with hyper threading. Fully parallelizable algorithms can hope to reduce the calculation time to around a tenth, compared to a sequential version. When using multiple CPUs, it should be possible to reduce the execution time even further. The impressive speed-up will not be found when using CPUs, however.\\
+
+Modern GPUs easily has more than a thousand computational cores. While this sounds alluring, they are far more difficult to use, than traditional CPU cores. They are bound by being in the SIMD-class of devices, which is short for \textit{Single Instruction, Multiple Data}. All cores on a SIMD-device can only execute the same instructions in parallel, but they can do so on different sets of data. In some cases, this is useless, but in other cases, this can greatly increase the performance of an algorithm.\\
+
+Coding for a massively parallel device requires extensive knowledge of how to arrange data, and code in the domain specific language, in order to obtain the desired results. While the details of GPU programming is not part of this project, the idea that a thread can schedule the task on a GPU device is indeed interesting.\\
+
+A single thread can schedule multiple operations on several GPU devices. This requires handling of the stream of data, split it into suitable sizes and scheduling the tasks. Then the thread must retrieve the results, combine them back into an aggregated result and ensure that the results are properly written to the right stream.\\
+
+The \nbuf framework can easily be used, to allow threads to use external devices during the processing step. If this is done right, the execution times can go as low as a thousandth of the sequential version. This is outside the scope of this project, but it indeed important to keep this option open.
 
 
 
@@ -333,7 +388,7 @@ The entire project attempts to maximize the use of the available I/O resources o
 
 To achieve this goal, it is necessary to use some kind of concurrent programming methods. It is impossible to keep all system I/O resources busy, using only a single processing thread, since there will often be at least two resources, and there will be real processing work to be done as well. 
 
-As mentioned earlier, this has been done multiple times with a triple buffer system, where three processing threads would perform all three tasks in parallel. One thread would keep the input resource busy, would thread would keep the output resource busy, and one thread would perform the processing work.\\\\
+As mentioned earlier, this has been done multiple times with a triple buffer system, where three processing threads would perform all three tasks in parallel. One thread would keep the input resource busy, would thread would keep the output resource busy, and one thread would perform the processing work.\\
  
 
 In a new framework, we can evaluate and rethink this triple-buffer-idea. In cases where there are is a high amount of processing work, a triple buffer system will be waiting for the thread performing the real work. On a single core system, this is not a solvable problem, since we can't speed up the execution speed. A good computer scientist might be able to optimize the program, but this has a limited usefulness. 
@@ -346,7 +401,7 @@ The framework must be able to use multiple processing cores, and support the dev
 \subsubsection{Limited Space Guarantee}
 The main memory available on a computer system is rarely a hard limit. Usually, when a process starts allocating more main memory that are available, some data is moved to a swap-partition on the systems disk drive. This results in very high delays when allocating more memory, and trying to read data which has been moved to the swap-partition. When trying to work efficiently, this is a killer, and any processes doing this, will completely stall the entire system. 
 
-For this reason, it is important to be aware of the memory usage of all processes on a system. Software which greedily allocates huge amounts of memory, or simply forgets to deallocate memory (resulting in memory leaks) is to be considered buggy, and will not be used in critical systems. It is a minimum requirement for all software to deallocate memory, and many programming languages employs different methods such as garbage-collectors or scoped variables to ensure that memory is deallocated when it is no longer used.\\\\
+For this reason, it is important to be aware of the memory usage of all processes on a system. Software which greedily allocates huge amounts of memory, or simply forgets to deallocate memory (resulting in memory leaks) is to be considered buggy, and will not be used in critical systems. It is a minimum requirement for all software to deallocate memory, and many programming languages employs different methods such as garbage-collectors or scoped variables to ensure that memory is deallocated when it is no longer used.\\
 
 
 Back in the 1994, Bjarne Stroustrup [The Design and Evolution of C++] introduced the term and programming idiom \textit{RAII}, short for \textit{Resource Acquisition Is Initialization}. This has become a widely used technique which gives several advantages. In RAII all memory required for an object to exist, or a process to run, will be allocated during initialization. This gives the advantage of ensuring that the process will not slowly allocate additional memory, and over time exhaust the main memory resources.
@@ -357,7 +412,7 @@ The \nbuf framework will require memory and as such, it should be possible to gi
 \subsubsection{Custom Processing}
 The developer using the \nbuf framework will only use it, if it gives the freedom to solve whatever task he desires. Some cases warrant only gathering statistics about the data at hand, others require a slight transformation or reorganisation of data. These cases should be solvable using the framework. 
 
-The worker performing the real processing must be programmable by the developer. When the worker has a buffer full of data, it must be up to the developer to decide how to process the buffer. There should be allocated some memory for gathering statistics, and it should be possible to alter the data in the buffer. What the developer intends to do with the data in the buffer is to no concern of the framework, but the framework should support the intentions of the developer.\\\\
+The worker performing the real processing must be programmable by the developer. When the worker has a buffer full of data, it must be up to the developer to decide how to process the buffer. There should be allocated some memory for gathering statistics, and it should be possible to alter the data in the buffer. What the developer intends to do with the data in the buffer is to no concern of the framework, but the framework should support the intentions of the developer.\\
 
 Here are the three identified types of data that the developer might want to extract and save when processing data:
 \begin{itemize}
@@ -372,7 +427,7 @@ These three types of data must be creatable and extractable, when using the fram
 \subsubsection{Input/Output Sensitivity}
 The case where we want to find the minimum value, the maximum value and the average value in a file is a very simple example. It is of linear complexity and simply requires a single run through, in no specific order. This is a highly parallelizable algorithm and is a brilliant example case for this kind of framework. 
 
-Another case, creating an md5-sum for example, requires that the data will always be parsed in the same order, every time. For simplicity and practicality, it has been decided that the sum must be calculated chronologically, meaning that the first data in the file must be hashed first. This is an algorithm which cannot easily be parallelized to any extend, however, it does heavily rely on I/O, and would benefit from using a framework such as \nbuf.\\\\
+Another case, creating an md5-sum for example, requires that the data will always be parsed in the same order, every time. For simplicity and practicality, it has been decided that the sum must be calculated chronologically, meaning that the first data in the file must be hashed first. This is an algorithm which cannot easily be parallelized to any extend, however, it does heavily rely on I/O, and would benefit from using a framework such as \nbuf.\\
 
 To accustom to this need, it must be possible to decide that the framework should always parse the data in-order and not parallelize the calculations. This can, of course result in not gaining a maximum utilization of the I/O resources, but this is always the choice of the developer and a requirement at hand, related to the task. 
 
@@ -386,10 +441,10 @@ In cases where parts of the data might not be interesting, or the transformed da
 
 
 \subsubsection{Guaranteed Termination}
-The framework must terminate when it works with a finite amount of data. The framework can never be fool-proof, but it should always terminate when it receives an indication that there are no more data, often an EOF. If the developer employs an infinite loop when processing data, this promise cannot be kept, but the framework should never result in a deadlock or a spinlock.\\\\\\
+The framework must terminate when it works with a finite amount of data. The framework can never be fool-proof, but it should always terminate when it receives an indication that there are no more data, often an EOF. If the developer employs an infinite loop when processing data, this promise cannot be kept, but the framework should never result in a deadlock or a spinlock.\\
 
 
-These are the technical requirements that I have decided that the \nbuf framework will have to live up to, to be generally useful. During the remainder of this section, I will discuss what actions I have taken to ensure that these requirements are fulfilled.
+These are the technical requirements that I have decided the \nbuf framework will have to live up to, to be generally useful. During the remainder of this section, I will discuss what actions I have taken to ensure that these requirements are fulfilled.
 
 
 
@@ -423,7 +478,7 @@ While allocating system resources should be a job for the master thread, due to 
 
 Each worker has its own buffer which it will use for reading into, processing and writing from. This buffer is not shared with any other worker.\\
 
-In \autoref{figure:state-diagram} is a finite-state diagram which shows how each worker in the system transfers from state to state, and in \autoref{table:transition} the related transition table can be seen. It is important to note that there are two \textit{critical} states. These states are intended to mimic the importance of a critical section, as known from concurrent programming\\\\
+In \autoref{figure:state-diagram} is a finite-state diagram which shows how each worker in the system transfers from state to state, and in \autoref{table:transition} the related transition table can be seen. It is important to note that there are two \textit{critical} states. These states are intended to mimic the importance of a critical section, as known from concurrent programming.\\
 
 % State Diagram 1
 \begin{figure}
@@ -469,7 +524,7 @@ With data in the buffer, the worker will move to the \textit{Execute}-state, and
 
 Now, the worker will process the data located in the buffer, and produce whatever data the developer has decided. When the worker has finished processing, it will move into the \textit{Write Wait}-state. In this state, the worker will wait for the single output resource to become available. When it becomes available, the worker will move to the \textit{Write Critical}-state and occupy the output resource. When the worker has written the content of its buffer to the output-resource, it moves to the \textit{Read Wait}-state, since it has finished the cycle, and can read new data into the buffer. 
 
-At some point, the read resource has no more data, and the worker will not receive data during the \textit{Read Critical}-state. At this point, it will move to the \textit{Exit}-state, and stay there until thread termination, which will be initiated by the master thread.\\\\
+At some point, the read resource has no more data, and the worker will not receive data during the \textit{Read Critical}-state. At this point, it will move to the \textit{Exit}-state, and stay there until thread termination, which will be initiated by the master thread.\\
 
 % State Diagram 2
 \begin{figure}
@@ -482,7 +537,7 @@ At some point, the read resource has no more data, and the worker will not recei
 	\end{adjustwidth}
 \end{figure}
 
-It is clear that this state diagram will serve the general purpose, but \textbf{Input/Output Sensitivity}-requirement can not be supported this way. To comply with this requirement, the framework must support utilizing an altered state diagram which can be seen in \autoref{figure:state-diagram-queue}. In this diagram a FIFO-type queue has been added. This means that the worker thread that entered the queue first will reach every new state before every other thread. Further, a \textit{Execute Wait}-state has been introduced along with introducing an \textit{Execute Critical}-state, which replaces the original state.\\\\
+It is clear that this state diagram will serve the general purpose, but \textbf{Input/Output Sensitivity}-requirement can not be supported this way. To comply with this requirement, the framework must support utilizing an altered state diagram which can be seen in \autoref{figure:state-diagram-queue}. In this diagram a FIFO-type queue has been added. This means that the worker thread that entered the queue first will reach every new state before every other thread. Further, a \textit{Execute Wait}-state has been introduced along with introducing an \textit{Execute Critical}-state, which replaces the original state.\\
 
 
 
@@ -512,9 +567,9 @@ If we want the output to be sequential, but the execute step to be performed in 
 	\end{adjustwidth}
 \end{figure}
 
-The other middle-way solution can be seen in \autoref{figure:state-diagram-shared-accumulator}. This entails having a sequential execute-step, but the order of the output does not matter. In this setup, the threads will have to arrive in the \textit{Execute Critical}-state in the same order they were in the \textit{Read Critical}-state.\\\\
+The other middle-way solution can be seen in \autoref{figure:state-diagram-shared-accumulator}. This entails having a sequential execute-step, but the order of the output does not matter. In this setup, the threads will have to arrive in the \textit{Execute Critical}-state in the same order they were in the \textit{Read Critical}-state.\\
 
-Considering these four configurations, we can reason about how they relate. In \autoref{table:state-relation}, it is clear that they must all exist, due to combinations of different requirements.\\\\
+Considering these four configurations, we can reason about how they relate. In \autoref{table:state-relation}, it is clear that they must all exist, due to combinations of different requirements.\\
 
 \begin{table}[]
 \begin{adjustwidth}{-0.5in}{-0.5in}
@@ -533,12 +588,74 @@ Considering these four configurations, we can reason about how they relate. In \
 \end{table}
 
 
-But, there are even more possible configurations. There are cases where we want to ignore the \textit{Write Wait}-state and the \textit{Write Critical}-state, since the \textbf{Output Selecting}-requirement requires that we can turn off outputting the content of the buffers. This voids some of the configurations, but for simplicity, we will still consider these four configurations, and merely perceive that the work to be done in these two steps is non-existent.\\\\
+But, there are even more possible configurations. There are cases where we want to ignore the \textit{Write Wait}-state and the \textit{Write Critical}-state, since the \textbf{Output Selecting}-requirement requires that we can turn off outputting the content of the buffers. This voids some of the configurations, but for simplicity, we will still consider these four configurations, and merely perceive that the work to be done in these two steps is non-existent.\\
 
 This concludes the requirements to the the \nbuf framework. A framework which supports all of these items, should be generic enough to be useful, while still being practical.
 
 
 \subsection{Algorithmic Overview}
+After establishing an abstract overview of how the master thread and the worker threads interact, I will now give the algorithms in pseudocode, to further explain how the \nbuf framework interacts.\\
+
+The algorithm performed by the master thread can be seen in \autoref{algorithm:master}. It is a very simple algorithm, and merely creates the worker threads, and gathers the results. In the case of a sequential execution, the result is stored in shared memory, and no combination is required. \\
+ 
+\begin{algorithm}[H]
+\noindent\fbox{%
+\begin{varwidth}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+ \emph{Master thread method}\;
+ \Begin{
+ allocate futures matching \# of threads\;
+ \For{1 .. \# of threads}{
+	spawn and launch worker thread with future\;
+ }
+ \For{1 .. \# of threads}{
+	wait and retrieve future result from worker thread\;
+ }
+ combine list of results\;
+ return combined result\;
+ }
+ \end{varwidth}% 
+} 
+ \caption{The master thread spawns the desired amount of worker threads, waits for them all to finish and then returns a combined result.}
+ \label{algorithm:master}
+\end{algorithm}
+\vspace{1\baselineskip}
+
+The algorithm performed by the worker thread can be seen in \autoref{algorithm:worker}. The worker calculates the size of the buffer. This is done by dividing the available memory out onto the number of threads, and then aligning with the highest amount of strides that can fit in in the buffer.\\
+
+When the buffer has been allocated, the worker locks the input resource and reads data into its locally allocated buffer. After unlocking the input resource, the worker processes the data, one stride at a time, as the developer has decided. Then the worker locks the output resource, outputs the transformed data, and unlocks the output resource. The while loop repeats until the input resource is emptied, where after the worker thread returns the resulting promise.
+
+\begin{algorithm}[H]
+\noindent\fbox{%
+\begin{varwidth}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+ \emph{Worker thread method}\;
+ \Begin{
+ allocate promise struct\;
+ calculate and allocate buffer memory\;
+ more data = true\;
+ \While{more data}{
+ 	lock input resource\;
+ 	read from input resource\;
+ 	unlock input resource\;
+ 	\eIf{data was read}{
+ 		get count of how much data\;	
+ 	}{
+ 		more data = false\;
+ 		break\;
+ 	}
+ 	process data, store result in promise\;
+ 	lock output resource\;
+ 	write to output resource;
+ 	unlock output resource\;
+ }
+ 
+ return promise;
+ }
+ \end{varwidth}% 
+}
+ \caption{The worker thread allocates a buffer, where after it reads, processes and writes. When no more data is available, it returns the resulting promise.}
+ \label{algorithm:worker}
+\end{algorithm}
+\vspace{1\baselineskip}
 
 
 
@@ -549,15 +666,16 @@ When building a framework for other people to use, it is important to keep a cle
 First, I need to identify what input is required to configure the \nbuf framework. Here is a list of input, along with example defaults:
 \begin{itemize}
 \item \textbf{Input Stream} - The framework can default to read from \textit{stdin} \footnote{Standard input is a standard stream used on most *NIX systems, along with standard error and standard out. They are known as \textit{stdin}, \textit{stderr} and \textit{stdout}.}.
-\item \textbf{Processing Method} - The framework can default to doing nothing with the input data.
+\item \textbf{Processing Method} - This is the method used to process a single stride. The framework can default to doing nothing with the input data.
 \item \textbf{Sequential Execution} - This is a bool, and the framework can default to performing parallel execution.
 \item \textbf{Output Stream Enabler} - This is a bool, and can default to true.
-\item \textbf{Output Stream} - In cases where output from the worker buffers is desired, this must can be supplied. It can also default to \textit{stdout}.
+\item \textbf{Output Stream} - In cases where output from the worker buffer is desired, this must can be supplied. It can also default to \textit{stdout}.
 \item \textbf{Output Filter Enabler} - This is a bool, and can default to false.
 \item \textbf{Output Filter Method} - In cases where the output should be filtered, a filtering method must be supplied. It can default to terminate the program, since not filtering would signify a user error.
+\item \textbf{Output Filter Stream} - In cases where filtered output from the worker buffer is desired, this must can be supplied. It can default to \textit{stdout}.
 \item \textbf{Number of Threads} - The framework can default to an arbitrary number, e.g. 3 threads.
 \item \textbf{Memory Limit} - The framework can default to an arbitrary number, e.g. 100 megabyte, which most systems should have readily available.
-\item \textbf{Data Chunk Size} - The amount of data that should be processed at once, by the processing method. This can default to the amount of data given per thread.
+\item \textbf{Data Stride Size} - The amount of data that should be processed at once, by the processing method. This can default to 1KB.
 \item \textbf{Input/Output Sensitivity} - This is a bool, and can default to false.
 \end{itemize}
 
@@ -574,20 +692,21 @@ When the \nbuf framework is started, the master thread will create \textit{futur
 
 The framework has been designed to require as little synchronization as possible. While this has decreased the complexity of the framework, it has not completely eliminated the need for synchronization. The default case, without \textit{Input/Output Sensitivity} and without \textit{Sequential Execution} requires only two mutexes, which will never be locked at the same time. These two mutexes will manage each of the critical sections, related to the I/O resources. \\
 
-When a critical section is required near the execution-step, it will also require a mutex. In this case, more synchronization is necessary, since the workers will also have to keep stay in the same order, at some point (all but the first configuration in \autoref{table:state-relation}. A worker-queue must be implemented, to ensure that threads are kept in order. There is no native synchronization mechanism for this kind of problem, but one can be built using \textit{condition variables}.\\
-
-[ details on how to build a thread-queue ]\\
+When a critical section is required near the execution-step, it will also require a mutex. In this case, more synchronization is necessary, since the workers will also have to keep stay in the same order, at some point (all but the first configuration in \autoref{table:state-relation}. A worker-queue must be used, to ensure that threads are kept in order. There is no native synchronization mechanism for this kind of problem, but one can be built using \textit{condition variables}.\\
 
 These are the technical details, related to how the \nbuf framework handles concurrency with the \textit{std::thread}-library.
 
 
-\subsection{Multiprocessing with OpenCL}
-[ details on how to work with OpenCL, even though this has not been built into the framework, it can still be utilized in the workers, since they can call OpenCL individually. ]\\
-
-
 \subsection{Current Limitations}
-[No queue, but supports sequential execution. This can, however, risk not being in order.]
-[Either filter or full output, not both]
+The current\footnote{As of the 19th of October '15.} implementation of the \nbuf framework does not include all the features that are listed in the \textit{Technical Requirements}-section. Here is a list of features that are not yet implemented, but can be supported by the framework, in the future.
+
+\begin{itemize}
+\item \textbf{No Queue} - The framework supports sequential execution of the user-supplied processing method, but there are still race conditions that can result in processing the data out of order.
+\item \textbf{Missing output selector} - Currently, only one output stream can be supplied. If both filtering and the full output are desired, then the user is out of luck. The current implementation allows the usage of a filtering method, but this will override the non-filtered output. 
+\end{itemize}
+
+These limitations are trivial to implement, but did not make it to the final result from the thesis project.
+
 
 \newpage
 \section{Experimentation and Benchmarking}
@@ -743,13 +862,34 @@ The \nbuf framework is already available for people to work with through GitHub\
 
 \newpage
 \section{Future Work}
-\subsubsection{IO throttling}
-not reading 1gb of data as a start, but starting low, and slowly increasing the buffer sizes.
+The thesis work has been concluded, but there are still some missing features in the \nbuf framework, and some interesting topics to explored. 
 
-\subsubsection{Variable buffer sizes}
-When reading small files, allocating large buffers is unnecessary.
+\subsection{Missing features}
+The framework misses complete support for sequential processing and in-order output. It can be implemented in the current framework, as described previously.
 
-\subsubsection{Slow network? How does istream handle that}
+
+\subsection{Further experimentation}
+While the experimentation clearly shows the effectiveness of the \nbuf framework, the experiment results also shows some odd behaviour which is not directly explainable, without more experimentation. This requires more time constructing test cases, and possibly multiple hardware setups.
+
+Figuring out how the framework reacts in different environment can easily be a project in itself. The settings that could be varied in new experiments could be;
+
+\begin{itemize}
+\item \textbf{Different memory footprints} - Currently only 1MB, 10MB, 100MB and 1000MB were tested. I would suggest trying with a \textit{power of two}-range instead of the tenth power. This will hopefully give a more gradient view of how the framework behaves.
+\item \textbf{Other disk setups} - Testing with more advanced disk set-ups would be interesting. It could be SSDs, raid configurations or network file systems.
+\item \textbf{Other data sizes} - In this project I only ever tested with 1GB of data. It was a balanced amount of data which could still fit in local memory for string streams, and didn't take too long to complete the experiments. With more time, larger files could be used. This could also help strain the operating systems output buffers.
+\end{itemize}
+
+
+\subsection{I/O Throttling}
+When large buffers are used, it takes some time before the first worker gets to processing. This will, at some point, result in lower performance than necessary. If the first thread reading would only fill a fraction of its buffer, it could start processing a lot quicker, and in turn, the entire task could be finished earlier, since more latency would be hidden.\\
+
+A method could be to let threads fill up 10\%, then 20\%, then 40\%, then 80\% and finally 100\% for each reading operation. This will allow the threads to start processing quicker. If plenty of computation power is available, then this will result in a faster overall runtime-
+
+
+\subsection{Logging and Error handling}
+If an error happens in the \nbuf framework, an exception is thrown, and it is up to the user to handle it. There are some exceptions which could be handled by the framework, and the framework could in turn react by correcting, or throwing a different exception.\\
+
+When including a third-party library, it is nice to have some kind of output, either on \textit{stdout} or \textit{stderr}, or to a stream, to be able to figure out what happens, or for debugging purposes. Currently, no such mechanism is available, and the developer has to insert debugging statements directly into the library.
 
 
 
@@ -757,9 +897,5 @@ When reading small files, allocating large buffers is unnecessary.
 
 \bibliographystyle{abbrv}
 \bibliography{bib}
-
-
-
-
 
 \end{document}

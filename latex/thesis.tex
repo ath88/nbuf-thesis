@@ -18,11 +18,21 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 
+
 \usepackage[babel, en, nat, farve, titelside]{ku-forside}
 
 % nbuf command
 \newcommand{\nbuf}{\textit{nbuf} }
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Asbj\o rn Thegler}
+\chead{Master's Thesis}
+\rhead{October 2015}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\belowcaptionskip}{-10pt}
 
 %% a point to check
 \definecolor{checkcolor}{rgb}{0.75, 0.75, 0.75}
@@ -49,6 +59,7 @@
 
 \sloppy
 
+\pagenumbering{roman}
 \begin{abstract}
 \begin{doublespace}
 This study attempts to construct a generally applicable library for efficient and parallel processing of data from generic data streams.
@@ -61,7 +72,7 @@ Benchmarking results shows that the library can fully utilize the rate of a data
 
 The library successfully enables developers to efficiently process streams of data in a concurrent manner, without extensive knowledge about multiprocessing and inter-process communication.\\
 
-The \nbuf library can be found at \url{http://github.com/ath88/nbuf}.
+The \nbuf library can be found at \url{http://github.com/ath88/nbuf}. The current version is tagged as \textit{v0.1}.
 
 \end{doublespace}
 \end{abstract}
@@ -70,108 +81,119 @@ The \nbuf library can be found at \url{http://github.com/ath88/nbuf}.
 \tableofcontents
 
 \newpage
+\pagenumbering{arabic}
 \section{Introduction}
 Big Data has become a huge topic over the last few years. Google Trends reveal that the interest for 'big data' has exploded since 2012. Huge companies worldwide speculate on how to profit from this new trend, and many widely respected conferences include entire tracks on how to work with Big Data.\\
 
-There are many definitions to what Big Data really is. In 2001, an analyst from Gartner, Doug Laney, defined big data to consist of 3 V's. He defines them as \textbf{Velocity}, \textbf{Volume} and \textbf{Variety}.\\
+There are many definitions to what Big Data really is. In 2001, an analyst from Gartner, Doug Laney, defined big data to consist of 3 V's\cite{3vs}. He defines them as \textbf{Velocity}, \textbf{Volume} and \textbf{Variety}.\\
 
-\textbf{Velocity} refers to the speed at which data is produced. Previously, most dataset could be processed and analysed with primitive mechanisms, without much thought into architecture and algorithms. With the new velocity of data generation, it is necessary to design solutions that can handle and utilize very fast streams of information.
+\textbf{Velocity} refers to the speed at which data is produced. Previously, most data streams could be stored and analysed with primitive mechanisms, without much thought into architecture and algorithms. With the new velocity of data generation, it is necessary to design solutions that can handle and utilize very fast streams of information.
 
 \textbf{Volume} refers to the huge volumes of data that are being gathered in recent times. Modern scientific equipment will generate several terabytes per day, which all have to be processed and stored. To support these growing amounts of data, it is necessary to keep producing larger and cheaper storage solutions.
 
-\textbf{Variety} refers to the endless amounts of different formats that data is stored in. To be able to interpret such unstructured data, it is necessary to have a wide array of tools and mechanisms to analyse these different sorts of information in a way that enables the usefulness of the resulting information.\\
+\textbf{Variety} refers to the endless amounts of different formats that data is stored in. To be able to interpret such unstructured data, it is necessary to have a wide array of tools and mechanisms to analyse these different sorts of information.\\
 
-In 2014, Mark van Rijmenam from Datafloq argued that the definition of Big Data could be extended with 4 additional V's. He defines them as \textbf{Veracity}, \textbf{Variability}, \textbf{Visualisation} and \textbf{Value}\\
+In 2014, Mark van Rijmenam from Datafloq\cite{7vs} argued that the definition of Big Data could be extended with 4 additional V's. He defines them as \textbf{Veracity}, \textbf{Variability}, \textbf{Visualisation} and \textbf{Value}\\
 
 \textbf{Veracity} refers to the validity of the data. Even though data is being generated, they are worthless if they are not correct. Smaller amounts of data can be sanity-checked manually, but these huge amounts of data cannot be checked for errors in any sensible way. The data generation mechanisms must be precise and correct.
 
 \textbf{Variability} refers to the changing meaning of a subject. Languages and meanings change over time, and as such, the interpretation of data must adhere to the current context, and not a context that has been established over many years.
 
-\textbf{Visualization} refers to the need for presenting the results from analysing Big Data in a sensible way. Two dimensional graphs can no longer express the multitude of finding that can be found in such huge datasets. New mechanisms will have to be create, which can be used to visualize interesting parts, such that decisions can be made on a clear basis.
+\textbf{Visualization} refers to the need for presenting the results from analysing Big Data in a sensible way. Two dimensional graphs can no longer express the multitude of findings that can be found in such huge datasets. New mechanisms will have to be created, which can be used to visualize interesting parts, such that decisions can be made on an informed basis.
 
-\textbf{Value} refers to the potentially lucrativeness of the Big Data industry. While using those huge datasets can indeed help increase profit for many companies, these techniques are not cheap to use. Done wrong, a Big Data venture can cost a lot in storage and processing power.\\
+\textbf{Value} refers to the potentially lucrativeness of the Big Data industry. While utilizing huge sets of information about customers can increase profit for many companies, these techniques are not cheap to use. Done wrong, a Big Data venture can cost a lot in storage and processing power.\\
 
 
-This project does not aim to solve all problems encountered in the field of Big Data. The main focus of this study is to attempt to mitigate some of the difficulties that arise from having data streams with \textit{extreme velocity}. 
+This project does not aim to solve all problems encountered in the field of Big Data. The main focus of this study is to attempt to mitigate some of the difficulties that arise from having data streams with \textit{extreme velocity}. It will be done by creating a  library that uses several buffers to swap around, often referred to as \textit{Triple Buffering}.
 
 
 \subsection{Terminology}
-The first popularly known occurrences of the term 'Triple Buffering' stems from the computer graphics industry. This is a technique where the graphics card renders images into 3 different buffers. Previous to this technique, a double buffer was used. A 'front-buffer' and a 'back-buffer'. The renderer would render a frame into the back buffer, and the buffers would swap. Since no synchronization exists between the renderer and the consumer, a buffer swap could happen in the middle of consumption, resulting in what is known as 'screen tearing'. Some attempts at fixing this problem is know as 'vertical sync' or 'vSync'. This included adding artificial delays to the renderer, to match the frame rate of the consuming screen.
+The first well known occurrences of the term \textit{Triple Buffering} stems from the computer graphics industry\cite{3buf}. This is a technique where the graphics card renders images into three different buffers. \textit{Triple Buffering} is a solution to a problem with the \textit{Double Buffering} technique. In this, a two buffers are used; a \textit{front-buffer} and a \textit{back-buffer}. 
 
-To better solve this problem, a third buffer is employed, effectively making it 'Triple Buffering'. The renderer could now switch between two back-buffers, and always have a free buffer to write a new frame to. If the consumer was too slow, frames would simply be lost, with no greater loss to the viewer. This obviously require extra memory on the graphics card.\\
+In \textit{Double Buffering}, the card renders a frame into the back buffer, and the buffers swaps to allow the screen to show the picture from the front buffer. Since no synchronization exists between the card and the screen, a buffer swap can happen as the screen is reading from the front buffer, resulting in what is known as \textit{screen tearing} where the screen shows two different frames at once. An attempt to fix this problem is know as \textit{vertical sync}. This includes adding artificial delays to the cards renderer, to match the frame rate of the consuming screen, effectively slowing down the graphics card.
+
+To better solve this problem, a third buffer is employed, effectively making it \textit{Triple Buffering} rather than \textit{Double Buffering}. The card can now switch between two back-buffers, and always have a free buffer to write a new frame to. If the screen is too slow, frames will simply be lost, with no greater loss to the viewer. This extra buffer obviously require extra memory, but modern graphics cards have plenty of memory.\\
 
 
 \subsection{Triple Buffering Big Data}
-'Triple Buffering' within computer graphics is a different thing, though there are many similarities. We can translate some of the solution to the field of Big Data. The bottlenecks of a graphics card are namely the rate of the renderer and the rate of the consumer. This translates to the IO problems we encounter when working with Big Data. The graphics industry solved the problem by utilizing more space, in the shape of an extra buffer and in theory, this can solve, or at least mitigate, some of the IO problems related to Big Data.\\
+\textit{Triple Buffering} within computer graphics is a different concept than \textit{Triple Buffering} within data processing. There are many similarities, however, and we can translate parts of the solution to increase data processing capabilities. The bottlenecks of a graphics card are namely the rate at which the graphics card can render images, and the rate at which the screen can show those images. If the screen has a low frame rate, then a very fast graphics card is useless, and vice versa. 
 
+This translates to the I/O problems we encounter when working with data processing. If we cannot process and store data at the same velocity they are being generated in, then we have to throw some data away, or slow down the data generator. The computer graphics industry increased throughput by utilizing more space, by adding an extra buffer. This concept can solve, or at least mitigate, some of the I/O problems related to processing data at high velocity.\\
 
-The focus of this thesis project is to produce a framework or library that enables programmers to process or transform large amounts of data in an efficient and concurrent way, without having to worry about concurrency issues and memory management. The framework or library should be generic, such that it is as generally applicable as possible, while still being useful and simple enough to understand for people who aren't familiar with multiprogramming. It is important to note that this project in no way introduces new technology or uncovers scientific ground. This is a study in working with existing technology to create a highly optimized and effective library.
-
+The focus of this study is to produce a library that enables programmers to process or transform large amounts of data in an efficient and concurrent way, without having to worry about concurrency issues and memory management. The library should be generic, such that it is as generally applicable as possible, while still being useful and simple enough to understand for people who aren't familiar with multiprogramming. It is important to note that this project in no way introduces new technology or uncovers scientific ground. This is a study in combining existing technology and knowledge to create a highly optimized and effective library.
 
 
 \subsection{Motivation}
-This project didn't manifest from thin air. Many people have probably seen it coming from a long distance. Triple Buffering has been used many places, many times before, and it is a well-known term. The reason why this project was started now, and not 10 years ago or in 10 years, is a combination and collision between Moore's Law, data bus speed and the growing Open Source community, both within academia, but also within established industries.
+This study did not manifest from thin air. Many people have contemplated building such a library. \textit{Triple Buffering} has been used many places, many times before, and it is a well-known technique. The reason why this project was undertaken now, and not 10 years ago or in 10 years, is a combination and collision between Moore's Law, data bus speed and the growing Open Source community, both within academia, but also within established industries. 
+
+Having a library that exerts these capabilities, that can be scrutinized and improved by everyone, will help organizations all over the world when they will have to process fast data streams.\\
+
+There are some existing solutions to this problem already. The Apache Foundation has both \textit{Apache Hadoop}\footnote{Apache Hadoop, \url{https://hadoop.apache.org/}} and \textit{Apache Storm}\footnote{Apache Storm, \url{http://storm.apache.org/}}, which both deploy a distributed map-reduce cluster. This project will separate itself from these solutions by being an library rather than a service. It will require a programmer to include the library in software, rather than configuring a distributed cluster.
 
 
-\subsubsection{The IO Problem}
-When processing data, it is relatively easy to increase the amount of computational resources, but moving data to and from the computational resources results in IO, which quickly becomes a bottleneck. To process data as fast as possible, we want to squeeze as much effect out of every available resource. When processing data sequentially, the traditional method is to;
+\subsubsection{The I/O Problem}
+Moving data to and from computational resources inherently results in I/O operations. Depending on the transfer rate of the data storage, these operations quickly becomes a bottleneck for the entire process. If we then proceed to not extract data from these streams at all time, then a lot of time time is spent on waiting. In reality, the process could pre-load data during processing and reduce the time spent on waiting for I/O. To process data as fast as possible, we want to fully utilize the I/O resource. 
+
+When processing data, the traditional method consists of the following steps;
 
 \begin{enumerate}
-\item Load data into buffer from disk
+\item Load data into buffer from source
 \item Process or transform data
-\item Write data back to disk
-\item If there is more data; go to 1
+\item Write data to destination
+\item If there is more data; go to step 1
 \end{enumerate}
 
-If the computational task of processing or transforming is large enough, the IO becomes negligible. If the computational task is very small, most of the execution time will be spent waiting for IO. In the latter case, there are two notable resources, which are being used in turn, namely the \textit{input stream} and the \textit{output stream}. This means that only half of the resources are being used at any given moment. In this case, we could have two concurrent workers, each swapping what resource they use, to utilize all of the resources at any given time.
+If the computational task of processing or transforming the data is very large, the I/O becomes negligible. In this case, most time is spent on step 2, and interlacing the I/O operations not give a significant improvement. Parallelizing step 2, however, will allow for very significant improvements. This will include adding more workers that can process the data in parallel.
 
-When the I/O becomes negligible, we have a very compute-heavy task. In this case, we can attempt to add more compute resources, which in turn, will shorten the execution time. This means that we could have 5, 10 or 50 buffers, depending on how large the computation task is, in comparison to I/O.
+If the computational task of processing or transforming the data is very small, most of the execution time will be spent waiting for I/O. An example could be a simple copy of a file from one disk to another. In this case, there are two I/O resources, which are being used in step 1 and step 3, namely the \textit{input stream} and the \textit{output stream}. This means that only one of the resources are being used at any given moment. To improve this mechanism, we could have two concurrent workers, each occupying one resource, to utilize both of the resources at any given time. In case of a computational task, a third worker could then perform step 2, which is exactly how \textit{Triple Buffering} works.\\
+
+This study will focus on the case where neither the execution, nor the I/O operations are negligible. In this case, it is important to be able to be able to parallelize step 2, while having additional workers occupying the I/O resources at all times. The library will be most useful in these cases, but will also be applicable in other cases.
 
 
 \subsubsection{The Generic Problem}
-When programmers and developers write software, they are generally encouraged to utilize established libraries as much as possible, instead of relying on their own ability to create elaborate and correct code. Often, a programmer has to solve a specific problem, which can be translated into a general problem which has already been solved multiple times. The productivity of the programmer can increase greatly, when using tested and accomplished libraries. Some topics are inherently difficult for programmers, such as memory management and concurrency, often leading to memory leaks and race conditions. When using established libraries, these problems are often already addressed.
+When programmers develop software, they are generally encouraged to utilize established libraries whenever possible, instead of relying on their own ability to create both complex and correct code. Often, a programmer encounters a specific problem, that can be translated into a general problem which has already been solved multiple times. The productivity of the programmer can increase greatly, when using tested and accomplished libraries. 
 
-Within the Open Source community, it is common practice to make ones code available for others to use. When multiple entities utilize the same code or library, bugs and race conditions are found, reported and corrected much faster than when code is only used privately (link?). Over time, this often result in libraries that are used globally, and has many contributors.
+Some topics are inherently difficult for programmers, such as memory management and concurrency, often leading to memory leaks and race conditions. When utilizing widely used and established libraries, these problems are often already addressed by many other programmers.\\
 
-When a library does not exist for the specific problem, programmers must solve the problem themselves. This will result in many programmers solving the same problem over and over again. At some point, someone will see the pattern and pick up the task, and attempt to build a generally applicable library.
+Within the Open Source community, it is common practice to make ones code available for others to use. In theory, when many organizations use the same tool or library, errors are found, reported and corrected much faster than when code is only used privately or within a single organization. Over time, this often result in libraries that are used globally, and has many contributors. This is known as crowd-sourcing.\\
 
-There are some pitfalls to using libraries to solve tasks. When a problem is simple, using a complex library might be too much work, since many libraries has a ton of options that might be relevant. Reading the 'man'-page of any Linux tool can be a daunting task, while often simple problems can be solved faster in other ways. Also, Open Source projects tend to have organic growth. Without tight steering from some small group of committed developers, a project will be monolithic and many people will classify it as 'bloatware'.
+When a general library that solves a general problem does not exist, programmers must write custom code that solves the problem. This will result in many programmers solving their specific problem over and over again. They cannot share their solutions, because they have all solved their own specific problem, and every problem has slight differences. At some point, a programmer will realize that there is a pattern and pick up the task to attempt to build a generally applicable library.\\
 
-[cite Zawinski's law of software envelopment]
-    Every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can.
+When a problem is simple, using a complex library might be too much work, since many libraries has a ton of options that might be irrelevant to the task at hand. Reading the manual of many tool can be a daunting task, while often simple problems can be solved faster with custom code. Attempting to identify what library might fit the current problem can be a sizeable project in itself. 
 
+Open Source projects tend to have organic growth. Without tight steering from some small group of committed programmers, a project will be monolithic and it will suffer from \textit{software bloat}. A tool or a library is usually created to solve a problem. Over time, the problem-body might be extended to include more features. In these cases, many people using the tool or library does not need the newer features, and to them, the features are merely an annoyance. In 1996, Jamie Zawinski wrote the following about \textit{software bloat}\cite{bloat}:
+
+\begin{quotation}
+  Every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can.
+  -- Jamie Zawinski, 1996
+\end{quotation}
+
+This is clearly put very comically, but the reality is that this often happens. Software develops until it becomes to slow and cumbersome. At this point, it is replaced by new and lean software, which overtime grows until it becomes almost identical to the software it replaced. To avoid this tendency, it is important to keep a very strict process, when deciding what features to include.
+    
 
 \subsubsection{Use Cases}
-The intended library can be used for several specific purposes. Many places, large amounts of data are being processed. Following are a few use cases where using such a library is indeed a good solution.\\
+The library that is built over the course of this study could be used for several purposes. Large amounts of data are being processed in many places. Following are some use cases where using such a library could be a good solution.\\
 
+Modern hash algorithms are designed to ensure the integrity of a collection of data. As an example, when large files are transported from one place to another, it is important to ensure that the data is intact upon arrival. A hash-value can be calculated before and after transport, to be compared afterwards. In this case, the tool used for transmitting the data could use a buffering mechanism, which calculates the hash value, as it is read from disk, and as it is written to disk. This would be far more efficient, than to read the file from disk after transport, only to calculate the hash-value. The data is already passing through memory on both sides of the transportation, and utilizing the data here would be beneficial.\\
 
-Hash algorithms are designed to be compute-heavy. When hash-values are needed on very large local files, it would be more efficient to use a n-buffering mechanism, and add buffers until the IO again becomes the bottleneck. The command line tools md5sum and sha512sum both have implementations that read 512 bytes at a time, which results in many IO operations, in case of large files, which could be avoided, if more memory is available for multiple buffers. Gathering statistics on sensor data is also a brilliant use case.\\
+Additionally, the command line tools \textit{md5sum} and \textit{sha512sum} both have implementations that read 512 bytes at a time, which results in many I/O operations, in case of large files. Many of those operations could be avoided, if more memory is available for multiple larger buffers. Further, using a concurrent approach to this problem, could introduce some latency hiding, which will improve the runtime of the tools.\\
 
+When large amounts of sensor data are received via a network, they are usually written directly to disk, before they get processed. In cases where much of the data is merely noise it could be good to have an option to process the data as it arrives, instead of delaying until after is has been written to disk. This can include gathering statistics, calculating hash values or filtering irrelevant data. An example could be a network of rain water gauges. When there is no rain, it is unnecessary to store the information.\\
 
-When large amounts of sensor data are received via a network, they are usually written directly to disk, before they get processed. In cases where much of the data is merely noise it could be good to have an option to process the data as it arrives, instead of delaying until after is has been written to disk. This can include gathering statistics, calculating hash values or filtering irrelevant data.\\
+The \textit{ESS project}\footnote{European Spallation Source, \url{https://europeanspallationsource.se}.}  aims to create a state of the art super microscope. Such microscope is bound to produce tons of information, which many different peers will be interested in analysing. The raw data will have to be stored, for situations where questions arise about data integrity. Typically, the data will be stored on inexpensive tape or cheap hard disks, which are very slow storage solutions. 
 
-
-The ESS\footnote{European Spallation Source, \url{https://europeanspallationsource.se}.} project aims to create a state of the art super microscope. Such microscope is bound to produce tons of information which many different peers will be interested in analysing. The raw data will have to be stored, in case questions arise about some data. Typically, the data will be stored on inexpensive tape or cheap hard disks, which are very slow storage solutions. 
-
-Whenever data is generated from the microscope, there will be a set of different  statistical results which will always be necessary. If these statistics could be gathered as the data is in-route to the storage solution, it would not be necessary to load the data back into memory to perform these statistical calculations. This would save a lot of waiting time and free time to perform other tasks.
-
-
-
-
+Whenever data is generated from the microscope, there will be a set of different  statistical results which will always be interesting. If these statistics could be gathered as the data is in-route to the storage solution, it would not be necessary to load the data back into memory to perform these statistical calculations. This would save a lot of waiting time and free up time to perform other tasks.
 
 
 \newpage
 \section{Theory and Analysis}
-This section will explain the ideas and thoughts that are used during the design and implementation of the framework.
-The project has two main topics.
+This section will explain the ideas and concepts that are applied during the design and implementation of the \nbuf library. 
 
-First there will be reasoning about concurrency and correctness. How to ensure that the
-library will always terminate when used correctly.
+The first section will explain how concurrency is handled and how correctness is ensured. This also entails how to ensure that the library will always terminate when used correctly. 
 
-Second, the project entails a lot of aspects related to data, IO and
-how to handle the enormous amounts of data.
+The second section will explain how the study handles aspects related to data, I/O and how to handle the enormous amounts of data, and how different data streams affect the resulting library.
 
-Finally, I will reason on what results I expect to get from this project, in relation to solving some of the problems touched upon in my motivation.
+The third section will reason on what technical results can be expected from this study. This will mainly focus on benchmarking, and how different configurations can affect the measured results.
 
 
 
@@ -187,7 +209,7 @@ Deadlocks and deadlock prevention is paramount when working with concurrency, bu
 
 
 \subsubsection{Finite-state Diagrams}
-Any process can be interpreted as a finite-state machine. Doing so will help understanding the process, its possible states, and the triggers that will change the internal state of the process. This is known as the scientific body of "Automata Theory" and what I will elaborate on here, is a subset of this field.
+Any process can be interpreted as a finite-state machine. Doing so will help understand the process, its possible states, and the triggers that will change the internal state of the process. This is known as the scientific body of "Automata Theory" and what I will elaborate on here, is a subset of this field.
 
 To gain a better understanding of a finite-state machine, a finite-state diagram can be created. It is a tool that can be used to ensure that the process at hand reacts and interacts as expected. Finite-state diagrams are trivial to both create and understand, and can be used to reason about a process, as a development tool and as documentation about a certain system or process. It gives an abstract idea of how a concrete process progresses.\\
 
@@ -660,7 +682,9 @@ When the buffer has been allocated, the worker locks the input resource and read
 
 
 \newpage
-\subsection{Framework Interface}
+\subsection{Library Interface}
+[better no bullets or split it up]
+
 When building a framework for other people to use, it is important to keep a clean, intuitive and usable interface. While man-pages are very useful, they can be dreading to read, for the non-guru. There are several ways to design a clean interface. Some developers tend to require a ton of configuration to do the simplest of things \footnote{The linux-command \textit{find} is a good example of non-intuitive CLI. You would expect the first argument to be the filename you want to find, but you need to specify the filename with -name.}, while others merely have sane defaults, and requires configuration to use the more advanced features\footnote{The linux-command \textit{locate} does what you would expect, it locates files with the name you supply as the first argument.}.\\
 
 First, I need to identify what input is required to configure the \nbuf framework. Here is a list of input, along with example defaults:
@@ -705,7 +729,7 @@ The current\footnote{As of the 19th of October '15.} implementation of the \nbuf
 \item \textbf{Missing output selector} - Currently, only one output stream can be supplied. If both filtering and the full output are desired, then the user is out of luck. The current implementation allows the usage of a filtering method, but this will override the non-filtered output. 
 \end{itemize}
 
-These limitations are trivial to implement, but did not make it to the final result from the thesis project.
+These limitations are technically trivial to implement, but requires fairly much code, thus they did not make it to the final result from the study.
 
 
 \newpage
@@ -728,24 +752,25 @@ In many cases, the framework will have to work with a stream of data from a disk
 
 First, most operating systems keep a cached version of files in memory, as long as the memory isn't used for anything else. This has been a mystery to many new Linux-users, and has sprouted many helping words\footnote{http://linuxatemyram.com explains very nicely how Linux caches files when there is available main memory.}. This easily results in wrong experimental results, when benchmarking throughput from disk.
 
-Imagine performing an experiment twice, which includes timing how fast a file is read from disk. The first run will fetch the file from disk, and the experiment will return expected results. When starting the second run, there is a good chance the file is still in memory, and the operating system will therefore not fetch the file from disk, but merely return the cached version. This will result in a much faster benchmark for the second run, for the wrong reasons.
+Imagine doing an experiment two times, which includes timing how fast a file is read from disk. The first run will fetch the file from disk, and the experiment will return expected results. When starting the second run, there is a good chance the file is still in memory, and the operating system will therefore not fetch the file from disk, but merely return the cached version. This will result in a much faster benchmark for the second run, for the wrong reasons.
 
 Second, the operating systems doesn't write your file to disk, just because you tell it to. It has to schedule all disk I/O and therefore it keep an internal buffer of data to be written to disk. This means that when some code writes to a file-stream, it will return before the data is actually written to the disk. The data is copied to another part of the system memory, and kept there until the OS decides to write it. The size of this buffer can vary, depending on how much memory the OS keeps to itself. When the buffer is full, the OS is forced to wait to disk, and let the program wait, until the OS has enough memory to copy the data from the program. To show how large the wait on disk input and disk output is, a simple experiment has been conducted.\\
 
-The I/O experiment is meant to show the different between return times when performing disk input and disk output, when the operating systems manages the I/O. First, a file with 1GB of data is located on a file, on a consumer-grade hard disk drive. The OS file cache is emptied, a timer is started, and the program starts reading the entire file into main memory. When returning from the read, the timer is stopped and the resulting time duration is printed. Then a timer starts, and the program starts writing the 1GB data to a new file on the disk drive. When the OS returns to the user-code, the timer is stopped and the duration is printed. The experiment is repeated 20 times, after letting the operating system flush the buffer to disk, to ensure consistent results. The results can be seen in \autoref{table:io-test}.\\
+The I/O experiment is meant to show the different between return times when performing disk input and disk output, when the operating systems manages the I/O. First, a file with 1GB of data is located on a file, on a consumer-grade hard disk drive. The OS file cache is emptied, a timer is started, and the program starts reading the entire file into main memory. When returning from the read, the timer is stopped and the resulting time duration is printed. Then a timer starts, and the program starts writing the 1GB data to a new file on the disk drive. When the OS returns to the user-code, the timer is stopped and the duration is printed. The experiment is repeated 20 times, after letting the operating system flush the buffer to disk, to ensure consistent results. The results can be seen in \autoref{table:io-test}, along with the respective RSD\footnote{The \textit{Relative Standard Deviation} is used, to make it easier to compare the results from different experiments. This is also known as the \textit{Coefficient of Variance}.}.\\
 
 \begin{table}[]
 \begin{adjustwidth}{-0.5in}{-0.5in}
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
-\textbf{Action}                & \textbf{Average time taken}               & \textbf{Standard Deviation / Average} \\ \midrule
-Reading 1GB of data from disk  & 13411522 $\mu s$                          & 0.0281                                \\ \midrule
-Writing 1GB of data to disk    & 541844   $\mu s$                          & 0.0128                                \\ \midrule
-Copying 1GB in memory          & 184583   $\mu s$                          & 0.0046                                \\ \midrule
-Processing 1GB in memory       & 4757252  $\mu s$                          & 0.0068                                \\ \bottomrule
+\textbf{Action}                & \textbf{Average Time Taken} & \textbf{RSD} \\ \midrule
+Reading 1GB of data from disk  & 13411522 $\mu s$            & 2.81 \%      \\ \midrule
+Writing 1GB of data to disk    & 541844   $\mu s$            & 1.28 \%      \\ \midrule
+Copying 1GB in memory          & 184583   $\mu s$            & 0.46 \%      \\ \midrule
+Processing 1GB in memory       & 4757252  $\mu s$            & 0.68 \%      \\ \bottomrule
 \end{tabular}
-\caption{The results from the disk I/O experiment on the actual hardware. Note that when writing data to disk, the operating system performs \textit{latency hiding}, which is why we observe much faster \textit{writing} that \textit{reading}. These are the timings we should expect to see when reading or writing 1GB of data to disk.}
+
+\caption{The results from the disk I/O experiment on the actual hardware, along with their RSD. Note that when writing data to disk, the operating system performs \textit{latency hiding}, which is why we observe much faster \textit{writing} that \textit{reading}. These are the timings we should expect to see when reading or writing 1GB of data to disk.}
 \label{table:io-test}
 \end{adjustwidth}
 \end{table}
@@ -892,9 +917,11 @@ If an error happens in the \nbuf framework, an exception is thrown, and it is up
 When including a third-party library, it is nice to have some kind of output, either on \textit{stdout} or \textit{stderr}, or to a stream, to be able to figure out what happens, or for debugging purposes. Currently, no such mechanism is available, and the developer has to insert debugging statements directly into the library.
 
 
+\subsection{Use C++11/C++15 Features}
+The current library doesn't use many of the newer features from C++11. Using smart pointers and modern allocators would help deallocating memory, when it is no longer needed. This will decrease 
 
 
-
+\newpage
 \bibliographystyle{abbrv}
 \bibliography{bib}
 

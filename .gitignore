@@ -35,6 +35,9 @@
 *.log
 *.aux
 *.synctex.gz
+*.bbl
+*.blg
+*.dvi
 
 bin
 object 

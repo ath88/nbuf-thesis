@@ -412,7 +412,7 @@ Following is a list of functional and non-functional requirements which I deem i
 These features are all important, if this library should be generally applicable to most sorts of projects working with any kind of I/O. In the next few sections, I will explain what these requirements entail, and how they have been solved.
 
 \subsubsection{Efficient and Parallel I/O}
-The entire project attempts to maximize the use of the available I/O resources on a system, when processing incoming data. If there are solutions which yields a better or larger rate of processing data, then the \nbuf library does not perform as it should. This is a primary goal, and should at all times be respected. This non-functional requirement will only be observable when benchmarking the library.
+The entire study attempts to maximize the use of the available I/O resources on a system, when processing incoming data. If there are solutions which yields a better or larger rate of processing data, then the \nbuf library does not perform as it should. This is a primary goal, and should at all times be respected. This non-functional requirement will only be observable when benchmarking the library.
 
 To achieve this goal, it is necessary to use some kind of concurrent programming methods. It is impossible to keep all system I/O resources busy, using only a single processing thread, since there will often be at least two resources, and one thread can not wait for two resources at the same time. 
 
@@ -916,12 +916,12 @@ The library is missing support for sequential processing and in-order output. It
 \subsection{Further Experimentation}
 While the experimentation clearly shows the effectiveness of the \nbuf library, the experiment results also shows some odd behaviour which is not directly explainable, without more experimentation. This requires more time constructing test cases, and possibly multiple hardware setups.
 
-Figuring out how the library reacts in different environment can easily be a project in itself. The settings that could be varied in new experiments could be;
+Figuring out how the library reacts in different environment can easily be an entire project in itself. The settings that could be varied in new experiments could be;
 
 \begin{itemize}
 \item \textbf{Different memory footprints} - Currently only 1MB, 10MB, 100MB and 1000MB were tested. I would suggest trying with a \textit{power of two}-range instead of the tenth power. This will hopefully give a more gradient view of how the library behaves.
 \item \textbf{Additional disk setups} - Testing with more advanced disk set-ups would be interesting. It could be SSDs, raid configurations or network file systems.
-\item \textbf{Other data sizes} - In this project I only ever tested with 1GB of data. It was a balanced amount of data which could still fit in local memory for string streams, and didn't take too long to complete the experiments. With more time, larger files could be used. This could also help strain the operating systems output buffers.
+\item \textbf{Other data sizes} - In this study I only ever tested with 1GB of data. It was a balanced amount of data which could still fit in local memory for string streams, and didn't take too long to complete the experiments. With more time, larger files could be used. This could also help strain the operating systems output buffers.
 \end{itemize}
 
 

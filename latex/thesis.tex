@@ -83,7 +83,7 @@ The \nbuf library can be found at \url{http://github.com/ath88/nbuf}. The curren
 \newpage
 \pagenumbering{arabic}
 \section{Introduction}
-Big Data has become a huge topic over the last few years. Google Trends reveal that the interest for 'big data' has exploded since 2012. Huge companies worldwide invest large amounts of money into from this new trend\cite{bigdatainvest}, and many widely respected conferences include entire tracks on how to work with Big Data.\\
+Big Data has become a huge topic over the last few years. Google Trends reveal that the interest for 'Big Data' has exploded since 2012. Huge companies worldwide invest large amounts of money into this new trend\cite{bigdatainvest}, and many widely respected conferences include entire tracks on how to work with Big Data.\\
 
 There are many definitions to what Big Data really is. In 2001, an analyst from Gartner, Doug Laney, defined big data to consist of 3 V's\cite{3vs}. He defines them as \textbf{Velocity}, \textbf{Volume} and \textbf{Variety}.\\
 
@@ -112,7 +112,7 @@ The first well known occurrences of the term \textit{Triple Buffering} stems fro
 
 In \textit{Double Buffering}, the graphics card renders a frame into the back buffer, and the buffers swaps to allow the screen to show the picture from the front buffer. Since no synchronization exists between the graphics card and the screen, a buffer swap can happen as the screen is reading from the front buffer, resulting in what is known as \textit{screen tearing} where the screen shows two different frames at once. An attempt to fix this problem is know as \textit{vertical sync}. This includes adding artificial delays to the graphics cards renderer, to match the frame rate of the consuming screen, effectively slowing down the graphics card.
 
-To better solve this problem, a third buffer is employed, effectively making it \textit{Triple Buffering} rather than \textit{Double Buffering}. The graphics card can now switch between two back-buffers, and always have a free buffer to write a new frame to. If the screen is too slow, frames will simply be lost, with no greater loss to the viewer. This extra buffer obviously require extra memory, but modern graphics cards have plenty of memory.\\
+To better solve this problem, a third buffer is employed, effectively making it \textit{Triple Buffering} rather than \textit{Double Buffering}. The graphics card can now switch between two back-buffers, and always have a free buffer to write a new frame to. If the screen is too slow, frames will simply be lost, with no greater loss to the viewer. This extra buffer obviously require extra memory, but modern graphics cards have plenty of such.\\
 
 
 \subsection{Triple Buffering Big Data}
@@ -127,7 +127,7 @@ The focus of this study is to produce a library that enables programmers to proc
 This study did not manifest from thin air. Many people have contemplated building such a library. \textit{Triple Buffering} has been used many places, many times before, and it is a well-known technique. The reason why this study was undertaken now, and not 10 years ago or in 10 years, is a combination and collision between several factors:
 
 \begin{itemize}
-\item \textbf{Data Growth} - According to CSC, the amount of data will increase by an astounding 4300\& by 2020, since 2012\cite{datagrowth}. 
+\item \textbf{Data Growth} - According to CSC, the amount of data will increase by an astounding 4300\% by 2020, since 2012\cite{datagrowth}. 
 \item \textbf{Data Bus Speed} - The growth in data transfer rates has not followed the growth in data volume, and as such, it is necessary to build tools to better utilize the available transfer rates.
 \item \textbf{Open Source Popularity} - Open Source has gained traction, and becomes more and more popular, according to Wired\cite{opensourcegrowth}.
 \end{itemize} 
@@ -140,7 +140,7 @@ There are some existing solutions to this problem already. The Apache Foundation
 \subsubsection{The I/O Problem}
 Moving data to and from computational resources inherently results in I/O operations. Depending on the transfer rate of the data storage, these operations quickly becomes a bottleneck for the entire process. If we then proceed to not extract data from these streams at all time, then a lot of time time is spent on waiting. In reality, the process could pre-load data during processing and reduce the time spent on waiting for I/O. To process data as fast as possible, we want to fully utilize the I/O resource. 
 
-When processing data, the traditional method consists of the following steps;
+When processing data, the traditional method consists of the following steps:
 
 \begin{enumerate}
 \item Load data into buffer from source
@@ -149,11 +149,11 @@ When processing data, the traditional method consists of the following steps;
 \item If there is more data; go to step 1
 \end{enumerate}
 
-If the computational task of processing or transforming the data is very large, the I/O becomes negligible. In this case, most time is spent on step 2, and interlacing the I/O operations not give a significant improvement. Parallelizing step 2, however, will allow for very significant improvements. This will include adding more workers that can process the data in parallel.
+If the computational task of processing or transforming the data is very large, the I/O becomes negligible. In this case, most time is spent on step 2, and interlacing the I/O operations will not give a significant improvement. Parallelizing step 2, however, will allow for very significant improvements. This will include adding more workers that can process the data in parallel.
 
 If the computational task of processing or transforming the data is very small, most of the execution time will be spent waiting for I/O. An example could be a simple copy of a file from one disk to another. In this case, there are two I/O resources, which are being used in step 1 and step 3, namely the \textit{input stream} and the \textit{output stream}. This means that only one of the resources are being used at any given moment. To improve this mechanism, we could have two concurrent workers, each occupying one resource, to utilize both of the resources at any given time. In case of a computational task, a third worker could then perform step 2, which is exactly how \textit{Triple Buffering} works.\\
 
-This study will focus on the case where neither the execution, nor the I/O operations are negligible. In this case, it is important to be able to be able to parallelize step 2, while having additional workers occupying the I/O resources at all times. The library will be most useful in these cases, but will also be applicable in other cases.
+This study will focus on the case where neither the execution, nor the I/O operations are negligible. In this case, it is important to be able to parallelize step 2, while having additional workers occupying the I/O resources at all times. The library will be most useful in these cases, but will also be applicable in other cases.
 
 
 \subsubsection{The Generic Problem}
@@ -167,22 +167,22 @@ When a general library that solves a general problem does not exist, programmers
 
 When a problem is simple, using a complex library might be too much work, since many libraries has a ton of options that might be irrelevant to the task at hand. Reading the manual of many tool can be a daunting task, while often simple problems can be solved faster with custom code. Attempting to identify what library might fit the current problem can be a sizeable project in itself. 
 
-Open Source projects tend to have organic growth. Without tight steering from some small group of committed programmers, a project will be monolithic and it will suffer from \textit{software bloat}. A tool or a library is usually created to solve a problem. Over time, the problem-body might be extended to include more features. In these cases, many people using the tool or library does not need the newer features, and to them, the features are merely an annoyance. In 1996, Jamie Zawinski wrote the following about \textit{software bloat}\cite{bloat}:
+Open Source projects tend to have organic growth. Without tight steering from some small group of committed programmers, a project will become monolithic and it will suffer from \textit{software bloat}. A tool or a library is usually created to solve a problem. Over time, the problem-body might be extended to include more features. In these cases, many people using the tool or library does not need the newer features, and to them, the features are merely an annoyance. In 1996, Jamie Zawinski wrote the following about \textit{software bloat}\cite{bloat}:
 
 \begin{quotation}
   Every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can.
   -- Jamie Zawinski, 1996
 \end{quotation}
 
-This is clearly put very comically, but the reality is that this often happens. Software develops until it becomes to slow and cumbersome. At this point, it is replaced by new and lean software, which overtime grows until it becomes almost identical to the software it replaced. To avoid this tendency, it is important to keep a very strict process, when deciding what features to include.
+This is clearly put very comically, but the reality is that this often happens. Software develops until it becomes too slow and cumbersome. At this point, it is replaced by new and lean software, which overtime grows until it becomes almost identical to the software it replaced. To avoid this tendency, it is important to keep a very strict process, when deciding what features to include.
     
 
 \subsubsection{Use Cases}
 The library that is built over the course of this study could be used for several purposes. Large amounts of data are being processed in many places. Following are some use cases where using such a library could be a good solution.\\
 
-Modern hash algorithms are designed to ensure the integrity of a collection of data. As an example, when large files are transported from one place to another, it is important to ensure that the data is intact upon arrival. A hash-value can be calculated before and after transport, to be compared afterwards. In this case, the tool used for transmitting the data could use a buffering mechanism, which calculates the hash value, as it is read from disk, and as it is written to disk. This would be far more efficient, than to read the file from disk after transport, only to calculate the hash-value. The data is already passing through memory on both sides of the transportation, and utilizing the data here would be beneficial.\\
+Modern hash algorithms are designed to ensure the integrity of a collection of data. As an example, when large files are transported from one place to another, it is important to ensure that the data is intact upon arrival. A hash-value can be calculated before and after transport, to be compared afterwards. In this case, the tool used for transmitting the data could use a buffering mechanism, which calculates the hash value, as it is read from disk, and as it is written to disk on the receiving end. This would be far more efficient, than to read the file from disk after transport, only to calculate the hash-value. The data is already passing through memory on both sides of the transportation, and utilizing the data here would be beneficial.\\
 
-Additionally, the command line tools \textit{md5sum} and \textit{sha512sum} both have implementations that read 512 bytes at a time, which results in many I/O operations, in case of large files. Many of those operations could be avoided, if more memory is available for multiple larger buffers. Further, using a concurrent approach to this problem, could introduce some latency hiding, which will improve the runtime of the tools.\\
+Additionally, the command line hashing tools \textit{md5sum} and \textit{sha512sum} both have implementations that read 512 bytes at a time, which results in many I/O operations, in case of large files. Many of those operations could be avoided, if more memory is available for multiple larger buffers. Further, using a concurrent approach to this problem, could introduce some latency hiding, which will improve the runtime of the tools.\\
 
 When large amounts of sensor data are received via a network, they are usually written directly to disk, before they get processed. In cases where much of the data is merely noise it could be good to have an option to process the data as it arrives, instead of delaying until after is has been written to disk. This can include gathering statistics, calculating hash values or filtering irrelevant data. An example could be a network of rain water gauges. When there is no rain, it is unnecessary to store the information.\\
 
@@ -238,7 +238,7 @@ When explaining how the \nbuf library works, finite-state diagrams will be used.
 
 
 \subsubsection{Synchronization Primitives}
-Concurrent programming entails using some kind of multiprocessing. This is can be done by using multiple threads which can be scheduled individually on different cores. This allows multiple threads to run simultaneously, using the same memory space. While sharing memory is very practical, it also brings several pitfalls that can seem in-obvious to a programmer who aren't used to concurrency. Those problems are often known as race-conditions, which happens when two threads use the same section of memory at the same time. To solve these problems, it is necessary to use some kind of synchronization, to ensure \textit{thread-safety}.
+Concurrent programming entails using some kind of multiprocessing. This can be done by using multiple threads which can be scheduled individually on different cores. This allows multiple threads to run simultaneously, using the same memory space. While sharing memory is very practical, it also brings several pitfalls that can seem in-obvious to a programmer who are not used to concurrency. Those problems are often known as race-conditions, which happens when two threads use the same section of memory at the same time. To solve these problems, it is necessary to use some kind of synchronization, to ensure \textit{thread-safety}.
 
 Most synchronization mechanisms are based on the hardware instruction \textit{test-and-set}\footnote{The \textit{test-and-set}-instruction is an atomic operation that tests some condition, and changes a values if the condition was true.}. Using this instruction, locks, semaphores and queues can be implemented. These are all known as \textit{Synchronization Primitives}. These are abstractions, and are intended to make it easier to make more elaborate and abstract synchronization mechanisms in systems. The primitives that are relevant to this study are the following:
 
@@ -299,7 +299,7 @@ The \nbuf library seeks to take an agnostic approach to how data streams behave.
 
 It is important to know how different streams behave, even though the library must exhibit agnostic behaviour. When benchmarking, it is indeed important, to be able to identify where and why certain results are obtained.\\
 
-In C++11, there are two different kinds of basic streams, which both inherit from a general stream type. These streams are known as \textit{string streams} and \textit{file streams}. A third kind of stream can be gained from third-party libraries, such as the Boost.Asio library\footnote{ http://www.boost.org/doc/libs/1\_59\_0/doc/html/boost\_asio.html}, namely a \textit{network stream}.\\
+In C++11, there are two different kinds of basic streams, which both inherit from a general stream type. These streams are known as \textit{string streams} and \textit{file streams}. A third kind of stream can be gained from third-party libraries, such as the Boost.Asio library\footnote{ \url{http://www.boost.org/doc/libs/1\_59\_0/doc/html/boost\_asio.html}}, namely a \textit{network stream}.\\
 
 These three kinds of streams can be used in the \nbuf librart, which gives a very versatile system. Each kind of stream, however, has limitations which, in general, will limit the throughput of the library.\\
 
@@ -771,7 +771,7 @@ The benchmarking will be done on a machine with a Intel Core i7-2600K CPU 3.40GH
 \subsubsection{From disk}
 In many cases, the library will have to work with a stream of data from a disk drive of some sort. In this case, the maximum throughput is limited by the rate at which we can read data from the disk, and write back to disk. Here we have to keep two things in mind, when experimenting.\\
 
-First, most operating systems keep a cached version of recently used files in memory, as long as the memory is not needed for anything else. This has been a mystery to many new Linux-users, and has sprouted many helping words\footnote{http://linuxatemyram.com explains very nicely how Linux caches files when there is available main memory.}. This easily results in wrong experimental results, when benchmarking throughput from disk.
+First, most operating systems keep a cached version of recently used files in memory, as long as the memory is not needed for anything else. This has been a mystery to many new Linux-users, and has sprouted many helping words\footnote{\url{http://linuxatemyram.com} explains very nicely how Linux caches files when there is available main memory.}. This easily results in wrong experimental results, when benchmarking throughput from disk.
 
 Imagine doing an experiment two times, which includes timing how fast a file is read from disk. The first run will fetch the file from disk, and the experiment will return expected results. When starting the second run, there is a good chance the file is still in memory, and the operating system will therefore not fetch the file from disk, but merely return the cached version. This will result in a much faster benchmark result for the second run, for the wrong reasons.
 
@@ -902,7 +902,7 @@ Concurrency is inherently hard, and the library performs correct concurrency. Us
 
 The library does not yet support the queue mechanics, which is necessary for computational tasks which require some degree of synchronization. This limitation decreases the usefulness of the system. Implementing such queue mechanic can be done rather easily, and therefore this is \textit{not a big problem}. The design has already been laid out.\\
 
-The \nbuf library is already available for interested people to work with through GitHub\footnote{The library is available on http://github.com/ath88/nbuf.}, and I expect to submit it to Boost\footnote{Boost is a repository for peer-reviewed C++ libraries. It can be found at http://www.boost.org.} if the code reaches maturity levels beyond this master's thesis. The current implementation has been tagged as \textit{v0.1}.
+The \nbuf library is already available for interested people to work with through GitHub\footnote{The library is available on \url{http://github.com/ath88/nbuf.}}, and I expect to submit it to Boost\footnote{Boost is a repository for peer-reviewed C++ libraries. It can be found at \url{http://www.boost.org.}} if the code reaches maturity levels beyond this master's thesis. The current implementation has been tagged as \textit{v0.1}.
 
 
 \newpage
